@@ -1,0 +1,560 @@
+[
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/logo.png",
+    "filename": "logo.png",
+    "localPath": "/images/old_site/logo.png",
+    "sizeBytes": 169946
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/g20-image.png",
+    "filename": "g20-image.png",
+    "localPath": "/images/old_site/g20-image.png",
+    "sizeBytes": 49913
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/slide/slide-2.jpg",
+    "filename": "slide-2.jpg",
+    "localPath": "/images/old_site/slide-2.jpg",
+    "sizeBytes": 303362
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/collage.jpg",
+    "filename": "collage.jpg",
+    "localPath": "/images/old_site/collage.jpg",
+    "sizeBytes": 1570106
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/vision.jpg",
+    "filename": "vision.jpg",
+    "localPath": "/images/old_site/vision.jpg",
+    "sizeBytes": 32972
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/trainers/trainer-1.jpg",
+    "filename": "trainer-1.jpg",
+    "localPath": "/images/old_site/trainer-1.jpg",
+    "sizeBytes": 19030
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/trainers/trainer-2.jpg",
+    "filename": "trainer-2.jpg",
+    "localPath": "/images/old_site/trainer-2.jpg",
+    "sizeBytes": 20603
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/trainers/trainer-3.jpg",
+    "filename": "trainer-3.jpg",
+    "localPath": "/images/old_site/trainer-3.jpg",
+    "sizeBytes": 19089
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/slide/slide1.png",
+    "filename": "slide1.png",
+    "localPath": "/images/old_site/slide1.png",
+    "sizeBytes": 212356
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/slide/slide-3.png",
+    "filename": "slide-3.png",
+    "localPath": "/images/old_site/slide-3.png",
+    "sizeBytes": 87838
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/favicon.png",
+    "filename": "favicon.png",
+    "localPath": "/images/old_site/favicon.png",
+    "sizeBytes": 1011
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/apple-touch-icon.png",
+    "filename": "apple-touch-icon.png",
+    "localPath": "/images/old_site/apple-touch-icon.png",
+    "sizeBytes": 43285
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/images/Anti_Ragging.png",
+    "filename": "Anti_Ragging.png",
+    "localPath": "/images/old_site/Anti_Ragging.png",
+    "sizeBytes": 470788
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/vision-mission.jpg",
+    "filename": "vision-mission.jpg",
+    "localPath": "/images/old_site/vision-mission.jpg",
+    "sizeBytes": 95807
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/documents/TIF_July_2025__1.jpg",
+    "filename": "TIF_July_2025__1.jpg",
+    "localPath": "/images/old_site/TIF_July_2025__1.jpg",
+    "sizeBytes": 3287173
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/documents/TIF_July_2025_2.jpg",
+    "filename": "TIF_July_2025_2.jpg",
+    "localPath": "/images/old_site/TIF_July_2025_2.jpg",
+    "sizeBytes": 2777357
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/documents/TIF_July_2025_3.jpg",
+    "filename": "TIF_July_2025_3.jpg",
+    "localPath": "/images/old_site/TIF_July_2025_3.jpg",
+    "sizeBytes": 2509563
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/course-1.jpg",
+    "filename": "course-1.jpg",
+    "localPath": "/images/old_site/course-1.jpg",
+    "sizeBytes": 51129
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/course-2.jpg",
+    "filename": "course-2.jpg",
+    "localPath": "/images/old_site/course-2.jpg",
+    "sizeBytes": 192260
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/course-3.jpg",
+    "filename": "course-3.jpg",
+    "localPath": "/images/old_site/course-3.jpg",
+    "sizeBytes": 53087
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/course-4.jpg",
+    "filename": "course-4.jpg",
+    "localPath": "/images/old_site/course-4.jpg",
+    "sizeBytes": 560748
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/course-5.jpg",
+    "filename": "course-5.jpg",
+    "localPath": "/images/old_site/course-5.jpg",
+    "sizeBytes": 105119
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/seatsinfo.jpg",
+    "filename": "seatsinfo.jpg",
+    "localPath": "/images/old_site/seatsinfo.jpg",
+    "sizeBytes": 163310
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/iqacnaac.jpg",
+    "filename": "iqacnaac.jpg",
+    "localPath": "/images/old_site/iqacnaac.jpg",
+    "sizeBytes": 37727
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/nirf.png",
+    "filename": "nirf.png",
+    "localPath": "/images/old_site/nirf.png",
+    "sizeBytes": 41146
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/pic%20(3).JPG",
+    "filename": "pic_20_3_.JPG",
+    "localPath": "/images/old_site/pic_20_3_.JPG",
+    "sizeBytes": 450378
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/pic%20(1).JPG",
+    "filename": "pic_20_1_.JPG",
+    "localPath": "/images/old_site/pic_20_1_.JPG",
+    "sizeBytes": 355884
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/pic%20(2).JPG",
+    "filename": "pic_20_2_.JPG",
+    "localPath": "/images/old_site/pic_20_2_.JPG",
+    "sizeBytes": 400918
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/pic%20(4).JPG",
+    "filename": "pic_20_4_.JPG",
+    "localPath": "/images/old_site/pic_20_4_.JPG",
+    "sizeBytes": 322289
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/sport%20(1).jpg",
+    "filename": "sport_20_1_.jpg",
+    "localPath": "/images/old_site/sport_20_1_.jpg",
+    "sizeBytes": 250067
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/sport%20(1).png",
+    "filename": "sport_20_1_.png",
+    "localPath": "/images/old_site/sport_20_1_.png",
+    "sizeBytes": 957930
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/sport%20(2).JPG",
+    "filename": "sport_20_2_.JPG",
+    "localPath": "/images/old_site/sport_20_2_.JPG",
+    "sizeBytes": 307595
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/sport%20(3).JPG",
+    "filename": "sport_20_3_.JPG",
+    "localPath": "/images/old_site/sport_20_3_.JPG",
+    "sizeBytes": 346036
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/sport%20(5).JPG",
+    "filename": "sport_20_5_.JPG",
+    "localPath": "/images/old_site/sport_20_5_.JPG",
+    "sizeBytes": 265970
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/sport%20(4).JPG",
+    "filename": "sport_20_4_.JPG",
+    "localPath": "/images/old_site/sport_20_4_.JPG",
+    "sizeBytes": 346661
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/blood%20(1).JPG",
+    "filename": "blood_20_1_.JPG",
+    "localPath": "/images/old_site/blood_20_1_.JPG",
+    "sizeBytes": 206044
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/blood%20(2).JPG",
+    "filename": "blood_20_2_.JPG",
+    "localPath": "/images/old_site/blood_20_2_.JPG",
+    "sizeBytes": 294339
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/blood%20(3).JPG",
+    "filename": "blood_20_3_.JPG",
+    "localPath": "/images/old_site/blood_20_3_.JPG",
+    "sizeBytes": 309260
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/blood%20(4).JPG",
+    "filename": "blood_20_4_.JPG",
+    "localPath": "/images/old_site/blood_20_4_.JPG",
+    "sizeBytes": 238056
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/blood%20(5).JPG",
+    "filename": "blood_20_5_.JPG",
+    "localPath": "/images/old_site/blood_20_5_.JPG",
+    "sizeBytes": 247218
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/cyber.JPG",
+    "filename": "cyber.JPG",
+    "localPath": "/images/old_site/cyber.JPG",
+    "sizeBytes": 279448
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/fineart.JPG",
+    "filename": "fineart.JPG",
+    "localPath": "/images/old_site/fineart.JPG",
+    "sizeBytes": 246909
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/geo%20(1).jpg",
+    "filename": "geo_20_1_.jpg",
+    "localPath": "/images/old_site/geo_20_1_.jpg",
+    "sizeBytes": 284365
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/iqacmeet.png",
+    "filename": "iqacmeet.png",
+    "localPath": "/images/old_site/iqacmeet.png",
+    "sizeBytes": 1046938
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/prif%20(1).jpeg",
+    "filename": "prif_20_1_.jpeg",
+    "localPath": "/images/old_site/prif_20_1_.jpeg",
+    "sizeBytes": 180696
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/prif%20(1).JPG",
+    "filename": "prif_20_1_.JPG",
+    "localPath": "/images/old_site/prif_20_1_.JPG",
+    "sizeBytes": 269255
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/prif%20(2).jpeg",
+    "filename": "prif_20_2_.jpeg",
+    "localPath": "/images/old_site/prif_20_2_.jpeg",
+    "sizeBytes": 153158
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/rally%20(1).JPG",
+    "filename": "rally_20_1_.JPG",
+    "localPath": "/images/old_site/rally_20_1_.JPG",
+    "sizeBytes": 251531
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/rally%20(2).JPG",
+    "filename": "rally_20_2_.JPG",
+    "localPath": "/images/old_site/rally_20_2_.JPG",
+    "sizeBytes": 352138
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/talent%20(1).JPG",
+    "filename": "talent_20_1_.JPG",
+    "localPath": "/images/old_site/talent_20_1_.JPG",
+    "sizeBytes": 263955
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/talent%20(2).JPG",
+    "filename": "talent_20_2_.JPG",
+    "localPath": "/images/old_site/talent_20_2_.JPG",
+    "sizeBytes": 349778
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/talenthunt%20(1).JPG",
+    "filename": "talenthunt_20_1_.JPG",
+    "localPath": "/images/old_site/talenthunt_20_1_.JPG",
+    "sizeBytes": 238263
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/talenthunt%20(2).JPG",
+    "filename": "talenthunt_20_2_.JPG",
+    "localPath": "/images/old_site/talenthunt_20_2_.JPG",
+    "sizeBytes": 264398
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/talenthunt%20(3).JPG",
+    "filename": "talenthunt_20_3_.JPG",
+    "localPath": "/images/old_site/talenthunt_20_3_.JPG",
+    "sizeBytes": 278905
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/talenthunt%20(4).JPG",
+    "filename": "talenthunt_20_4_.JPG",
+    "localPath": "/images/old_site/talenthunt_20_4_.JPG",
+    "sizeBytes": 295527
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/talenthunt%20(5).JPG",
+    "filename": "talenthunt_20_5_.JPG",
+    "localPath": "/images/old_site/talenthunt_20_5_.JPG",
+    "sizeBytes": 276036
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/talenthunt%20(6).JPG",
+    "filename": "talenthunt_20_6_.JPG",
+    "localPath": "/images/old_site/talenthunt_20_6_.JPG",
+    "sizeBytes": 249419
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/talenthunt%20(7).JPG",
+    "filename": "talenthunt_20_7_.JPG",
+    "localPath": "/images/old_site/talenthunt_20_7_.JPG",
+    "sizeBytes": 299354
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/talenthunt%20(8).JPG",
+    "filename": "talenthunt_20_8_.JPG",
+    "localPath": "/images/old_site/talenthunt_20_8_.JPG",
+    "sizeBytes": 322898
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/tele%20(1).JPG",
+    "filename": "tele_20_1_.JPG",
+    "localPath": "/images/old_site/tele_20_1_.JPG",
+    "sizeBytes": 274782
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/tele%20(2).JPG",
+    "filename": "tele_20_2_.JPG",
+    "localPath": "/images/old_site/tele_20_2_.JPG",
+    "sizeBytes": 264627
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/van%20(2).jpeg",
+    "filename": "van_20_2_.jpeg",
+    "localPath": "/images/old_site/van_20_2_.jpeg",
+    "sizeBytes": 316676
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/van%20(3).jpeg",
+    "filename": "van_20_3_.jpeg",
+    "localPath": "/images/old_site/van_20_3_.jpeg",
+    "sizeBytes": 318625
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/van.jpeg",
+    "filename": "van.jpeg",
+    "localPath": "/images/old_site/van.jpeg",
+    "sizeBytes": 392865
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news12.jpeg",
+    "filename": "news12.jpeg",
+    "localPath": "/images/old_site/news12.jpeg",
+    "sizeBytes": 184518
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news11.jpeg",
+    "filename": "news11.jpeg",
+    "localPath": "/images/old_site/news11.jpeg",
+    "sizeBytes": 54917
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news.jpeg",
+    "filename": "news.jpeg",
+    "localPath": "/images/old_site/news.jpeg",
+    "sizeBytes": 145789
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/News1.jpeg",
+    "filename": "News1.jpeg",
+    "localPath": "/images/old_site/News1.jpeg",
+    "sizeBytes": 261937
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/News2.jpg",
+    "filename": "News2.jpg",
+    "localPath": "/images/old_site/News2.jpg",
+    "sizeBytes": 242144
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(5).jpeg",
+    "filename": "news_20_5_.jpeg",
+    "localPath": "/images/old_site/news_20_5_.jpeg",
+    "sizeBytes": 360033
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(7).jpeg",
+    "filename": "news_20_7_.jpeg",
+    "localPath": "/images/old_site/news_20_7_.jpeg",
+    "sizeBytes": 289257
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(9).jpeg",
+    "filename": "news_20_9_.jpeg",
+    "localPath": "/images/old_site/news_20_9_.jpeg",
+    "sizeBytes": 222325
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(10).jpeg",
+    "filename": "news_20_10_.jpeg",
+    "localPath": "/images/old_site/news_20_10_.jpeg",
+    "sizeBytes": 143789
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(13).jpeg",
+    "filename": "news_20_13_.jpeg",
+    "localPath": "/images/old_site/news_20_13_.jpeg",
+    "sizeBytes": 213533
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(2).jpeg",
+    "filename": "news_20_2_.jpeg",
+    "localPath": "/images/old_site/news_20_2_.jpeg",
+    "sizeBytes": 400964
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(3).jpeg",
+    "filename": "news_20_3_.jpeg",
+    "localPath": "/images/old_site/news_20_3_.jpeg",
+    "sizeBytes": 148503
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(6).jpeg",
+    "filename": "news_20_6_.jpeg",
+    "localPath": "/images/old_site/news_20_6_.jpeg",
+    "sizeBytes": 212974
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(8).jpeg",
+    "filename": "news_20_8_.jpeg",
+    "localPath": "/images/old_site/news_20_8_.jpeg",
+    "sizeBytes": 316591
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(11).jpeg",
+    "filename": "news_20_11_.jpeg",
+    "localPath": "/images/old_site/news_20_11_.jpeg",
+    "sizeBytes": 152950
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(12).jpeg",
+    "filename": "news_20_12_.jpeg",
+    "localPath": "/images/old_site/news_20_12_.jpeg",
+    "sizeBytes": 431394
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(1).jpeg",
+    "filename": "news_20_1_.jpeg",
+    "localPath": "/images/old_site/news_20_1_.jpeg",
+    "sizeBytes": 131341
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(4).jpeg",
+    "filename": "news_20_4_.jpeg",
+    "localPath": "/images/old_site/news_20_4_.jpeg",
+    "sizeBytes": 100770
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(14).jpeg",
+    "filename": "news_20_14_.jpeg",
+    "localPath": "/images/old_site/news_20_14_.jpeg",
+    "sizeBytes": 360664
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(15).jpeg",
+    "filename": "news_20_15_.jpeg",
+    "localPath": "/images/old_site/news_20_15_.jpeg",
+    "sizeBytes": 327958
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(16).jpeg",
+    "filename": "news_20_16_.jpeg",
+    "localPath": "/images/old_site/news_20_16_.jpeg",
+    "sizeBytes": 178755
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/gallery/press/news%20(17).jpeg",
+    "filename": "news_20_17_.jpeg",
+    "localPath": "/images/old_site/news_20_17_.jpeg",
+    "sizeBytes": 430757
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/testimonials/testimonials-1.jpg",
+    "filename": "testimonials-1.jpg",
+    "localPath": "/images/old_site/testimonials-1.jpg",
+    "sizeBytes": 39727
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/testimonials/testimonials-2.jpg",
+    "filename": "testimonials-2.jpg",
+    "localPath": "/images/old_site/testimonials-2.jpg",
+    "sizeBytes": 57584
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/testimonials/testimonials-3.jpg",
+    "filename": "testimonials-3.jpg",
+    "localPath": "/images/old_site/testimonials-3.jpg",
+    "sizeBytes": 17247
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/testimonials/testimonials-4.jpg",
+    "filename": "testimonials-4.jpg",
+    "localPath": "/images/old_site/testimonials-4.jpg",
+    "sizeBytes": 20220
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/testimonials/testimonials-5.jpg",
+    "filename": "testimonials-5.jpg",
+    "localPath": "/images/old_site/testimonials-5.jpg",
+    "sizeBytes": 22595
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/events-1.jpg",
+    "filename": "events-1.jpg",
+    "localPath": "/images/old_site/events-1.jpg",
+    "sizeBytes": 54726
+  },
+  {
+    "originalUrl": "https://gcderabassi.ac.in/assets/img/events-2.jpg",
+    "filename": "events-2.jpg",
+    "localPath": "/images/old_site/events-2.jpg",
+    "sizeBytes": 93129
+  }
+]

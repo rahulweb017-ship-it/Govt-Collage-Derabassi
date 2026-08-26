@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-ivory-100 text-slate-800 font-sans;
+  }
+
+  ::selection {
+    @apply bg-saffron-200 text-navy-700;
+  }
+}
+
+@layer components {
+  /* Phulkari-inspired geometric accent line */
+  .accent-line {
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #C75B2A 15%,
+      #C75B2A 50%,
+      #E07A42 85%,
+      transparent 100%
+    );
+  }
+
+  .accent-line-short {
+    height: 3px;
+    width: 60px;
+    background: linear-gradient(
+      90deg,
+      #C75B2A,
+      #E07A42
+    );
+    border-radius: 2px;
+  }
+
+  /* Geometric border motif inspired by Punjabi textile patterns */
+  .motif-border {
+    position: relative;
+  }
+
+  .motif-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: repeating-linear-gradient(
+      90deg,
+      #C75B2A 0px,
+      #C75B2A 8px,
+      transparent 8px,
+      transparent 12px,
+      #1B3A6B 12px,
+      #1B3A6B 16px,
+      transparent 16px,
+      transparent 20px
+    );
+    border-radius: 2px;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Card hover */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 8px 30px rgba(12, 29, 63, 0.08);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-ivory-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-navy-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-navy-400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .hover\:pause:hover {
+    animation-play-state: paused;
+  }
+}
