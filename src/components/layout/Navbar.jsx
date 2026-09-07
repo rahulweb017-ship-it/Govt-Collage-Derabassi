@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   Menu, 
   X, 
@@ -14,40 +15,74 @@ import {
 } from 'lucide-react';
 
 const navItems = [
-  { label: 'HOME', href: '#home', active: true },
+  { label: 'HOME', href: '/', hasChevron: false },
+  
+  // 1. ABOUT US (4 sub-items requested)
   { 
     label: 'ABOUT US', 
-    href: '#about',
+    href: '/about/overview',
     hasChevron: true,
     children: [
-      { label: 'College History & 50-Year Legacy', href: '#about' },
-      { label: 'Principal’s Message', href: '#principal' },
-      { label: 'Vision & Mission Statement', href: '#about' },
-      { label: 'Campus Infrastructure & Facilities', href: '#campus-life' }
+      { label: 'Campus & Departments Overview', href: '/about/overview' },
+      { label: 'Academic Calendar (include government holidays)', href: '/about/calendar' },
+      { label: 'Latest NAAC Report', href: '/about/naac-report' },
+      { label: 'Vision & Mission', href: '/about/vision-mission' }
     ]
   },
+
+  // 2. ACADEMICS (5 sub-items requested)
   { 
     label: 'ACADEMICS', 
-    href: '#academics',
+    href: '/academics/departments-faculty',
     hasChevron: true,
     children: [
-      { label: 'Undergraduate (B.A., B.Com, B.Sc, BCA)', href: '#academics' },
-      { label: 'Postgraduate (M.Com)', href: '#academics' },
-      { label: 'Certificate Programmes (JGND PSOU)', href: '#academics' },
-      { label: 'All 17 Departments & Faculty', href: '#academics' }
+      { label: 'Departments & Faculty', href: '/academics/departments-faculty' },
+      { label: 'Courses Offered', href: '/academics/courses-offered' },
+      { label: 'Latest Syllabus', href: '/academics/syllabus' },
+      { label: 'NEP Guidelines', href: '/academics/nep-guidelines' },
+      { label: 'Distance Learning (Private Course Guidelines)', href: '/academics/distance-learning' }
     ]
   },
+
+  // 3. STUDENTS (New dropdown menu with 4 sub-items requested)
   { 
-    label: 'ADMISSIONS', 
-    href: '#admissions',
+    label: 'STUDENTS', 
+    href: '/students/admission-rules',
     hasChevron: true,
     children: [
-      { label: 'Admissions 2026–27 (Session)', href: '#admissions' },
-      { label: 'Centralized Punjab Portal', href: 'https://admission.punjab.gov.in' },
-      { label: 'Eligibility & Reservation Norms', href: '#admissions' },
-      { label: 'Scholarships & Fee Concessions', href: '#services' }
+      { label: 'Admission (Punjabi University Portal)', href: 'https://admission.punjab.gov.in', isExternal: true },
+      { label: 'Admission Rules', href: '/students/admission-rules' },
+      { label: 'Anti-Ragging Portal', href: 'https://www.antiragging.in', isExternal: true },
+      { label: 'Anti-Ragging & Harassment Cell', href: '/students/anti-ragging' }
     ]
   },
+
+  // 4. EXAMINATIONS (New dropdown menu with 4 sub-items requested)
+  { 
+    label: 'EXAMINATIONS', 
+    href: '/examinations/date-sheets',
+    hasChevron: true,
+    children: [
+      { label: 'Date Sheets', href: '/examinations/date-sheets' },
+      { label: 'Results', href: '/examinations/results' },
+      { label: 'Examination Form', href: '/examinations/form' },
+      { label: 'Admit Card Download', href: '/examinations/admit-card' }
+    ]
+  },
+
+  // 5. INFRASTRUCTURE (New dropdown menu with 3 sub-items requested)
+  { 
+    label: 'INFRASTRUCTURE', 
+    href: '/infrastructure/physical',
+    hasChevron: true,
+    children: [
+      { label: 'Library Infrastructure', href: '/infrastructure/library' },
+      { label: 'IT Facilities', href: '/infrastructure/it-facilities' },
+      { label: 'Physical Infrastructure', href: '/infrastructure/physical' }
+    ]
+  },
+
+  // Preserved institutional sections
   { 
     label: 'EXTRA CURRICULAR', 
     href: '#campus-life',
@@ -80,7 +115,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [activeTab, setActiveTab] = useState('HOME');
+  const [mobileExpanded, setMobileExpanded] = useState({});
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -90,78 +126,76 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash;
-      if (hash === '#admissions') {
-        setActiveTab('ADMISSIONS');
-      } else if (hash === '#about' || hash === '#principal') {
-        setActiveTab('ABOUT US');
-      } else if (hash === '#academics') {
-        setActiveTab('ACADEMICS');
-      } else if (hash === '#campus-life') {
-        setActiveTab('EXTRA CURRICULAR');
-      } else if (hash === '#recognition') {
-        setActiveTab('IQAC/NAAC');
-      } else if (hash === '#contact') {
-        setActiveTab('CONTACT US');
-      } else {
-        setActiveTab('HOME');
-      }
-    };
+  const toggleMobileSubmenu = (label) => {
+    setMobileExpanded(prev => ({
+      ...prev,
+      [label]: !prev[label]
+    }));
+  };
 
-    handleHash();
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
+  // Determine which tab is active
+  const getActiveTab = () => {
+    const p = location.pathname;
+    if (p.startsWith('/about')) return 'ABOUT US';
+    if (p.startsWith('/academics')) return 'ACADEMICS';
+    if (p.startsWith('/students')) return 'STUDENTS';
+    if (p.startsWith('/examinations')) return 'EXAMINATIONS';
+    if (p.startsWith('/infrastructure')) return 'INFRASTRUCTURE';
+    if (location.hash === '#campus-life') return 'EXTRA CURRICULAR';
+    if (location.hash === '#recognition') return 'IQAC/NAAC';
+    if (location.hash === '#contact') return 'CONTACT US';
+    return 'HOME';
+  };
+
+  const currentActiveTab = getActiveTab();
 
   return (
     <>
-      {/* FIXED / STICKY HEADER (Entire Header remains pinned to the top on scroll) */}
+      {/* FIXED / STICKY HEADER (Entire Header remains pinned to top on scroll) */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white font-sans shadow-md select-none transition-all duration-300">
         
         {/* 1. TOP WHITE HEADER SECTION (100% Full Width) */}
-        <div className={`w-full px-4 sm:px-6 lg:px-8 xl:px-10 transition-all duration-300 ${
-          isScrolled ? 'py-1.5 sm:py-2' : 'py-2.5 sm:py-3.5'
+        <div className={`w-full px-3 sm:px-6 lg:px-8 xl:px-10 transition-all duration-300 ${
+          isScrolled ? 'py-1.5 sm:py-2' : 'py-2 sm:py-3'
         }`}>
           <div className="flex items-center justify-between gap-2 sm:gap-4">
             
-            {/* Left: College Crest Logo (Large & Clear like PU Website) & 3-Line Multilingual College Title */}
+            {/* Left: College Crest Logo (Large & Clear) & 3-Line Multilingual College Title */}
             <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-5 min-w-0">
-              <a href="#home" className="flex items-center space-x-3 sm:space-x-4 md:space-x-5 group shrink-0 py-1">
+              <Link to="/" className="flex items-center space-x-3 sm:space-x-4 md:space-x-5 group shrink-0 py-1">
                 <img 
                   src="/images/old_site/logo.png" 
                   alt="Government College Dera Bassi Crest" 
                   className={`object-contain shrink-0 transition-all duration-300 filter drop-shadow-xs ${
                     isScrolled 
-                      ? 'w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-22 lg:h-22' 
-                      : 'w-20 h-20 sm:w-24 sm:h-24 md:w-26 md:h-26 lg:w-28 lg:h-28 xl:w-32 xl:h-32'
+                      ? 'w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-22 lg:h-22' 
+                      : 'w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-30 xl:h-30'
                   }`}
                 />
                 <div className="flex flex-col justify-center min-w-0">
                   {/* Gurmukhi College Name */}
-                  <span className="font-gurmukhi text-[#8B1E2B] font-bold text-sm sm:text-base md:text-lg lg:text-xl leading-tight tracking-wide whitespace-nowrap">
+                  <span className="font-gurmukhi text-[#8B1E2B] font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight tracking-wide whitespace-nowrap">
                     ਸਰਕਾਰੀ ਕਾਲਜ ਡੇਰਾ ਬੱਸੀ
                   </span>
                   {/* English College Name */}
-                  <span className="font-sans font-black text-[#0C1D3F] text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl tracking-tight leading-tight uppercase whitespace-nowrap mt-0.5 sm:mt-1">
+                  <span className="font-sans font-black text-[#0C1D3F] text-xs sm:text-sm md:text-base lg:text-xl xl:text-2xl tracking-tight leading-tight uppercase whitespace-nowrap mt-0.5">
                     GOVERNMENT COLLEGE DERA BASSI
                   </span>
                   {/* Affiliation Subtext */}
-                  <span className="text-[10px] sm:text-xs md:text-[13px] lg:text-[13.5px] text-slate-600 font-semibold leading-normal tracking-normal whitespace-nowrap mt-1">
+                  <span className="text-[9.5px] sm:text-[11px] md:text-xs text-slate-600 font-semibold leading-normal tracking-normal whitespace-nowrap mt-0.5">
                     Affiliated to Punjabi University, Patiala · AISHE: C-22140
                   </span>
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* Middle: G20 India Official Emblem */}
-            <div className="hidden xl:flex items-center justify-center shrink-0 px-3">
+            <div className="hidden xl:flex items-center justify-center shrink-0 px-2">
               <img 
                 src="/images/old_site/g20-image.png" 
                 alt="G20 India 2023 Official Emblem" 
                 className={`w-auto object-contain transition-all duration-300 ${
-                  isScrolled ? 'h-10 sm:h-12' : 'h-14 sm:h-16'
+                  isScrolled ? 'h-9 sm:h-10' : 'h-12 sm:h-14'
                 }`}
               />
             </div>
@@ -169,15 +203,15 @@ const Navbar = () => {
             {/* Right: Two-Tier Layout (Top: Contact Info & Socials | Bottom: 3 Action Buttons) */}
             <div className="hidden lg:flex flex-col items-end space-y-2 shrink-0">
               
-              {/* Tier 1: Phone, Email, Social Icons (in white header area) */}
-              <div className="flex items-center space-x-5 text-xs text-[#8B1E2B]">
+              {/* Tier 1: Phone, Email, Social Icons */}
+              <div className="flex items-center space-x-4 text-xs text-[#8B1E2B]">
                 {/* Phone */}
                 <a 
                   href="tel:01762295167" 
                   className="flex items-center space-x-1.5 font-bold hover:text-[#5B101B] transition-colors"
                 >
-                  <Phone size={14} className="fill-current text-[#8B1E2B]" />
-                  <span className="text-slate-800 font-bold text-[13px] tracking-tight">01762-295167</span>
+                  <Phone size={13} className="fill-current text-[#8B1E2B]" />
+                  <span className="text-slate-800 font-bold text-[12.5px] tracking-tight">01762-295167</span>
                 </a>
 
                 {/* Email */}
@@ -185,47 +219,47 @@ const Navbar = () => {
                   href="mailto:gcderabassi@gmail.com" 
                   className="flex items-center space-x-1.5 font-medium hover:text-[#5B101B] transition-colors"
                 >
-                  <Mail size={15} className="text-[#8B1E2B]" />
-                  <span className="text-[#8B1E2B] font-semibold text-[13px]">gcderabassi@gmail.com</span>
+                  <Mail size={14} className="text-[#8B1E2B]" />
+                  <span className="text-[#8B1E2B] font-semibold text-[12.5px]">gcderabassi@gmail.com</span>
                 </a>
 
                 {/* Social Icons */}
-                <div className="flex items-center space-x-2 text-slate-700 pl-1">
+                <div className="flex items-center space-x-1.5 text-slate-700 pl-1">
                   <a 
                     href="#" 
                     aria-label="Facebook" 
                     className="w-5 h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
                   >
-                    <Facebook size={12} />
+                    <Facebook size={11} />
                   </a>
                   <a 
                     href="#" 
                     aria-label="Instagram" 
                     className="w-5 h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
                   >
-                    <Instagram size={12} />
+                    <Instagram size={11} />
                   </a>
                   <a 
                     href="#" 
                     aria-label="YouTube" 
                     className="w-5 h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
                   >
-                    <Youtube size={12} />
+                    <Youtube size={11} />
                   </a>
                 </div>
               </div>
 
-              {/* Tier 2: The 3 Action Buttons (matching the screenshot) */}
-              <div className="flex items-center space-x-2">
+              {/* Tier 2: The 3 Action Buttons */}
+              <div className="flex items-center space-x-1.5 xl:space-x-2">
                 {/* 1. ONLINE ADMISSION PORTAL */}
                 <a
                   href="https://admission.punjab.gov.in"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-[#D25C2B] hover:bg-[#B84E22] text-white font-bold text-[10.5px] xl:text-[11px] px-3 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
+                  className="bg-[#D25C2B] hover:bg-[#B84E22] text-white font-bold text-[10px] xl:text-[10.5px] px-2.5 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
                 >
                   <span>ONLINE ADMISSION PORTAL</span>
-                  <ExternalLink size={11} />
+                  <ExternalLink size={10} />
                 </a>
 
                 {/* 2. ANTI-RAGGING PORTAL */}
@@ -233,21 +267,21 @@ const Navbar = () => {
                   href="https://www.antiragging.in"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-[#8B1E2B] hover:bg-[#68141F] text-white font-bold text-[10.5px] xl:text-[11px] px-3 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
+                  className="bg-[#8B1E2B] hover:bg-[#68141F] text-white font-bold text-[10px] xl:text-[10.5px] px-2.5 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
                 >
-                  <Shield size={11} className="fill-current" />
+                  <Shield size={10} className="fill-current" />
                   <span>ANTI-RAGGING PORTAL</span>
-                  <ExternalLink size={11} />
+                  <ExternalLink size={10} />
                 </a>
 
                 {/* 3. ANTI-RAGGING CELL & WOMEN/SEXUAL HARASSMENT CELL */}
-                <a
-                  href="#services"
-                  className="bg-[#0C1D3F] hover:bg-[#162E5F] text-white font-bold text-[10.5px] xl:text-[11px] px-3 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
+                <Link
+                  to="/students/anti-ragging"
+                  className="bg-[#0C1D3F] hover:bg-[#162E5F] text-white font-bold text-[10px] xl:text-[10.5px] px-2.5 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
                 >
-                  <Users size={11} />
+                  <Users size={10} />
                   <span>ANTI-RAGGING CELL & WOMEN/SEXUAL HARASSMENT CELL</span>
-                </a>
+                </Link>
               </div>
 
             </div>
@@ -274,56 +308,97 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* 2. FULL-WIDTH CRIMSON RED MENU BAR (Matching media_1788792735421.jpg) */}
+        {/* 2. FULL-WIDTH CRIMSON RED MENU BAR WITH ALL 5 DROPDOWNS */}
         <div className="w-full bg-[#8B1E2B] text-white shadow-sm border-t border-[#73121F]">
-          <div className="w-full px-2 sm:px-4 lg:px-8 xl:px-10">
+          <div className="w-full px-2 sm:px-4 lg:px-6 xl:px-10">
             
             {/* Desktop Navigation Links Row */}
-            <nav className="hidden lg:flex items-center justify-between whitespace-nowrap">
+            <nav className="hidden lg:flex items-center justify-between whitespace-nowrap overflow-visible">
               <div className="flex items-center w-full justify-between">
-                {navItems.map((item) => (
-                  <div 
-                    key={item.label} 
-                    className="relative group"
-                    onMouseEnter={() => setActiveDropdown(item.label)}
-                    onMouseLeave={() => setActiveDropdown(null)}
-                  >
-                    <a
-                      href={item.href}
-                      onClick={() => setActiveTab(item.label)}
-                      className={`text-[12px] xl:text-[13.5px] font-black uppercase tracking-wider flex items-center gap-1 py-2.5 px-3 xl:px-4 transition-colors ${
-                        activeTab === item.label
-                          ? 'bg-black text-[#F5BD02] font-black hover:bg-neutral-900 shadow-inner' 
-                          : 'text-white hover:bg-[#68141F]'
-                      }`}
-                    >
-                      <span>{item.label}</span>
-                      {item.hasChevron && (
-                        <ChevronDown 
-                          size={13} 
-                          className="opacity-90 group-hover:opacity-100 transition-transform duration-200 group-hover:rotate-180 ml-0.5" 
-                        />
-                      )}
-                    </a>
+                {navItems.map((item) => {
+                  const isActive = currentActiveTab === item.label;
 
-                    {/* Dropdown Menu */}
-                    {item.children && (
-                      <div className="absolute top-full left-0 w-64 bg-white text-slate-800 rounded-b-lg shadow-2xl border border-slate-100 py-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50">
-                        {item.children.map((child, idx) => (
-                          <a
-                            key={idx}
-                            href={child.href}
-                            target={child.href.startsWith('http') ? '_blank' : '_self'}
-                            rel={child.href.startsWith('http') ? 'noreferrer' : undefined}
-                            className="block px-4 py-2.5 text-xs text-slate-700 hover:bg-[#FAF4E6] hover:text-[#8B1E2B] font-semibold transition-colors border-b border-slate-50 last:border-0"
-                          >
-                            {child.label}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                  return (
+                    <div 
+                      key={item.label} 
+                      className="relative group"
+                      onMouseEnter={() => setActiveDropdown(item.label)}
+                      onMouseLeave={() => setActiveDropdown(null)}
+                    >
+                      {item.href.startsWith('/') ? (
+                        <Link
+                          to={item.href}
+                          className={`text-[11px] xl:text-[12.5px] 2xl:text-[13px] font-black uppercase tracking-wider flex items-center gap-1 py-2.5 px-2 xl:px-3 2xl:px-3.5 transition-colors ${
+                            isActive 
+                              ? 'bg-black text-[#F5BD02] font-black hover:bg-neutral-900 shadow-inner' 
+                              : 'text-white hover:bg-[#68141F]'
+                          }`}
+                        >
+                          <span>{item.label}</span>
+                          {item.hasChevron && (
+                            <ChevronDown 
+                              size={12} 
+                              className="opacity-90 group-hover:opacity-100 transition-transform duration-200 group-hover:rotate-180 ml-0.5 shrink-0" 
+                            />
+                          )}
+                        </Link>
+                      ) : (
+                        <a
+                          href={item.href}
+                          className={`text-[11px] xl:text-[12.5px] 2xl:text-[13px] font-black uppercase tracking-wider flex items-center gap-1 py-2.5 px-2 xl:px-3 2xl:px-3.5 transition-colors ${
+                            isActive 
+                              ? 'bg-black text-[#F5BD02] font-black hover:bg-neutral-900 shadow-inner' 
+                              : 'text-white hover:bg-[#68141F]'
+                          }`}
+                        >
+                          <span>{item.label}</span>
+                          {item.hasChevron && (
+                            <ChevronDown 
+                              size={12} 
+                              className="opacity-90 group-hover:opacity-100 transition-transform duration-200 group-hover:rotate-180 ml-0.5 shrink-0" 
+                            />
+                          )}
+                        </a>
+                      )}
+
+                      {/* Dropdown Menu (Style matched to site with clean hover effects) */}
+                      {item.children && (
+                        <div className="absolute top-full left-0 min-w-[280px] bg-white text-slate-800 rounded-b-lg shadow-2xl border border-slate-100 py-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50">
+                          {item.children.map((child, idx) => (
+                            child.isExternal || child.href.startsWith('http') ? (
+                              <a
+                                key={idx}
+                                href={child.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="block px-4 py-2.5 text-xs text-slate-700 hover:bg-[#FAF4E6] hover:text-[#8B1E2B] font-semibold transition-colors border-b border-slate-50 last:border-0 flex items-center justify-between"
+                              >
+                                <span>{child.label}</span>
+                                <ExternalLink size={12} className="text-slate-400 shrink-0 ml-2" />
+                              </a>
+                            ) : child.href.startsWith('#') ? (
+                              <a
+                                key={idx}
+                                href={child.href}
+                                className="block px-4 py-2.5 text-xs text-slate-700 hover:bg-[#FAF4E6] hover:text-[#8B1E2B] font-semibold transition-colors border-b border-slate-50 last:border-0"
+                              >
+                                {child.label}
+                              </a>
+                            ) : (
+                              <Link
+                                key={idx}
+                                to={child.href}
+                                className="block px-4 py-2.5 text-xs text-slate-700 hover:bg-[#FAF4E6] hover:text-[#8B1E2B] font-semibold transition-colors border-b border-slate-50 last:border-0"
+                              >
+                                {child.label}
+                              </Link>
+                            )
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </nav>
 
@@ -331,7 +406,7 @@ const Navbar = () => {
             <div className="lg:hidden flex items-center justify-between py-2 text-xs font-bold uppercase tracking-wider">
               <span className="text-white flex items-center gap-1.5">
                 <Menu size={15} />
-                <span>Menu & Quick Navigation</span>
+                <span>Menu & Dropdowns</span>
               </span>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -344,7 +419,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* 3. MOBILE MENU SLIDE-DOWN DRAWER */}
+        {/* 3. MOBILE MENU SLIDE-DOWN ACCORDION DRAWER */}
         <div className={`lg:hidden bg-white border-b border-slate-200 shadow-2xl transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-[85vh] overflow-y-auto opacity-100' : 'max-h-0 opacity-0'
         }`}>
@@ -385,44 +460,93 @@ const Navbar = () => {
               >
                 Anti-Ragging Portal &rarr;
               </a>
-              <a
-                href="#services"
+              <Link
+                to="/students/anti-ragging"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block w-full text-center bg-[#0C1D3F] text-white py-2 rounded font-bold uppercase text-xs tracking-wider shadow-2xs"
               >
                 Anti-Ragging Cell & Women/Sexual Harassment Cell
-              </a>
+              </Link>
             </div>
 
-            {/* Nav Items List */}
+            {/* Nav Items Accordion List on Mobile */}
             <div className="space-y-1">
               {navItems.map((item) => (
                 <div key={item.label} className="border-b border-slate-100 last:border-0">
-                  <a
-                    href={item.href}
-                    onClick={() => {
-                      setActiveTab(item.label);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`block py-2 text-xs sm:text-sm font-bold ${
-                      activeTab === item.label ? 'text-[#8B1E2B] font-black' : 'text-slate-800 hover:text-[#8B1E2B]'
-                    }`}
-                  >
-                    {item.label}
-                  </a>
-                  {item.children && (
-                    <div className="pl-3 pb-2 space-y-1 bg-slate-50 rounded p-2 mb-2">
+                  <div className="flex items-center justify-between py-2">
+                    {item.href.startsWith('/') ? (
+                      <Link
+                        to={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={`text-xs sm:text-sm font-bold ${
+                          currentActiveTab === item.label ? 'text-[#8B1E2B]' : 'text-slate-800 hover:text-[#8B1E2B]'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={item.href}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={`text-xs sm:text-sm font-bold ${
+                          currentActiveTab === item.label ? 'text-[#8B1E2B]' : 'text-slate-800 hover:text-[#8B1E2B]'
+                        }`}
+                      >
+                        {item.label}
+                      </a>
+                    )}
+
+                    {item.children && (
+                      <button
+                        onClick={() => toggleMobileSubmenu(item.label)}
+                        className="p-1.5 text-slate-500 hover:text-[#8B1E2B]"
+                        aria-label={`Expand ${item.label} submenu`}
+                      >
+                        <ChevronDown 
+                          size={16} 
+                          className={`transition-transform duration-200 ${
+                            mobileExpanded[item.label] ? 'rotate-180 text-[#8B1E2B]' : ''
+                          }`}
+                        />
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Accordion Submenu */}
+                  {item.children && mobileExpanded[item.label] && (
+                    <div className="pl-3 pb-2 space-y-1 bg-slate-50 rounded p-2 mb-2 animate-fadeIn">
                       {item.children.map((sub, sIdx) => (
-                        <a
-                          key={sIdx}
-                          href={sub.href}
-                          target={sub.href.startsWith('http') ? '_blank' : '_self'}
-                          rel={sub.href.startsWith('http') ? 'noreferrer' : undefined}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="block py-1 text-xs text-slate-600 hover:text-[#8B1E2B]"
-                        >
-                          • {sub.label}
-                        </a>
+                        sub.isExternal || sub.href.startsWith('http') ? (
+                          <a
+                            key={sIdx}
+                            href={sub.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block py-1.5 text-xs text-slate-600 hover:text-[#8B1E2B] flex items-center justify-between"
+                          >
+                            <span>• {sub.label}</span>
+                            <ExternalLink size={10} className="text-slate-400" />
+                          </a>
+                        ) : sub.href.startsWith('#') ? (
+                          <a
+                            key={sIdx}
+                            href={sub.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block py-1.5 text-xs text-slate-600 hover:text-[#8B1E2B]"
+                          >
+                            • {sub.label}
+                          </a>
+                        ) : (
+                          <Link
+                            key={sIdx}
+                            to={sub.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block py-1.5 text-xs text-slate-600 hover:text-[#8B1E2B]"
+                          >
+                            • {sub.label}
+                          </Link>
+                        )
                       ))}
                     </div>
                   )}
