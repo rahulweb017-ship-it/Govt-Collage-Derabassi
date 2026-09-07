@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Menu, 
@@ -116,6 +116,8 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileExpanded, setMobileExpanded] = useState({});
+  const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
@@ -124,6 +126,29 @@ const Navbar = () => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+
+    let observer = null;
+    if (typeof ResizeObserver !== 'undefined' && headerRef.current) {
+      observer = new ResizeObserver(() => {
+        updateHeight();
+      });
+      observer.observe(headerRef.current);
+    }
+
+    return () => {
+      window.removeEventListener('resize', updateHeight);
+      if (observer) observer.disconnect();
+    };
   }, []);
 
   const toggleMobileSubmenu = (label) => {
@@ -152,7 +177,7 @@ const Navbar = () => {
   return (
     <>
       {/* FIXED / STICKY HEADER (Entire Header remains pinned to top on scroll) */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white font-sans shadow-md select-none transition-all duration-300">
+      <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-white font-sans shadow-md select-none transition-all duration-300">
         
         {/* 1. TOP WHITE HEADER SECTION (100% Full Width) */}
         <div className={`w-full px-3 sm:px-6 lg:px-8 xl:px-10 transition-all duration-300 ${
@@ -560,7 +585,11 @@ const Navbar = () => {
       </header>
 
       {/* TOP SPACER TO PREVENT HEADER OVERLAP ON CONTENT BELOW */}
-      <div className="h-[135px] sm:h-[155px] lg:h-[185px] xl:h-[195px]" style={{ marginTop: '-104px' }} />
+      <div 
+        style={{ height: headerHeight ? `${headerHeight}px` : undefined }} 
+        className={!headerHeight ? 'h-[120px] sm:h-[140px] lg:h-[160px] xl:h-[165px]' : ''} 
+        aria-hidden="true" 
+      />
     </>
   );
 };

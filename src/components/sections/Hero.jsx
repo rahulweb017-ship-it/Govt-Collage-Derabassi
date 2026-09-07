@@ -58,10 +58,10 @@ const Hero = () => {
   };
 
   return (
-    <div id="home" className="relative w-full pt-[96px] sm:pt-[104px] bg-slate-900 overflow-hidden select-none">
+    <div id="home" className="relative w-full overflow-hidden select-none">
       
       {/* 1. MAIN PURE VISUAL SLIDER CONTAINER */}
-      <div className="relative w-full h-[45vh] sm:h-[60vh] md:h-[72vh] lg:h-[82vh] max-h-[860px] overflow-hidden bg-slate-950">
+      <div className="relative w-full h-[45vh] sm:h-[60vh] md:h-[72vh] lg:h-[82vh] max-h-[860px] overflow-hidden bg-slate-100">
         
         {/* Slide Images */}
         {slides.map((slide, index) => {
@@ -77,7 +77,7 @@ const Hero = () => {
               <img
                 src={slide.image}
                 alt={slide.title}
-                className="w-full h-full object-cover sm:object-contain md:object-cover object-center bg-slate-950"
+                className="w-full h-full object-cover object-center"
               />
             </div>
           );

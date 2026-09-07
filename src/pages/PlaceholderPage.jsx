@@ -29,7 +29,7 @@ const PlaceholderPage = () => {
   };
 
   return (
-    <div className="min-h-[70vh] bg-slate-50 pt-40 pb-24 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-[70vh] bg-slate-50 pt-8 sm:pt-12 pb-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         
         {/* Breadcrumb */}
