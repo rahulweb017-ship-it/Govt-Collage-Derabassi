@@ -11,7 +11,9 @@ import {
   Youtube,
   ExternalLink,
   Shield,
-  Users
+  Users,
+  Download,
+  FileText
 } from 'lucide-react';
 
 const navItems = [
@@ -54,6 +56,23 @@ const navItems = [
       { label: 'Admission Rules', href: '/students/admission-rules' },
       { label: 'Anti-Ragging Portal', href: 'https://www.antiragging.in', isExternal: true },
       { label: 'Anti-Ragging & Harassment Cell', href: '/students/anti-ragging' }
+    ]
+  },
+
+  // PROSPECTUS (Always highlighted with white background, all 7 prospectus download options)
+  { 
+    label: 'PROSPECTUS', 
+    href: '/prospectus',
+    hasChevron: true,
+    isWhiteHighlight: true,
+    children: [
+      { label: 'Prospectus 2026-27', href: '/images/prospectus/Prospectus-GCDB-2026-27.pdf', isDownload: true, size: '3.3 MB', isLatest: true },
+      { label: 'Prospectus 2025-26', href: '/images/prospectus/Prospectus%202025-26.pdf', isDownload: true, size: '2.9 MB' },
+      { label: 'Prospectus 2024-25', href: '/images/prospectus/Prospectus%202024-25.pdf', isDownload: true, size: '2.5 MB' },
+      { label: 'Prospectus 2023-24', href: '/images/prospectus/Prospectus%202023-24.pdf', isDownload: true, size: '2.5 MB' },
+      { label: 'Prospectus 2022-23', href: '/images/prospectus/PROSPECTUS%202022-23%20GCDeraBassi.pdf', isDownload: true, size: '4.4 MB' },
+      { label: 'Prospectus 2021-22', href: '/images/prospectus/Prospectus%202021-22%20Govt%20College%20Dera%20Bassi.pdf', isDownload: true, size: '8.5 MB' },
+      { label: 'Prospectus 2020-21', href: '/images/prospectus/Prospectus2020-21.pdf', isDownload: true, size: '57.1 MB' }
     ]
   },
 
@@ -164,6 +183,7 @@ const Navbar = () => {
     if (p.startsWith('/about')) return 'ABOUT US';
     if (p.startsWith('/academics')) return 'ACADEMICS';
     if (p.startsWith('/students')) return 'STUDENTS';
+    if (p.startsWith('/prospectus')) return 'PROSPECTUS';
     if (p.startsWith('/examinations')) return 'EXAMINATIONS';
     if (p.startsWith('/infrastructure')) return 'INFRASTRUCTURE';
     if (location.hash === '#campus-life') return 'EXTRA CURRICULAR';
@@ -353,34 +373,38 @@ const Navbar = () => {
                       {item.href.startsWith('/') ? (
                         <Link
                           to={item.href}
-                          className={`text-[11px] xl:text-[12.5px] 2xl:text-[13px] font-black uppercase tracking-wider flex items-center gap-1 py-2.5 px-2 xl:px-3 2xl:px-3.5 transition-colors ${
-                            isActive 
-                              ? 'bg-black text-[#F5BD02] font-black hover:bg-neutral-900 shadow-inner' 
-                              : 'text-white hover:bg-[#68141F]'
+                          className={`text-[10.5px] xl:text-[11.5px] 2xl:text-[12.5px] font-black uppercase tracking-wider flex items-center gap-1 py-2.5 px-1.5 xl:px-2.5 2xl:px-3 transition-colors ${
+                            item.isWhiteHighlight
+                              ? 'bg-white text-[#8B1E2B] font-black hover:bg-slate-100 shadow-sm border-b-2 border-[#8B1E2B]'
+                              : isActive 
+                                ? 'bg-black text-[#F5BD02] font-black hover:bg-neutral-900 shadow-inner' 
+                                : 'text-white hover:bg-[#68141F]'
                           }`}
                         >
                           <span>{item.label}</span>
                           {item.hasChevron && (
                             <ChevronDown 
                               size={12} 
-                              className="opacity-90 group-hover:opacity-100 transition-transform duration-200 group-hover:rotate-180 ml-0.5 shrink-0" 
+                              className={`${item.isWhiteHighlight ? 'text-[#8B1E2B]' : 'opacity-90'} group-hover:opacity-100 transition-transform duration-200 group-hover:rotate-180 ml-0.5 shrink-0`} 
                             />
                           )}
                         </Link>
                       ) : (
                         <a
                           href={item.href}
-                          className={`text-[11px] xl:text-[12.5px] 2xl:text-[13px] font-black uppercase tracking-wider flex items-center gap-1 py-2.5 px-2 xl:px-3 2xl:px-3.5 transition-colors ${
-                            isActive 
-                              ? 'bg-black text-[#F5BD02] font-black hover:bg-neutral-900 shadow-inner' 
-                              : 'text-white hover:bg-[#68141F]'
+                          className={`text-[10.5px] xl:text-[11.5px] 2xl:text-[12.5px] font-black uppercase tracking-wider flex items-center gap-1 py-2.5 px-1.5 xl:px-2.5 2xl:px-3 transition-colors ${
+                            item.isWhiteHighlight
+                              ? 'bg-white text-[#8B1E2B] font-black hover:bg-slate-100 shadow-sm border-b-2 border-[#8B1E2B]'
+                              : isActive 
+                                ? 'bg-black text-[#F5BD02] font-black hover:bg-neutral-900 shadow-inner' 
+                                : 'text-white hover:bg-[#68141F]'
                           }`}
                         >
                           <span>{item.label}</span>
                           {item.hasChevron && (
                             <ChevronDown 
                               size={12} 
-                              className="opacity-90 group-hover:opacity-100 transition-transform duration-200 group-hover:rotate-180 ml-0.5 shrink-0" 
+                              className={`${item.isWhiteHighlight ? 'text-[#8B1E2B]' : 'opacity-90'} group-hover:opacity-100 transition-transform duration-200 group-hover:rotate-180 ml-0.5 shrink-0`} 
                             />
                           )}
                         </a>
@@ -388,9 +412,27 @@ const Navbar = () => {
 
                       {/* Dropdown Menu (Style matched to site with clean hover effects) */}
                       {item.children && (
-                        <div className="absolute top-full left-0 min-w-[280px] bg-white text-slate-800 rounded-b-lg shadow-2xl border border-slate-100 py-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50">
+                        <div className={`absolute top-full left-0 ${item.isWhiteHighlight ? 'min-w-[340px]' : 'min-w-[280px]'} bg-white text-slate-800 rounded-b-lg shadow-2xl border border-slate-100 py-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50`}>
                           {item.children.map((child, idx) => (
-                            child.isExternal || child.href.startsWith('http') ? (
+                            child.isDownload ? (
+                              <a
+                                key={idx}
+                                href={child.href}
+                                download
+                                target="_blank"
+                                rel="noreferrer"
+                                className="block px-4 py-2.5 text-xs text-slate-700 hover:bg-[#FAF4E6] hover:text-[#8B1E2B] font-semibold transition-colors border-b border-slate-100 last:border-0 flex items-center justify-between group/dl"
+                              >
+                                <div className="flex items-center gap-2 min-w-0">
+                                  <FileText size={13} className="text-[#8B1E2B] shrink-0" />
+                                  <span className="truncate">{child.label}</span>
+                                </div>
+                                <span className="text-[11px] font-bold text-[#4D7C0F] group-hover/dl:text-[#365314] flex items-center gap-1 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200 shrink-0 ml-2">
+                                  <Download size={11} />
+                                  <span>Download</span>
+                                </span>
+                              </a>
+                            ) : child.isExternal || child.href.startsWith('http') ? (
                               <a
                                 key={idx}
                                 href={child.href}
@@ -419,6 +461,15 @@ const Navbar = () => {
                               </Link>
                             )
                           ))}
+
+                          {item.label === 'PROSPECTUS' && (
+                            <Link
+                              to="/prospectus"
+                              className="block px-4 py-2 text-center text-[11px] font-bold text-[#8B1E2B] bg-slate-50 hover:bg-[#FAF4E6] transition-colors border-t border-slate-100"
+                            >
+                              View All Prospectus Archive →
+                            </Link>
+                          )}
                         </div>
                       )}
                     </div>
@@ -504,7 +555,9 @@ const Navbar = () => {
                         to={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={`text-xs sm:text-sm font-bold ${
-                          currentActiveTab === item.label ? 'text-[#8B1E2B]' : 'text-slate-800 hover:text-[#8B1E2B]'
+                          item.isWhiteHighlight
+                            ? 'text-[#8B1E2B] bg-[#FAF4E6] px-2.5 py-1 rounded border border-[#EADBBD]'
+                            : currentActiveTab === item.label ? 'text-[#8B1E2B]' : 'text-slate-800 hover:text-[#8B1E2B]'
                         }`}
                       >
                         {item.label}
@@ -514,7 +567,9 @@ const Navbar = () => {
                         href={item.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={`text-xs sm:text-sm font-bold ${
-                          currentActiveTab === item.label ? 'text-[#8B1E2B]' : 'text-slate-800 hover:text-[#8B1E2B]'
+                          item.isWhiteHighlight
+                            ? 'text-[#8B1E2B] bg-[#FAF4E6] px-2.5 py-1 rounded border border-[#EADBBD]'
+                            : currentActiveTab === item.label ? 'text-[#8B1E2B]' : 'text-slate-800 hover:text-[#8B1E2B]'
                         }`}
                       >
                         {item.label}
@@ -541,7 +596,26 @@ const Navbar = () => {
                   {item.children && mobileExpanded[item.label] && (
                     <div className="pl-3 pb-2 space-y-1 bg-slate-50 rounded p-2 mb-2 animate-fadeIn">
                       {item.children.map((sub, sIdx) => (
-                        sub.isExternal || sub.href.startsWith('http') ? (
+                        sub.isDownload ? (
+                          <a
+                            key={sIdx}
+                            href={sub.href}
+                            download
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block py-2 text-xs text-slate-700 hover:text-[#8B1E2B] flex items-center justify-between border-b border-slate-200/60 last:border-0"
+                          >
+                            <span className="font-semibold flex items-center gap-1.5 min-w-0">
+                              <FileText size={12} className="text-[#8B1E2B] shrink-0" />
+                              <span className="truncate">{sub.label}</span>
+                            </span>
+                            <span className="text-[10px] font-bold text-[#4D7C0F] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 flex items-center gap-1 shrink-0 ml-2">
+                              <Download size={10} />
+                              <span>Download</span>
+                            </span>
+                          </a>
+                        ) : sub.isExternal || sub.href.startsWith('http') ? (
                           <a
                             key={sIdx}
                             href={sub.href}
@@ -573,6 +647,16 @@ const Navbar = () => {
                           </Link>
                         )
                       ))}
+
+                      {item.label === 'PROSPECTUS' && (
+                        <Link
+                          to="/prospectus"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block py-2 text-center text-xs font-bold text-[#8B1E2B] bg-[#FAF4E6] rounded hover:underline mt-1"
+                        >
+                          View All Prospectus Archive →
+                        </Link>
+                      )}
                     </div>
                   )}
                 </div>

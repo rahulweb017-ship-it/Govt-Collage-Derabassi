@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout'
 import HomePage from './pages/HomePage'
 import AntiRaggingPage from './pages/AntiRaggingPage'
 import AcademicCalendarPage from './pages/AcademicCalendarPage'
+import ProspectusPage from './pages/ProspectusPage'
 import PlaceholderPage from './pages/PlaceholderPage'
 
 // Automatically scrolls to top on route change
@@ -22,6 +23,7 @@ export default function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/prospectus" element={<ProspectusPage />} />
           <Route path="/students/anti-ragging" element={<AntiRaggingPage />} />
           <Route path="/about/calendar" element={<AcademicCalendarPage />} />
           
