@@ -4,13 +4,12 @@ import {
   X, 
   Phone, 
   Mail, 
-  User, 
   ChevronDown, 
   Facebook, 
   Instagram, 
   Youtube,
   ExternalLink,
-  ShieldAlert,
+  Shield,
   Users
 } from 'lucide-react';
 
@@ -19,6 +18,7 @@ const navItems = [
   { 
     label: 'ABOUT US', 
     href: '#about',
+    hasChevron: true,
     children: [
       { label: 'College History & 50-Year Legacy', href: '#about' },
       { label: 'Principal’s Message', href: '#principal' },
@@ -29,6 +29,7 @@ const navItems = [
   { 
     label: 'ACADEMICS', 
     href: '#academics',
+    hasChevron: true,
     children: [
       { label: 'Undergraduate (B.A., B.Com, B.Sc, BCA)', href: '#academics' },
       { label: 'Postgraduate (M.Com)', href: '#academics' },
@@ -39,7 +40,8 @@ const navItems = [
   { 
     label: 'ADMISSIONS', 
     href: '#admissions',
-    isHighlight: true, // Matching university portal highlighted admissions tab
+    hasChevron: true,
+    isHighlight: true, // Black box with yellow text from user image
     children: [
       { label: 'Admissions 2026–27 (Session)', href: '#admissions' },
       { label: 'Centralized Punjab Portal', href: 'https://admission.punjab.gov.in' },
@@ -50,6 +52,7 @@ const navItems = [
   { 
     label: 'EXTRA CURRICULAR', 
     href: '#campus-life',
+    hasChevron: true,
     children: [
       { label: 'Sports Complex & Athletic Grounds', href: '#campus-life' },
       { label: 'National Service Scheme (NSS Units)', href: '#campus-life' },
@@ -61,6 +64,7 @@ const navItems = [
   { 
     label: 'IQAC/NAAC', 
     href: '#recognition',
+    hasChevron: true,
     children: [
       { label: 'NAAC Accreditation (Cycle 3 Grade B++)', href: '#recognition' },
       { label: 'Internal Quality Assurance Cell (IQAC)', href: '#recognition' },
@@ -68,9 +72,9 @@ const navItems = [
       { label: 'Institutional Best Practice (Dastak)', href: '#recognition' }
     ]
   },
-  { label: 'NIRF', href: '#recognition' },
-  { label: 'GALLERY', href: '#campus-life' },
-  { label: 'CONTACT US', href: '#contact' }
+  { label: 'NIRF', href: '#recognition', hasChevron: false },
+  { label: 'GALLERY', href: '#campus-life', hasChevron: false },
+  { label: 'CONTACT US', href: '#contact', hasChevron: false }
 ];
 
 const Navbar = () => {
@@ -88,180 +92,166 @@ const Navbar = () => {
 
   return (
     <>
-      {/* STICKY / FIXED HEADER WRAPPER (Entire header remains fixed at top on scroll) */}
-      <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 font-sans shadow-md bg-white">
+      {/* FIXED / STICKY HEADER (Entire Header remains pinned to the top on scroll) */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white font-sans shadow-md select-none transition-all duration-300">
         
-        {/* 1. TOP UTILITY HEADER BAR (Maroon / Deep Red) */}
-        <div className={`bg-[#4A1018] text-white text-xs px-4 sm:px-8 border-b border-white/10 select-none transition-all duration-200 ${
-          isScrolled ? 'py-1 opacity-95' : 'py-1.5'
+        {/* 1. TOP WHITE HEADER SECTION */}
+        <div className={`w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+          isScrolled ? 'py-1.5 sm:py-2' : 'py-2.5 sm:py-3.5'
         }`}>
-          <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+          <div className="flex items-center justify-between gap-2 sm:gap-4">
             
-            {/* Left: Contact Info */}
-            <div className="flex items-center space-x-5 text-ivory-100">
-              <a 
-                href="tel:01762295167" 
-                className="flex items-center space-x-1.5 hover:text-saffron-300 transition-colors"
-              >
-                <Phone size={13} className="text-saffron-400" />
-                <span>01762-295167</span>
-              </a>
-              <span className="text-white/30 hidden sm:inline">|</span>
-              <a 
-                href="mailto:gcderabassi@gmail.com" 
-                className="hidden sm:flex items-center space-x-1.5 hover:text-saffron-300 transition-colors"
-              >
-                <Mail size={13} className="text-saffron-400" />
-                <span>gcderabassi@gmail.com</span>
+            {/* Left: College Crest Logo & 3-Line Multilingual College Title */}
+            <div className="flex items-center space-x-3 sm:space-x-4 min-w-0">
+              <a href="#home" className="flex items-center space-x-3 sm:space-x-3.5 group shrink-0">
+                <img 
+                  src="/images/old_site/logo.png" 
+                  alt="Government College Dera Bassi Crest" 
+                  className={`object-contain shrink-0 transition-all duration-300 ${
+                    isScrolled ? 'w-12 h-12 sm:w-14 sm:h-14' : 'w-14 h-14 sm:w-16 sm:h-16'
+                  }`}
+                />
+                <div className="flex flex-col justify-center min-w-0">
+                  {/* Gurmukhi College Name */}
+                  <span className="font-gurmukhi text-[#8B1E2B] font-bold text-sm sm:text-[15px] md:text-base leading-tight tracking-wide whitespace-nowrap">
+                    ਸਰਕਾਰੀ ਕਾਲਜ ਡੇਰਾ ਬੱਸੀ
+                  </span>
+                  {/* English College Name */}
+                  <span className="font-sans font-black text-[#0C1D3F] text-xs sm:text-[13.5px] md:text-[15.5px] tracking-tight leading-tight uppercase whitespace-nowrap mt-0.5">
+                    GOVERNMENT COLLEGE DERA BASSI
+                  </span>
+                  {/* Affiliation Subtext */}
+                  <span className="text-[9.5px] sm:text-[10.5px] md:text-[11.5px] text-slate-500 font-medium leading-none tracking-tight whitespace-nowrap mt-1">
+                    Affiliated to Punjabi University, Patiala · AISHE: C-22140
+                  </span>
+                </div>
               </a>
             </div>
 
-            {/* Right: Statutory Disclosures, Login & Social */}
-            <div className="flex items-center space-x-3 sm:space-x-4 text-xs">
-              <div className="flex items-center space-x-2.5 sm:space-x-3 text-slate-200">
-                <a href="#recognition" className="hover:text-saffron-300 transition-colors font-medium">NIRF</a>
-                <span className="text-white/20">|</span>
-                <a href="#recognition" className="hover:text-saffron-300 transition-colors font-medium">NAAC</a>
-                <span className="text-white/20">|</span>
-                <span className="text-slate-300 hidden md:inline">AISHE: C-22140</span>
-                <span className="text-white/20 hidden md:inline">|</span>
-                <a 
-                  href="https://admission.punjab.gov.in" 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className="flex items-center space-x-1 text-saffron-300 hover:text-white font-semibold transition-colors"
-                >
-                  <User size={13} />
-                  <span>Login</span>
-                </a>
-              </div>
-
-              <span className="text-white/20 hidden md:inline">|</span>
-
-              {/* Social Icons */}
-              <div className="hidden md:flex items-center space-x-2.5 text-white/80">
-                <a href="#" aria-label="Facebook" className="hover:text-saffron-400 transition-colors">
-                  <Facebook size={13} />
-                </a>
-                <a href="#" aria-label="Instagram" className="hover:text-saffron-400 transition-colors">
-                  <Instagram size={13} />
-                </a>
-                <a href="#" aria-label="YouTube" className="hover:text-saffron-400 transition-colors">
-                  <Youtube size={14} />
-                </a>
-              </div>
+            {/* Middle: G20 India Official Emblem */}
+            <div className="hidden xl:flex items-center justify-center shrink-0 px-2">
+              <img 
+                src="/images/old_site/g20-image.png" 
+                alt="G20 India 2023 Official Emblem" 
+                className={`w-auto object-contain transition-all duration-300 ${
+                  isScrolled ? 'h-9 sm:h-10' : 'h-11 sm:h-12'
+                }`}
+              />
             </div>
 
-          </div>
-        </div>
-
-        {/* 2. LOGO & COLLEGE TITLE BLOCK ROW WITH THE 3 ACTION BUTTONS (Clean White Row) */}
-        <div className={`bg-white transition-all duration-300 border-b border-slate-100 ${
-          isScrolled ? 'py-1.5 sm:py-2' : 'py-2.5 sm:py-3'
-        }`}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center gap-3 md:gap-4">
+            {/* Right: Two-Tier Layout (Top: Contact Info & Socials | Bottom: 3 Action Buttons) */}
+            <div className="hidden lg:flex flex-col items-end space-y-2 shrink-0">
               
-              {/* College Logo & Official Multilingual Title + G20 Logo */}
-              <div className="flex items-center space-x-3 sm:space-x-4 min-w-0">
-                <a href="#home" className="flex items-center space-x-3 sm:space-x-3.5 group shrink-0">
-                  <img 
-                    src="/images/old_site/logo.png" 
-                    alt="Government College Dera Bassi Crest" 
-                    className={`object-contain transition-all duration-300 group-hover:scale-105 shrink-0 ${
-                      isScrolled ? 'w-12 h-12 sm:w-14 sm:h-14' : 'w-14 h-14 sm:w-16 sm:h-16'
-                    }`}
-                  />
-                  <div className="flex flex-col min-w-0">
-                    <span className="font-gurmukhi text-[#8B1E2B] font-bold text-xs sm:text-sm md:text-[15px] leading-tight tracking-wide whitespace-nowrap">
-                      ਸਰਕਾਰੀ ਕਾਲਜ ਡੇਰਾ ਬੱਸੀ
-                    </span>
-                    <span className="font-bold text-[#0C1D3F] text-xs sm:text-[13px] md:text-[15.5px] tracking-tight leading-tight uppercase font-sans whitespace-nowrap">
-                      GOVERNMENT COLLEGE DERA BASSI
-                    </span>
-                    <span className="text-[9.5px] sm:text-[10.5px] text-slate-500 font-medium leading-none mt-0.5 tracking-tight whitespace-nowrap">
-                      Affiliated to Punjabi University, Patiala · AISHE: C-22140
-                    </span>
-                  </div>
+              {/* Tier 1: Phone, Email, Social Icons (in white header area) */}
+              <div className="flex items-center space-x-5 text-xs text-[#8B1E2B]">
+                {/* Phone */}
+                <a 
+                  href="tel:01762295167" 
+                  className="flex items-center space-x-1.5 font-bold hover:text-[#5B101B] transition-colors"
+                >
+                  <Phone size={14} className="fill-current text-[#8B1E2B]" />
+                  <span className="text-slate-800 font-bold text-[13px] tracking-tight">01762-295167</span>
                 </a>
 
-                {/* G20 Emblem with subtle divider */}
-                <div className="hidden sm:flex items-center pl-3 sm:pl-4 border-l border-slate-200 shrink-0">
-                  <img 
-                    src="/images/old_site/g20-image.png" 
-                    alt="G20 India Emblem" 
-                    className={`w-auto object-contain transition-all duration-300 hover:scale-105 ${
-                      isScrolled ? 'h-7 sm:h-8 md:h-9' : 'h-8 sm:h-9 md:h-10'
-                    }`}
-                  />
+                {/* Email */}
+                <a 
+                  href="mailto:gcderabassi@gmail.com" 
+                  className="flex items-center space-x-1.5 font-medium hover:text-[#5B101B] transition-colors"
+                >
+                  <Mail size={15} className="text-[#8B1E2B]" />
+                  <span className="text-[#8B1E2B] font-semibold text-[13px]">gcderabassi@gmail.com</span>
+                </a>
+
+                {/* Social Icons */}
+                <div className="flex items-center space-x-2 text-slate-700 pl-1">
+                  <a 
+                    href="#" 
+                    aria-label="Facebook" 
+                    className="w-5 h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
+                  >
+                    <Facebook size={12} />
+                  </a>
+                  <a 
+                    href="#" 
+                    aria-label="Instagram" 
+                    className="w-5 h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
+                  >
+                    <Instagram size={12} />
+                  </a>
+                  <a 
+                    href="#" 
+                    aria-label="YouTube" 
+                    className="w-5 h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
+                  >
+                    <Youtube size={12} />
+                  </a>
                 </div>
               </div>
 
-              {/* Right: The 3 Action Buttons (Desktop / Large Tablet) */}
-              <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 shrink-0">
-                
-                {/* Action Button 1: Online Admission Portal */}
+              {/* Tier 2: The 3 Action Buttons (matching the screenshot) */}
+              <div className="flex items-center space-x-2">
+                {/* 1. ONLINE ADMISSION PORTAL */}
                 <a
                   href="https://admission.punjab.gov.in"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-[#C75B2A] hover:bg-[#B04B1E] text-white font-bold text-[11px] xl:text-xs px-3 py-1.5 rounded-md shadow-xs flex items-center gap-1.5 transition-all uppercase tracking-wide hover:shadow"
+                  className="bg-[#D25C2B] hover:bg-[#B84E22] text-white font-bold text-[10.5px] xl:text-[11px] px-3 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
                 >
-                  <span>Online Admission Portal</span>
+                  <span>ONLINE ADMISSION PORTAL</span>
                   <ExternalLink size={11} />
                 </a>
 
-                {/* Action Button 2: Anti-Ragging Portal */}
+                {/* 2. ANTI-RAGGING PORTAL */}
                 <a
                   href="https://www.antiragging.in"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-[#8B1E2B] hover:bg-[#68141F] text-white font-bold text-[11px] xl:text-xs px-3 py-1.5 rounded-md shadow-xs flex items-center gap-1.5 transition-all uppercase tracking-wide hover:shadow"
+                  className="bg-[#8B1E2B] hover:bg-[#68141F] text-white font-bold text-[10.5px] xl:text-[11px] px-3 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
                 >
-                  <ShieldAlert size={12} />
-                  <span>Anti-Ragging Portal</span>
+                  <Shield size={11} className="fill-current" />
+                  <span>ANTI-RAGGING PORTAL</span>
                   <ExternalLink size={11} />
                 </a>
 
-                {/* Action Button 3: Anti-Ragging Cell & Women/Sexual Harassment Cell */}
+                {/* 3. ANTI-RAGGING CELL & WOMEN/SEXUAL HARASSMENT CELL */}
                 <a
                   href="#services"
-                  className="bg-[#0C1D3F] hover:bg-[#162D5C] text-white font-bold text-[11px] xl:text-xs px-3 py-1.5 rounded-md shadow-xs flex items-center gap-1.5 transition-all uppercase tracking-wide hover:shadow"
+                  className="bg-[#0C1D3F] hover:bg-[#162E5F] text-white font-bold text-[10.5px] xl:text-[11px] px-3 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
                 >
-                  <Users size={12} />
-                  <span>Anti-Ragging Cell & Women/Sexual Harassment Cell</span>
+                  <Users size={11} />
+                  <span>ANTI-RAGGING CELL & WOMEN/SEXUAL HARASSMENT CELL</span>
                 </a>
-
-              </div>
-
-              {/* Mobile Hamburger / Quick Admission CTA */}
-              <div className="lg:hidden flex items-center space-x-2 shrink-0">
-                <a
-                  href="https://admission.punjab.gov.in"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="bg-[#C75B2A] text-white text-[10px] sm:text-[11px] uppercase font-bold px-2.5 py-1 rounded shadow-xs"
-                >
-                  Apply
-                </a>
-                <button
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="text-[#4A1018] hover:text-[#8B1E2B] p-1.5 focus:outline-none"
-                  aria-label="Toggle Menu"
-                >
-                  {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-                </button>
               </div>
 
             </div>
+
+            {/* Mobile Controls (Hamburger & Apply CTA) */}
+            <div className="lg:hidden flex items-center space-x-2 shrink-0">
+              <a
+                href="https://admission.punjab.gov.in"
+                target="_blank"
+                rel="noreferrer"
+                className="bg-[#D25C2B] text-white text-[10px] sm:text-[11px] uppercase font-bold px-2.5 py-1 rounded shadow-xs"
+              >
+                Admission
+              </a>
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-[#8B1E2B] hover:text-[#5B101B] p-1.5 focus:outline-none"
+                aria-label="Toggle Menu"
+              >
+                {isMobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+              </button>
+            </div>
+
           </div>
         </div>
 
-        {/* 3. FULL-WIDTH RED MENU BAR (Directly beneath the header title block) */}
-        <div className="bg-[#8B1E2B] text-white select-none shadow-sm">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* 2. FULL-WIDTH CRIMSON RED MENU BAR (Matching media_1788792735421.jpg) */}
+        <div className="w-full bg-[#8B1E2B] text-white shadow-sm border-t border-[#73121F]">
+          <div className="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-8">
             
-            {/* Desktop Navigation Links */}
+            {/* Desktop Navigation Links Row */}
             <nav className="hidden lg:flex items-center justify-between whitespace-nowrap">
               <div className="flex items-center w-full justify-between">
                 {navItems.map((item) => (
@@ -273,17 +263,17 @@ const Navbar = () => {
                   >
                     <a
                       href={item.href}
-                      className={`text-[12px] xl:text-[13px] font-bold uppercase tracking-wider flex items-center gap-1 py-2.5 px-2.5 xl:px-3.5 transition-colors ${
+                      className={`text-[12px] xl:text-[13.5px] font-black uppercase tracking-wider flex items-center gap-1 py-2.5 px-3 xl:px-4 transition-colors ${
                         item.isHighlight 
-                          ? 'bg-black text-[#FACC15] font-black hover:bg-neutral-900' 
+                          ? 'bg-black text-[#F5BD02] font-black hover:bg-neutral-900 shadow-inner' 
                           : 'text-white hover:bg-[#68141F]'
                       }`}
                     >
                       <span>{item.label}</span>
-                      {item.children && (
+                      {item.hasChevron && (
                         <ChevronDown 
                           size={13} 
-                          className="opacity-80 group-hover:opacity-100 transition-transform duration-200 group-hover:rotate-180 ml-0.5" 
+                          className="opacity-90 group-hover:opacity-100 transition-transform duration-200 group-hover:rotate-180 ml-0.5" 
                         />
                       )}
                     </a>
@@ -309,11 +299,11 @@ const Navbar = () => {
               </div>
             </nav>
 
-            {/* Mobile / Tablet Menu Bar Strip */}
+            {/* Mobile Menu Strip */}
             <div className="lg:hidden flex items-center justify-between py-2 text-xs font-bold uppercase tracking-wider">
               <span className="text-white flex items-center gap-1.5">
                 <Menu size={15} />
-                <span>Site Menu</span>
+                <span>Menu & Quick Navigation</span>
               </span>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -326,15 +316,27 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* 4. MOBILE MENU SLIDE-DOWN DRAWER */}
+        {/* 3. MOBILE MENU SLIDE-DOWN DRAWER */}
         <div className={`lg:hidden bg-white border-b border-slate-200 shadow-2xl transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-[85vh] overflow-y-auto opacity-100' : 'max-h-0 opacity-0'
         }`}>
           <div className="px-4 py-4 space-y-3">
             
+            {/* Contact Details on Mobile */}
+            <div className="flex flex-col space-y-1 pb-3 border-b border-slate-100 text-xs">
+              <a href="tel:01762295167" className="flex items-center space-x-2 text-[#8B1E2B] font-bold">
+                <Phone size={13} />
+                <span>01762-295167</span>
+              </a>
+              <a href="mailto:gcderabassi@gmail.com" className="flex items-center space-x-2 text-slate-600 font-medium">
+                <Mail size={13} />
+                <span>gcderabassi@gmail.com</span>
+              </a>
+            </div>
+
             {/* The 3 Action Buttons in Mobile Drawer */}
             <div className="space-y-2 pb-3 border-b border-slate-200">
-              <span className="text-[10.5px] font-black uppercase tracking-wider text-slate-400 block mb-1">
+              <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1">
                 Official Portals & Cells:
               </span>
               <a
@@ -342,7 +344,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center bg-[#C75B2A] text-white py-2 rounded-md font-bold uppercase text-xs tracking-wider shadow-xs"
+                className="block w-full text-center bg-[#D25C2B] text-white py-2 rounded font-bold uppercase text-xs tracking-wider shadow-2xs"
               >
                 Online Admission Portal &rarr;
               </a>
@@ -351,14 +353,14 @@ const Navbar = () => {
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center bg-[#8B1E2B] text-white py-2 rounded-md font-bold uppercase text-xs tracking-wider shadow-xs"
+                className="block w-full text-center bg-[#8B1E2B] text-white py-2 rounded font-bold uppercase text-xs tracking-wider shadow-2xs"
               >
                 Anti-Ragging Portal &rarr;
               </a>
               <a
                 href="#services"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center bg-[#0C1D3F] text-white py-2 rounded-md font-bold uppercase text-xs tracking-wider shadow-xs"
+                className="block w-full text-center bg-[#0C1D3F] text-white py-2 rounded font-bold uppercase text-xs tracking-wider shadow-2xs"
               >
                 Anti-Ragging Cell & Women/Sexual Harassment Cell
               </a>
@@ -371,12 +373,14 @@ const Navbar = () => {
                   <a
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block py-2 text-xs sm:text-sm font-bold text-slate-800 hover:text-[#8B1E2B]"
+                    className={`block py-2 text-xs sm:text-sm font-bold ${
+                      item.isHighlight ? 'text-[#D25C2B]' : 'text-slate-800 hover:text-[#8B1E2B]'
+                    }`}
                   >
                     {item.label}
                   </a>
                   {item.children && (
-                    <div className="pl-3 pb-2 space-y-1 bg-slate-50 rounded-lg p-2 mb-2">
+                    <div className="pl-3 pb-2 space-y-1 bg-slate-50 rounded p-2 mb-2">
                       {item.children.map((sub, sIdx) => (
                         <a
                           key={sIdx}
@@ -401,7 +405,7 @@ const Navbar = () => {
       </header>
 
       {/* TOP SPACER TO PREVENT HEADER OVERLAP ON CONTENT BELOW */}
-      <div className="h-[120px] sm:h-[135px] lg:h-[148px]" style={{ marginTop: '-104px' }} />
+      <div className="h-[116px] sm:h-[126px] lg:h-[136px]" style={{ marginTop: '-104px' }} />
     </>
   );
 };
