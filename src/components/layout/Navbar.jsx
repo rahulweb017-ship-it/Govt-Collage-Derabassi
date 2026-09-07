@@ -95,8 +95,8 @@ const Navbar = () => {
       {/* FIXED / STICKY HEADER (Entire Header remains pinned to the top on scroll) */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white font-sans shadow-md select-none transition-all duration-300">
         
-        {/* 1. TOP WHITE HEADER SECTION */}
-        <div className={`w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ${
+        {/* 1. TOP WHITE HEADER SECTION (100% Full Width) */}
+        <div className={`w-full px-4 sm:px-6 lg:px-8 xl:px-10 transition-all duration-300 ${
           isScrolled ? 'py-1.5 sm:py-2' : 'py-2.5 sm:py-3.5'
         }`}>
           <div className="flex items-center justify-between gap-2 sm:gap-4">
@@ -249,7 +249,7 @@ const Navbar = () => {
 
         {/* 2. FULL-WIDTH CRIMSON RED MENU BAR (Matching media_1788792735421.jpg) */}
         <div className="w-full bg-[#8B1E2B] text-white shadow-sm border-t border-[#73121F]">
-          <div className="max-w-[1440px] mx-auto px-2 sm:px-4 lg:px-8">
+          <div className="w-full px-2 sm:px-4 lg:px-8 xl:px-10">
             
             {/* Desktop Navigation Links Row */}
             <nav className="hidden lg:flex items-center justify-between whitespace-nowrap">
