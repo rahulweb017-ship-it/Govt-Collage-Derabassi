@@ -59,23 +59,6 @@ const navItems = [
     ]
   },
 
-  // PROSPECTUS (Always highlighted with white background, all 7 prospectus download options)
-  { 
-    label: 'PROSPECTUS', 
-    href: '/prospectus',
-    hasChevron: true,
-    isWhiteHighlight: true,
-    children: [
-      { label: 'Prospectus 2026-27', href: '/images/prospectus/Prospectus-GCDB-2026-27.pdf', isDownload: true, size: '3.3 MB', isLatest: true },
-      { label: 'Prospectus 2025-26', href: '/images/prospectus/Prospectus%202025-26.pdf', isDownload: true, size: '2.9 MB' },
-      { label: 'Prospectus 2024-25', href: '/images/prospectus/Prospectus%202024-25.pdf', isDownload: true, size: '2.5 MB' },
-      { label: 'Prospectus 2023-24', href: '/images/prospectus/Prospectus%202023-24.pdf', isDownload: true, size: '2.5 MB' },
-      { label: 'Prospectus 2022-23', href: '/images/prospectus/PROSPECTUS%202022-23%20GCDeraBassi.pdf', isDownload: true, size: '4.4 MB' },
-      { label: 'Prospectus 2021-22', href: '/images/prospectus/Prospectus%202021-22%20Govt%20College%20Dera%20Bassi.pdf', isDownload: true, size: '8.5 MB' },
-      { label: 'Prospectus 2020-21', href: '/images/prospectus/Prospectus2020-21.pdf', isDownload: true, size: '57.1 MB' }
-    ]
-  },
-
   // 4. EXAMINATIONS (New dropdown menu with 4 sub-items requested)
   { 
     label: 'EXAMINATIONS', 
@@ -127,7 +110,24 @@ const navItems = [
   },
   { label: 'NIRF', href: '#recognition', hasChevron: false },
   { label: 'GALLERY', href: '#campus-life', hasChevron: false },
-  { label: 'CONTACT US', href: '#contact', hasChevron: false }
+  { label: 'CONTACT US', href: '#contact', hasChevron: false },
+
+  // PROSPECTUS (Always highlighted with white background, placed as last option after CONTACT US)
+  { 
+    label: 'PROSPECTUS', 
+    href: '/prospectus',
+    hasChevron: true,
+    isWhiteHighlight: true,
+    children: [
+      { label: 'Prospectus 2026-27', href: '/images/prospectus/Prospectus-GCDB-2026-27.pdf', isDownload: true, size: '3.3 MB', isLatest: true },
+      { label: 'Prospectus 2025-26', href: '/images/prospectus/Prospectus%202025-26.pdf', isDownload: true, size: '2.9 MB' },
+      { label: 'Prospectus 2024-25', href: '/images/prospectus/Prospectus%202024-25.pdf', isDownload: true, size: '2.5 MB' },
+      { label: 'Prospectus 2023-24', href: '/images/prospectus/Prospectus%202023-24.pdf', isDownload: true, size: '2.5 MB' },
+      { label: 'Prospectus 2022-23', href: '/images/prospectus/PROSPECTUS%202022-23%20GCDeraBassi.pdf', isDownload: true, size: '4.4 MB' },
+      { label: 'Prospectus 2021-22', href: '/images/prospectus/Prospectus%202021-22%20Govt%20College%20Dera%20Bassi.pdf', isDownload: true, size: '8.5 MB' },
+      { label: 'Prospectus 2020-21', href: '/images/prospectus/Prospectus2020-21.pdf', isDownload: true, size: '57.1 MB' }
+    ]
+  }
 ];
 
 const Navbar = () => {
@@ -412,7 +412,7 @@ const Navbar = () => {
 
                       {/* Dropdown Menu (Style matched to site with clean hover effects) */}
                       {item.children && (
-                        <div className={`absolute top-full left-0 ${item.isWhiteHighlight ? 'min-w-[340px]' : 'min-w-[280px]'} bg-white text-slate-800 rounded-b-lg shadow-2xl border border-slate-100 py-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50`}>
+                        <div className={`absolute top-full ${item.label === 'PROSPECTUS' ? 'right-0' : 'left-0'} ${item.isWhiteHighlight ? 'min-w-[340px]' : 'min-w-[280px]'} bg-white text-slate-800 rounded-b-lg shadow-2xl border border-slate-100 py-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50`}>
                           {item.children.map((child, idx) => (
                             child.isDownload ? (
                               <a
