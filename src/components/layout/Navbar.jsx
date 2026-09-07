@@ -101,27 +101,29 @@ const Navbar = () => {
         }`}>
           <div className="flex items-center justify-between gap-2 sm:gap-4">
             
-            {/* Left: College Crest Logo & 3-Line Multilingual College Title */}
-            <div className="flex items-center space-x-3 sm:space-x-4 min-w-0">
-              <a href="#home" className="flex items-center space-x-3 sm:space-x-3.5 group shrink-0">
+            {/* Left: College Crest Logo (Large & Clear like PU Website) & 3-Line Multilingual College Title */}
+            <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-5 min-w-0">
+              <a href="#home" className="flex items-center space-x-3 sm:space-x-4 md:space-x-5 group shrink-0 py-1">
                 <img 
                   src="/images/old_site/logo.png" 
                   alt="Government College Dera Bassi Crest" 
-                  className={`object-contain shrink-0 transition-all duration-300 ${
-                    isScrolled ? 'w-12 h-12 sm:w-14 sm:h-14' : 'w-14 h-14 sm:w-16 sm:h-16'
+                  className={`object-contain shrink-0 transition-all duration-300 filter drop-shadow-xs ${
+                    isScrolled 
+                      ? 'w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-22 lg:h-22' 
+                      : 'w-20 h-20 sm:w-24 sm:h-24 md:w-26 md:h-26 lg:w-28 lg:h-28 xl:w-32 xl:h-32'
                   }`}
                 />
                 <div className="flex flex-col justify-center min-w-0">
                   {/* Gurmukhi College Name */}
-                  <span className="font-gurmukhi text-[#8B1E2B] font-bold text-sm sm:text-[15px] md:text-base leading-tight tracking-wide whitespace-nowrap">
+                  <span className="font-gurmukhi text-[#8B1E2B] font-bold text-sm sm:text-base md:text-lg lg:text-xl leading-tight tracking-wide whitespace-nowrap">
                     ਸਰਕਾਰੀ ਕਾਲਜ ਡੇਰਾ ਬੱਸੀ
                   </span>
                   {/* English College Name */}
-                  <span className="font-sans font-black text-[#0C1D3F] text-xs sm:text-[13.5px] md:text-[15.5px] tracking-tight leading-tight uppercase whitespace-nowrap mt-0.5">
+                  <span className="font-sans font-black text-[#0C1D3F] text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl tracking-tight leading-tight uppercase whitespace-nowrap mt-0.5 sm:mt-1">
                     GOVERNMENT COLLEGE DERA BASSI
                   </span>
                   {/* Affiliation Subtext */}
-                  <span className="text-[9.5px] sm:text-[10.5px] md:text-[11.5px] text-slate-500 font-medium leading-none tracking-tight whitespace-nowrap mt-1">
+                  <span className="text-[10px] sm:text-xs md:text-[13px] lg:text-[13.5px] text-slate-600 font-semibold leading-normal tracking-normal whitespace-nowrap mt-1">
                     Affiliated to Punjabi University, Patiala · AISHE: C-22140
                   </span>
                 </div>
@@ -129,12 +131,12 @@ const Navbar = () => {
             </div>
 
             {/* Middle: G20 India Official Emblem */}
-            <div className="hidden xl:flex items-center justify-center shrink-0 px-2">
+            <div className="hidden xl:flex items-center justify-center shrink-0 px-3">
               <img 
                 src="/images/old_site/g20-image.png" 
                 alt="G20 India 2023 Official Emblem" 
                 className={`w-auto object-contain transition-all duration-300 ${
-                  isScrolled ? 'h-9 sm:h-10' : 'h-11 sm:h-12'
+                  isScrolled ? 'h-10 sm:h-12' : 'h-14 sm:h-16'
                 }`}
               />
             </div>
@@ -405,7 +407,7 @@ const Navbar = () => {
       </header>
 
       {/* TOP SPACER TO PREVENT HEADER OVERLAP ON CONTENT BELOW */}
-      <div className="h-[116px] sm:h-[126px] lg:h-[136px]" style={{ marginTop: '-104px' }} />
+      <div className="h-[135px] sm:h-[155px] lg:h-[185px] xl:h-[195px]" style={{ marginTop: '-104px' }} />
     </>
   );
 };
