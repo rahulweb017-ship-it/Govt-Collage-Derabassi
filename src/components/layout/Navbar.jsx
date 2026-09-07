@@ -41,7 +41,6 @@ const navItems = [
     label: 'ADMISSIONS', 
     href: '#admissions',
     hasChevron: true,
-    isHighlight: true, // Black box with yellow text from user image
     children: [
       { label: 'Admissions 2026–27 (Session)', href: '#admissions' },
       { label: 'Centralized Punjab Portal', href: 'https://admission.punjab.gov.in' },
@@ -81,6 +80,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeTab, setActiveTab] = useState('HOME');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,6 +88,31 @@ const Navbar = () => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash;
+      if (hash === '#admissions') {
+        setActiveTab('ADMISSIONS');
+      } else if (hash === '#about' || hash === '#principal') {
+        setActiveTab('ABOUT US');
+      } else if (hash === '#academics') {
+        setActiveTab('ACADEMICS');
+      } else if (hash === '#campus-life') {
+        setActiveTab('EXTRA CURRICULAR');
+      } else if (hash === '#recognition') {
+        setActiveTab('IQAC/NAAC');
+      } else if (hash === '#contact') {
+        setActiveTab('CONTACT US');
+      } else {
+        setActiveTab('HOME');
+      }
+    };
+
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
   }, []);
 
   return (
@@ -265,8 +290,9 @@ const Navbar = () => {
                   >
                     <a
                       href={item.href}
+                      onClick={() => setActiveTab(item.label)}
                       className={`text-[12px] xl:text-[13.5px] font-black uppercase tracking-wider flex items-center gap-1 py-2.5 px-3 xl:px-4 transition-colors ${
-                        item.isHighlight 
+                        activeTab === item.label
                           ? 'bg-black text-[#F5BD02] font-black hover:bg-neutral-900 shadow-inner' 
                           : 'text-white hover:bg-[#68141F]'
                       }`}
@@ -374,9 +400,12 @@ const Navbar = () => {
                 <div key={item.label} className="border-b border-slate-100 last:border-0">
                   <a
                     href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={() => {
+                      setActiveTab(item.label);
+                      setIsMobileMenuOpen(false);
+                    }}
                     className={`block py-2 text-xs sm:text-sm font-bold ${
-                      item.isHighlight ? 'text-[#D25C2B]' : 'text-slate-800 hover:text-[#8B1E2B]'
+                      activeTab === item.label ? 'text-[#8B1E2B] font-black' : 'text-slate-800 hover:text-[#8B1E2B]'
                     }`}
                   >
                     {item.label}
