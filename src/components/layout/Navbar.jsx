@@ -43,7 +43,7 @@ const navItems = [
       { label: 'Courses Offered', href: '/academics/courses-offered' },
       { 
         label: 'Latest Syllabus', 
-        href: '/academics/syllabus',
+        href: '#',
         hasSubmenu: true,
         subChildren: [
           { label: 'For Punjabi University Patiala Courses', href: 'https://punjabiuniversity.ac.in/indexSyllabi.aspx', isExternal: true },
@@ -425,13 +425,12 @@ const Navbar = () => {
                           {item.children.map((child, idx) => (
                             child.subChildren ? (
                               <div key={idx} className="relative group/sub border-b border-slate-50 last:border-0">
-                                <Link
-                                  to={child.href}
-                                  className="px-4 py-2.5 text-xs text-slate-700 hover:bg-[#FAF4E6] hover:text-[#8B1E2B] font-semibold transition-colors flex items-center justify-between"
+                                <div
+                                  className="px-4 py-2.5 text-xs text-slate-700 hover:bg-[#FAF4E6] hover:text-[#8B1E2B] font-semibold transition-colors flex items-center justify-between cursor-pointer select-none"
                                 >
                                   <span>{child.label}</span>
                                   <ChevronRight size={13} className="text-slate-400 group-hover/sub:text-[#8B1E2B] group-hover/sub:translate-x-0.5 transition-all shrink-0 ml-2" />
-                                </Link>
+                                </div>
 
                                 {/* Flyout Submenu */}
                                 <div className="absolute left-full top-0 min-w-[340px] bg-white text-slate-800 rounded-lg shadow-2xl border border-slate-100 py-1.5 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 transform -translate-x-1 group-hover/sub:translate-x-0 z-50">
@@ -633,14 +632,10 @@ const Navbar = () => {
                       {item.children.map((sub, sIdx) => (
                         sub.subChildren ? (
                           <div key={sIdx} className="border-b border-slate-200/60 pb-2 mb-1.5 last:border-0">
-                            <div className="flex items-center justify-between py-1.5 text-xs font-semibold text-slate-700">
-                              <Link 
-                                to={sub.href}
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                className="hover:text-[#8B1E2B] flex items-center gap-1.5"
-                              >
-                                <span>• {sub.label}</span>
-                              </Link>
+                            <div className="flex items-center justify-between py-1.5 text-xs font-bold text-slate-800">
+                              <span className="flex items-center gap-1.5">
+                                • {sub.label}
+                              </span>
                               <span className="text-[10px] text-[#8B1E2B] font-bold bg-[#FAF4E6] px-2 py-0.5 rounded border border-[#8B1E2B]/20">
                                 2 Options
                               </span>
