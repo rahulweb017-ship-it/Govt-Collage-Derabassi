@@ -40,7 +40,7 @@ const departmentsData = [
     description: 'Promoting profound linguistic understanding, Gurmukhi script scholarship, classical and contemporary Punjabi literature, folklore, and regional cultural heritage.',
     highlights: ['Compulsory & Elective Syllabi', 'Celebration of Mother Language Day', 'Literary Seminars & Poetry Symposiums'],
     icon: Languages,
-    image: '/images/old_site/news_20_11_.jpeg',
+    image: '/images/departments/dept_punjabi.jpg',
     facility: 'Language & Literature Resource Section'
   },
   {
@@ -54,7 +54,7 @@ const departmentsData = [
     description: 'Cultivating expressive communication, analytical reading, critical inquiry, and an appreciation of global and Indian English literature across all academic streams.',
     highlights: ['Language Laboratory Access', 'Creative Writing Workshops', 'Personality & Communication Modules'],
     icon: BookOpen,
-    image: '/images/old_site/course-1.jpg',
+    image: '/images/departments/dept_english.jpg',
     facility: 'English Literary Society & Reading Wing'
   },
   {
@@ -68,7 +68,7 @@ const departmentsData = [
     description: 'Focusing on the evolution of Hindi prose, poetry, dramatic works, functional Hindi, and practical translation techniques to equip students with bilingual competency.',
     highlights: ['Hindi Diwas Celebrations', 'Debate & Essay Competitions', 'Modern Hindi Literary Discourse'],
     icon: BookOpen,
-    image: '/images/old_site/news_20_14_.jpeg',
+    image: '/images/departments/dept_hindi.jpg',
     facility: 'Hindi Literary & Translation Forum'
   },
   {
@@ -82,7 +82,7 @@ const departmentsData = [
     description: 'Imparting historical consciousness through the study of ancient civilizations, medieval India, national freedom movements, and in-depth history of Punjab.',
     highlights: ['Heritage Site Field Visits', 'Historical Artifact & Document Studies', 'Punjab Freedom Struggle Lectures'],
     icon: Compass,
-    image: '/images/old_site/pic_20_4_.JPG',
+    image: '/images/departments/dept_history.jpg',
     facility: 'Historical Archives & Heritage Gallery'
   },
   {
@@ -96,7 +96,7 @@ const departmentsData = [
     description: 'Providing a thorough grounding in microeconomic theory, macroeconomic policy, public finance, agricultural economics of Punjab, and quantitative economic models.',
     highlights: ['Union & State Budget Analysis Sessions', 'Socio-Economic Surveys', 'Banking & Financial System Studies'],
     icon: TrendingUp,
-    image: '/images/old_site/course-2.jpg',
+    image: '/images/departments/dept_commerce_honours.jpg',
     facility: 'Economic Policy & Data Analysis Cell'
   },
   {
@@ -110,7 +110,7 @@ const departmentsData = [
     description: 'Educating students on democratic frameworks, the Constitution of India, human rights, administrative apparatus, and contemporary global political affairs.',
     highlights: ['Youth Parliament & Mock Sessions', 'Voter Awareness & Civic Literacy Drives', 'Constitutional Law Workshops'],
     icon: Building2,
-    image: '/images/old_site/rally_20_2_.JPG',
+    image: '/images/departments/dept_political_science.jpg',
     facility: 'Electoral Literacy & Constitutional Club'
   },
   {
@@ -124,7 +124,7 @@ const departmentsData = [
     description: 'Analyzing societal evolution, caste and class dynamics, gender relations, rural-urban transition in Punjab, and sociological research methodologies.',
     highlights: ['Community Field Surveys', 'Social Awareness Campaigns', 'Gender Sensitization Panels'],
     icon: Layers,
-    image: '/images/old_site/blood_20_3_.JPG',
+    image: '/images/departments/dept_sociology.jpg',
     facility: 'Community Outreach & Survey Fieldwork'
   },
   {
@@ -138,7 +138,7 @@ const departmentsData = [
     description: 'Training future administrators and civic professionals in public policy formulation, bureaucratic ethics, e-governance initiatives, and local governance.',
     highlights: ['Panchayati Raj Case Studies', 'Civil Services Preparation Seminars', 'Public Policy Discussion Groups'],
     icon: Building2,
-    image: '/images/old_site/news_20_5_.jpeg',
+    image: '/images/departments/dept_public_admin.jpg',
     facility: 'Public Policy & Civil Services Seminar Unit'
   },
   {
@@ -152,7 +152,7 @@ const departmentsData = [
     description: 'Exploring physical geography, geomorphology, climate patterns, human settlements, cartography, and practical surveying using specialized laboratory tools.',
     highlights: ['Dedicated Geography Practical Lab', 'Field Plane-Table Surveying', 'Topographical Sheet Interpretation'],
     icon: Compass,
-    image: '/images/campus_moments/geo (1).jpg',
+    image: '/images/departments/dept_geography.jpg',
     facility: 'Equipped Geography Cartography & Survey Lab'
   },
 
@@ -168,7 +168,7 @@ const departmentsData = [
     description: 'A flagship department offering comprehensive training in financial accounting, corporate regulations, taxation, cost accounting, banking operations, and auditing.',
     highlights: ['Industry Guest Lectures', 'Commerce Society Activities', 'Tally & Computerized Accounting Training'],
     icon: TrendingUp,
-    image: '/images/old_site/course-2.jpg',
+    image: '/images/departments/dept_commerce.jpg',
     facility: 'Commerce & Computerized Accounting Lab'
   },
   {
@@ -182,7 +182,7 @@ const departmentsData = [
     description: 'An advanced, merit-oriented program providing rigorous specialization in corporate finance, forensic accounting, investment analysis, and strategic business leadership.',
     highlights: ['Advanced Financial Research Seminars', 'Corporate Internship Opportunities', 'Specialized Elective Tracks'],
     icon: TrendingUp,
-    image: '/images/old_site/course-3.jpg',
+    image: '/images/departments/dept_commerce_honours.jpg',
     facility: 'Executive Business & Finance Seminar Room'
   },
 
@@ -198,7 +198,7 @@ const departmentsData = [
     description: 'Nurturing foundational physics comprehension through rigorous experimental optics, electromagnetism, modern physics, solid-state theory, and laboratory rigor.',
     highlights: ['Equipped Undergraduate Physics Lab', 'Dark Room for Optical Experiments', 'Science Exhibition Participation'],
     icon: Atom,
-    image: '/images/old_site/course-4.jpg',
+    image: '/images/departments/dept_physics.jpg',
     facility: 'Dedicated Optics & Electronics Physics Lab'
   },
   {
@@ -212,7 +212,7 @@ const departmentsData = [
     description: 'Delivering hands-on laboratory education in chemical synthesis, qualitative and volumetric analysis, thermodynamics, and spectroscopic principles.',
     highlights: ['Dedicated Chemical Analysis Laboratory', 'Safe Reagent & Fume Stations', 'Environmental Chemistry Projects'],
     icon: Microscope,
-    image: '/images/old_site/course-4.jpg',
+    image: '/images/departments/dept_chemistry.jpg',
     facility: 'Chemical Wet Analysis & Titration Laboratory'
   },
   {
@@ -226,7 +226,7 @@ const departmentsData = [
     description: 'Cultivating analytical rigor and problem-solving through abstract algebra, multi-variable calculus, differential equations, real analysis, and numerical computing.',
     highlights: ['Mathematical Problem-Solving Circles', 'Inter-College Quiz Participation', 'Applied Mathematics Foundations'],
     icon: TrendingUp,
-    image: '/images/old_site/pic_20_1_.JPG',
+    image: '/images/departments/dept_mathematics.jpg',
     facility: 'Mathematical Computing & Logic Studio'
   },
   {
@@ -240,7 +240,7 @@ const departmentsData = [
     description: 'Building strong computational foundations in programming languages, computer organization, operating systems, data structures, and computer fundamentals.',
     highlights: ['Air-Conditioned Computer Laboratory', 'High-Speed Broadband Connectivity', 'Hands-on Programming Practicals'],
     icon: Laptop,
-    image: '/images/campus_moments/comp-2.jpg',
+    image: '/images/departments/dept_computer_science.jpg',
     facility: 'Air-Conditioned Main Computing Center'
   },
   {
@@ -254,7 +254,7 @@ const departmentsData = [
     description: 'A professional technical department equipping students with industrial software development, database administration, web technologies, and systems engineering.',
     highlights: ['Advanced BCA Computer Lab', 'Project-Based Curriculum', 'Industry Tech Seminars & Workshops'],
     icon: Laptop,
-    image: '/images/campus_moments/comp-1.jpg',
+    image: '/images/departments/dept_computer_application.jpg',
     facility: 'Professional BCA Software & Network Lab'
   },
 
@@ -270,7 +270,7 @@ const departmentsData = [
     description: 'Inspiring artistic ingenuity in painting, sketching, still life, composition, color theory, landscape painting, and visual aesthetic history.',
     highlights: ['Dedicated Art Studio with Easels', 'Annual Campus Art Exhibitions', 'Punjabi University Youth Festival Accolades'],
     icon: Palette,
-    image: '/images/old_site/fineart.JPG',
+    image: '/images/departments/dept_fine_arts.jpg',
     facility: 'Fine Arts Studio & Visual Gallery'
   },
   {
@@ -284,7 +284,7 @@ const departmentsData = [
     description: 'Training vocalists in Hindustani classical music, ragas, taals, Gurmat Sangeet, Punjabi folk traditions, and stage presentation skills.',
     highlights: ['Acoustic Music Practice Room', 'Harmonium, Tanpura & Tabla Instruments', 'Consistent Youth Festival Trophies'],
     icon: Activity,
-    image: '/images/old_site/talenthunt_20_4_.JPG',
+    image: '/images/departments/dept_music.jpg',
     facility: 'Acoustic Sangeet & Instrumental Chamber'
   },
   {
@@ -298,7 +298,7 @@ const departmentsData = [
     description: 'Promoting athletic mastery, sports physiology, kinesiology, yoga, team ethics, and comprehensive physical fitness across multiple disciplines.',
     highlights: ['15-Acre Sprawling Sports Ground', 'Indoor & Outdoor Gymnasium Facilities', 'Inter-College Athletics Tournaments'],
     icon: Dumbbell,
-    image: '/images/campus_moments/sport (1).jpg',
+    image: '/images/departments/dept_physical_education.jpg',
     facility: '15-Acre Athletic Track & Multi-Gymnasium'
   },
   {
@@ -312,7 +312,7 @@ const departmentsData = [
     description: 'Bridging science and daily life through nutrition, food preservation, interior design, garment construction, child development, and family resource management.',
     highlights: ['Dedicated Home Science Practical Lab', 'Culinary & Nutrition Exhibitions', 'Textile Design & Craft Workshops'],
     icon: Sparkles,
-    image: '/images/old_site/talenthunt_20_2_.JPG',
+    image: '/images/departments/dept_home_science.jpg',
     facility: 'Home Science Culinary & Textile Laboratory'
   }
 ];
@@ -322,26 +322,26 @@ const academicFacilities = [
   {
     title: 'Advanced Computer & BCA Labs',
     category: 'Information Technology',
-    image: '/images/campus_moments/comp-1.jpg',
+    image: '/images/departments/dept_computer_science.jpg',
     description: 'Modern high-speed air-conditioned laboratories equipped for programming in C++, Java, Python, web development, DBMS, and digital research.'
+  },
+  {
+    title: 'Advanced Science & Research Labs',
+    category: 'Physics & Chemistry',
+    image: '/images/departments/dept_physics.jpg',
+    description: 'Modern experimental laboratories equipped with laser optics, spectrometers, titration setups, analytical balances, and safety apparatus.'
   },
   {
     title: 'Fine Arts Studio & Creative Workshop',
     category: 'Visual & Applied Arts',
-    image: '/images/old_site/fineart.JPG',
+    image: '/images/departments/dept_fine_arts.jpg',
     description: 'Natural light art studio equipped with individual easels, sculpting benches, and exhibition galleries for painting, sketching, and traditional craft.'
   },
   {
     title: 'Geography & Topographical Survey Lab',
     category: 'Earth Sciences',
-    image: '/images/campus_moments/geo (1).jpg',
+    image: '/images/departments/dept_geography.jpg',
     description: 'Specialized lab featuring cartographic instruments, stereoscopes, plane table survey kits, aerial photograph archives, and regional maps.'
-  },
-  {
-    title: '15-Acre Sports Complex & Fitness Arenas',
-    category: 'Athletics & Physical Education',
-    image: '/images/campus_moments/sport (1).jpg',
-    description: 'Expansive outdoor athletic fields, cricket/football grounds, volleyball courts, and modern indoor/open gymnasiums for holistic fitness.'
   }
 ];
 
@@ -507,7 +507,7 @@ export default function DepartmentsPage() {
           })}
         </div>
 
-        {/* 3. DEPARTMENT CARDS WITH REAL IMAGES */}
+        {/* 3. DEPARTMENT CARDS WITH DEDICATED IMAGES */}
         <div className="mt-10">
           {filteredDepartments.length === 0 ? (
             <div className="bg-white rounded-2xl p-12 text-center border border-slate-200">
@@ -545,10 +545,10 @@ export default function DepartmentsPage() {
                         
                         {/* Top Overlay Badges */}
                         <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
-                          <span className="px-2.5 py-1 rounded-md bg-[#0C1D3F]/80 backdrop-blur-md text-[#F49D71] font-mono font-bold text-xs border border-white/20">
+                          <span className="px-2.5 py-1 rounded-md bg-[#0C1D3F]/85 backdrop-blur-md text-[#F49D71] font-mono font-bold text-xs border border-white/20">
                             #{dept.number}
                           </span>
-                          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md text-[#0C1D3F] shadow-xs">
+                          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[#0C1D3F] shadow-xs">
                             {dept.category}
                           </span>
                         </div>
@@ -616,16 +616,16 @@ export default function DepartmentsPage() {
 
       </section>
 
-      {/* 4. LARGE REAL GCD CAMPUS / LAB / CLASSROOM HERO WITH "Learn. Explore. Discover." */}
+      {/* 4. LARGE REAL GCD CAMPUS / LAB HERO WITH "Learn. Explore. Discover." */}
       <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl overflow-hidden bg-[#0C1D3F] text-white shadow-2xl border-2 border-slate-200">
           
-          {/* Real GCD Lab / Classroom Photo */}
+          {/* High-definition Department Lab Visual */}
           <div className="relative h-[420px] sm:h-[480px] lg:h-[540px] w-full overflow-hidden">
             <img 
-              src="/images/campus_moments/comp-1.jpg" 
+              src="/images/departments/dept_computer_science.jpg" 
               alt="Government College Dera Bassi Computer & Research Laboratories" 
-              className="w-full h-full object-cover object-center filter brightness-60 contrast-110 scale-100 hover:scale-105 transition-transform duration-700 ease-out"
+              className="w-full h-full object-cover object-center filter brightness-65 contrast-110 scale-100 hover:scale-105 transition-transform duration-700 ease-out"
             />
             {/* Deep institutional gradient overlays */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0C1D3F] via-[#0C1D3F]/70 to-transparent" />
