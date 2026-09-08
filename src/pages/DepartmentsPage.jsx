@@ -21,7 +21,9 @@ import {
   Activity,
   Dumbbell,
   Microscope,
-  Compass
+  Compass,
+  Eye,
+  Camera
 } from 'lucide-react';
 
 // Official 20 Departments sourced directly from: https://gcderabassi.ac.in/department.php
@@ -38,8 +40,8 @@ const departmentsData = [
     description: 'Promoting profound linguistic understanding, Gurmukhi script scholarship, classical and contemporary Punjabi literature, folklore, and regional cultural heritage.',
     highlights: ['Compulsory & Elective Syllabi', 'Celebration of Mother Language Day', 'Literary Seminars & Poetry Symposiums'],
     icon: Languages,
-    image: '/images/old_site/pic_20_3_.JPG',
-    color: '#8B1E2B'
+    image: '/images/old_site/news_20_11_.jpeg',
+    facility: 'Language & Literature Resource Section'
   },
   {
     number: '02',
@@ -53,7 +55,7 @@ const departmentsData = [
     highlights: ['Language Laboratory Access', 'Creative Writing Workshops', 'Personality & Communication Modules'],
     icon: BookOpen,
     image: '/images/old_site/course-1.jpg',
-    color: '#0C1D3F'
+    facility: 'English Literary Society & Reading Wing'
   },
   {
     number: '03',
@@ -67,7 +69,7 @@ const departmentsData = [
     highlights: ['Hindi Diwas Celebrations', 'Debate & Essay Competitions', 'Modern Hindi Literary Discourse'],
     icon: BookOpen,
     image: '/images/old_site/news_20_14_.jpeg',
-    color: '#C75B2A'
+    facility: 'Hindi Literary & Translation Forum'
   },
   {
     number: '04',
@@ -81,7 +83,7 @@ const departmentsData = [
     highlights: ['Heritage Site Field Visits', 'Historical Artifact & Document Studies', 'Punjab Freedom Struggle Lectures'],
     icon: Compass,
     image: '/images/old_site/pic_20_4_.JPG',
-    color: '#8B1E2B'
+    facility: 'Historical Archives & Heritage Gallery'
   },
   {
     number: '05',
@@ -95,7 +97,7 @@ const departmentsData = [
     highlights: ['Union & State Budget Analysis Sessions', 'Socio-Economic Surveys', 'Banking & Financial System Studies'],
     icon: TrendingUp,
     image: '/images/old_site/course-2.jpg',
-    color: '#0C1D3F'
+    facility: 'Economic Policy & Data Analysis Cell'
   },
   {
     number: '06',
@@ -109,7 +111,7 @@ const departmentsData = [
     highlights: ['Youth Parliament & Mock Sessions', 'Voter Awareness & Civic Literacy Drives', 'Constitutional Law Workshops'],
     icon: Building2,
     image: '/images/old_site/rally_20_2_.JPG',
-    color: '#C75B2A'
+    facility: 'Electoral Literacy & Constitutional Club'
   },
   {
     number: '07',
@@ -123,7 +125,7 @@ const departmentsData = [
     highlights: ['Community Field Surveys', 'Social Awareness Campaigns', 'Gender Sensitization Panels'],
     icon: Layers,
     image: '/images/old_site/blood_20_3_.JPG',
-    color: '#0C1D3F'
+    facility: 'Community Outreach & Survey Fieldwork'
   },
   {
     number: '08',
@@ -137,7 +139,7 @@ const departmentsData = [
     highlights: ['Panchayati Raj Case Studies', 'Civil Services Preparation Seminars', 'Public Policy Discussion Groups'],
     icon: Building2,
     image: '/images/old_site/news_20_5_.jpeg',
-    color: '#8B1E2B'
+    facility: 'Public Policy & Civil Services Seminar Unit'
   },
   {
     number: '09',
@@ -151,7 +153,7 @@ const departmentsData = [
     highlights: ['Dedicated Geography Practical Lab', 'Field Plane-Table Surveying', 'Topographical Sheet Interpretation'],
     icon: Compass,
     image: '/images/campus_moments/geo (1).jpg',
-    color: '#C75B2A'
+    facility: 'Equipped Geography Cartography & Survey Lab'
   },
 
   // 2. Commerce & Management
@@ -167,7 +169,7 @@ const departmentsData = [
     highlights: ['Industry Guest Lectures', 'Commerce Society Activities', 'Tally & Computerized Accounting Training'],
     icon: TrendingUp,
     image: '/images/old_site/course-2.jpg',
-    color: '#0C1D3F'
+    facility: 'Commerce & Computerized Accounting Lab'
   },
   {
     number: '11',
@@ -181,7 +183,7 @@ const departmentsData = [
     highlights: ['Advanced Financial Research Seminars', 'Corporate Internship Opportunities', 'Specialized Elective Tracks'],
     icon: TrendingUp,
     image: '/images/old_site/course-3.jpg',
-    color: '#8B1E2B'
+    facility: 'Executive Business & Finance Seminar Room'
   },
 
   // 3. Science & Technology
@@ -197,7 +199,7 @@ const departmentsData = [
     highlights: ['Equipped Undergraduate Physics Lab', 'Dark Room for Optical Experiments', 'Science Exhibition Participation'],
     icon: Atom,
     image: '/images/old_site/course-4.jpg',
-    color: '#0C1D3F'
+    facility: 'Dedicated Optics & Electronics Physics Lab'
   },
   {
     number: '13',
@@ -211,7 +213,7 @@ const departmentsData = [
     highlights: ['Dedicated Chemical Analysis Laboratory', 'Safe Reagent & Fume Stations', 'Environmental Chemistry Projects'],
     icon: Microscope,
     image: '/images/old_site/course-4.jpg',
-    color: '#C75B2A'
+    facility: 'Chemical Wet Analysis & Titration Laboratory'
   },
   {
     number: '14',
@@ -225,7 +227,7 @@ const departmentsData = [
     highlights: ['Mathematical Problem-Solving Circles', 'Inter-College Quiz Participation', 'Applied Mathematics Foundations'],
     icon: TrendingUp,
     image: '/images/old_site/pic_20_1_.JPG',
-    color: '#8B1E2B'
+    facility: 'Mathematical Computing & Logic Studio'
   },
   {
     number: '15',
@@ -239,7 +241,7 @@ const departmentsData = [
     highlights: ['Air-Conditioned Computer Laboratory', 'High-Speed Broadband Connectivity', 'Hands-on Programming Practicals'],
     icon: Laptop,
     image: '/images/campus_moments/comp-2.jpg',
-    color: '#0C1D3F'
+    facility: 'Air-Conditioned Main Computing Center'
   },
   {
     number: '16',
@@ -253,7 +255,7 @@ const departmentsData = [
     highlights: ['Advanced BCA Computer Lab', 'Project-Based Curriculum', 'Industry Tech Seminars & Workshops'],
     icon: Laptop,
     image: '/images/campus_moments/comp-1.jpg',
-    color: '#C75B2A'
+    facility: 'Professional BCA Software & Network Lab'
   },
 
   // 4. Fine Arts, Music & Physical Education
@@ -269,7 +271,7 @@ const departmentsData = [
     highlights: ['Dedicated Art Studio with Easels', 'Annual Campus Art Exhibitions', 'Punjabi University Youth Festival Accolades'],
     icon: Palette,
     image: '/images/old_site/fineart.JPG',
-    color: '#8B1E2B'
+    facility: 'Fine Arts Studio & Visual Gallery'
   },
   {
     number: '18',
@@ -283,7 +285,7 @@ const departmentsData = [
     highlights: ['Acoustic Music Practice Room', 'Harmonium, Tanpura & Tabla Instruments', 'Consistent Youth Festival Trophies'],
     icon: Activity,
     image: '/images/old_site/talenthunt_20_4_.JPG',
-    color: '#0C1D3F'
+    facility: 'Acoustic Sangeet & Instrumental Chamber'
   },
   {
     number: '19',
@@ -297,7 +299,7 @@ const departmentsData = [
     highlights: ['15-Acre Sprawling Sports Ground', 'Indoor & Outdoor Gymnasium Facilities', 'Inter-College Athletics Tournaments'],
     icon: Dumbbell,
     image: '/images/campus_moments/sport (1).jpg',
-    color: '#C75B2A'
+    facility: '15-Acre Athletic Track & Multi-Gymnasium'
   },
   {
     number: '20',
@@ -311,7 +313,35 @@ const departmentsData = [
     highlights: ['Dedicated Home Science Practical Lab', 'Culinary & Nutrition Exhibitions', 'Textile Design & Craft Workshops'],
     icon: Sparkles,
     image: '/images/old_site/talenthunt_20_2_.JPG',
-    color: '#8B1E2B'
+    facility: 'Home Science Culinary & Textile Laboratory'
+  }
+];
+
+// 4 Major Academic Facilities
+const academicFacilities = [
+  {
+    title: 'Advanced Computer & BCA Labs',
+    category: 'Information Technology',
+    image: '/images/campus_moments/comp-1.jpg',
+    description: 'Modern high-speed air-conditioned laboratories equipped for programming in C++, Java, Python, web development, DBMS, and digital research.'
+  },
+  {
+    title: 'Fine Arts Studio & Creative Workshop',
+    category: 'Visual & Applied Arts',
+    image: '/images/old_site/fineart.JPG',
+    description: 'Natural light art studio equipped with individual easels, sculpting benches, and exhibition galleries for painting, sketching, and traditional craft.'
+  },
+  {
+    title: 'Geography & Topographical Survey Lab',
+    category: 'Earth Sciences',
+    image: '/images/campus_moments/geo (1).jpg',
+    description: 'Specialized lab featuring cartographic instruments, stereoscopes, plane table survey kits, aerial photograph archives, and regional maps.'
+  },
+  {
+    title: '15-Acre Sports Complex & Fitness Arenas',
+    category: 'Athletics & Physical Education',
+    image: '/images/campus_moments/sport (1).jpg',
+    description: 'Expansive outdoor athletic fields, cricket/football grounds, volleyball courts, and modern indoor/open gymnasiums for holistic fitness.'
   }
 ];
 
@@ -356,7 +386,7 @@ export default function DepartmentsPage() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* 2. Breadcrumb: Home / Academics / Departments */}
+          {/* Breadcrumb: Home / Academics / Departments */}
           <nav className="flex items-center gap-2 text-xs sm:text-sm text-slate-300 mb-6 sm:mb-8 font-medium">
             <Link to="/" className="flex items-center gap-1 hover:text-[#F49D71] transition-colors">
               <Home size={15} />
@@ -410,7 +440,7 @@ export default function DepartmentsPage() {
         </div>
       </section>
 
-      {/* 3. “EXPLORE OUR DEPARTMENTS” & CATEGORY FILTER */}
+      {/* 2. “EXPLORE OUR DEPARTMENTS” & CATEGORY FILTER */}
       <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -477,7 +507,7 @@ export default function DepartmentsPage() {
           })}
         </div>
 
-        {/* 4. DEPARTMENT CARDS GRID */}
+        {/* 3. DEPARTMENT CARDS WITH REAL IMAGES */}
         <div className="mt-10">
           {filteredDepartments.length === 0 ? (
             <div className="bg-white rounded-2xl p-12 text-center border border-slate-200">
@@ -492,69 +522,87 @@ export default function DepartmentsPage() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
               {filteredDepartments.map((dept) => {
                 const IconComponent = dept.icon;
                 return (
                   <div
                     key={dept.number}
-                    className="group bg-white rounded-2xl border border-slate-200/90 hover:border-[#0C1D3F]/40 p-6 sm:p-7 flex flex-col justify-between transition-all duration-300 shadow-xs hover:shadow-xl hover:-translate-y-1 relative overflow-hidden"
+                    className="group bg-white rounded-2xl border border-slate-200/90 hover:border-[#0C1D3F]/40 flex flex-col justify-between transition-all duration-300 shadow-xs hover:shadow-xl hover:-translate-y-1 relative overflow-hidden"
                   >
                     {/* Top Accent Line */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-transparent group-hover:bg-[#C75B2A] transition-colors duration-300" />
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-transparent group-hover:bg-[#C75B2A] transition-colors duration-300 z-20" />
 
                     <div>
-                      {/* Card Header: Number & Category Badge */}
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          <span className="text-2xl font-black text-[#0C1D3F]/25 group-hover:text-[#C75B2A]/40 transition-colors font-display">
-                            {dept.number}
+                      {/* Department Image Header with Overlay */}
+                      <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-[#0C1D3F]">
+                        <img 
+                          src={dept.image} 
+                          alt={`${dept.fullName} - Government College Dera Bassi`}
+                          className="w-full h-full object-cover object-center filter brightness-90 contrast-105 group-hover:scale-110 transition-transform duration-500 ease-out"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0C1D3F] via-[#0C1D3F]/40 to-transparent" />
+                        
+                        {/* Top Overlay Badges */}
+                        <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                          <span className="px-2.5 py-1 rounded-md bg-[#0C1D3F]/80 backdrop-blur-md text-[#F49D71] font-mono font-bold text-xs border border-white/20">
+                            #{dept.number}
                           </span>
-                          <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#FAF4E6] text-[#8B1E2B] border border-[#C75B2A]/20">
+                          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md text-[#0C1D3F] shadow-xs">
                             {dept.category}
                           </span>
                         </div>
-                        <div className="w-10 h-10 rounded-xl bg-slate-50 group-hover:bg-[#0C1D3F] text-[#0C1D3F] group-hover:text-[#F49D71] border border-slate-200 group-hover:border-[#0C1D3F] flex items-center justify-center transition-all duration-300 shadow-2xs">
-                          <IconComponent size={18} />
+
+                        {/* Title Overlay at bottom of Image */}
+                        <div className="absolute bottom-3 left-4 right-4 z-10 flex items-end justify-between">
+                          <div>
+                            <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-tight group-hover:text-[#F49D71] transition-colors drop-shadow-sm">
+                              {dept.name}
+                            </h3>
+                          </div>
+                          <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-md text-white flex items-center justify-center border border-white/30 shrink-0">
+                            <IconComponent size={16} />
+                          </div>
                         </div>
                       </div>
 
-                      {/* Department Name */}
-                      <h3 className="text-xl sm:text-2xl font-extrabold text-[#0C1D3F] tracking-tight group-hover:text-[#C75B2A] transition-colors">
-                        {dept.name}
-                      </h3>
+                      {/* Card Content Area */}
+                      <div className="p-5 sm:p-6">
+                        {/* Short Label */}
+                        <p className="text-xs font-semibold text-[#8B1E2B] flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#C75B2A] shrink-0" />
+                          <span>{dept.shortLabel}</span>
+                        </p>
 
-                      {/* Short Label */}
-                      <p className="text-xs font-semibold text-[#8B1E2B] mt-1.5 flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C75B2A] shrink-0" />
-                        <span>{dept.shortLabel}</span>
-                      </p>
+                        {/* Description */}
+                        <p className="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed line-clamp-3">
+                          {dept.description}
+                        </p>
 
-                      {/* Description */}
-                      <p className="text-slate-600 text-xs sm:text-sm mt-3.5 leading-relaxed line-clamp-3">
-                        {dept.description}
-                      </p>
-
-                      {/* Degree Badges */}
-                      <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
-                        {dept.degrees.map((deg, idx) => (
-                          <span 
-                            key={idx} 
-                            className="text-[11px] font-medium bg-slate-50 text-slate-700 px-2.5 py-1 rounded-md border border-slate-200"
-                          >
-                            {deg}
-                          </span>
-                        ))}
+                        {/* Degree Badges */}
+                        <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
+                          {dept.degrees.map((deg, idx) => (
+                            <span 
+                              key={idx} 
+                              className="text-[11px] font-medium bg-slate-50 text-slate-700 px-2.5 py-0.5 rounded-md border border-slate-200"
+                            >
+                              {deg}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
                     {/* Card Footer: Explore Department Button */}
-                    <div className="mt-6 pt-4 border-t border-slate-100">
+                    <div className="px-5 pb-5 sm:px-6 sm:pb-6">
                       <button
                         onClick={() => setActiveModalDept(dept)}
                         className="w-full inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-slate-50 group-hover:bg-[#0C1D3F] text-[#0C1D3F] group-hover:text-white text-xs font-bold transition-all duration-200"
                       >
-                        <span>Explore Department</span>
+                        <span className="flex items-center gap-1.5">
+                          <Eye size={14} className="text-[#C75B2A] group-hover:text-[#F49D71]" />
+                          <span>Explore Department</span>
+                        </span>
                         <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                       </button>
                     </div>
@@ -568,11 +616,11 @@ export default function DepartmentsPage() {
 
       </section>
 
-      {/* 5. LARGE REAL GCD CAMPUS / LAB / CLASSROOM IMAGE WITH "Learn. Explore. Discover." */}
+      {/* 4. LARGE REAL GCD CAMPUS / LAB / CLASSROOM HERO WITH "Learn. Explore. Discover." */}
       <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl overflow-hidden bg-[#0C1D3F] text-white shadow-2xl border-2 border-slate-200">
           
-          {/* Real GCD Lab / Classroom Photo with Sophisticated Reveal */}
+          {/* Real GCD Lab / Classroom Photo */}
           <div className="relative h-[420px] sm:h-[480px] lg:h-[540px] w-full overflow-hidden">
             <img 
               src="/images/campus_moments/comp-1.jpg" 
@@ -621,12 +669,79 @@ export default function DepartmentsPage() {
         </div>
       </section>
 
-      {/* REASSURANCE / QUICK ACADEMIC LINKS */}
-      <section className="py-12 bg-white border-t border-slate-200">
+      {/* 5. VISUAL GALLERY: ACADEMIC FACILITIES & LEARNING SPACES IN ACTION */}
+      <section className="py-12 sm:py-16 bg-white border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-6 border-b border-slate-100">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#FAF4E6] text-[#C75B2A] text-xs font-bold uppercase tracking-widest mb-2 border border-[#C75B2A]/20">
+                <Camera size={13} />
+                <span>On-Campus Infrastructure</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0C1D3F] tracking-tight">
+                Academic Facilities & Learning Spaces
+              </h3>
+              <p className="text-slate-600 text-xs sm:text-sm mt-1 max-w-2xl font-light">
+                Authentic glimpses into our laboratories, interactive classrooms, and multi-disciplinary learning environments.
+              </p>
+            </div>
+            <Link 
+              to="/about/overview"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C75B2A] hover:text-[#A84820] transition-colors"
+            >
+              <span>Explore Complete Campus</span>
+              <ArrowRight size={13} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {academicFacilities.map((fac, idx) => (
+              <div 
+                key={idx}
+                className="bg-[#FAF9F5] rounded-2xl border border-slate-200 overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative h-48 w-full overflow-hidden bg-slate-900">
+                    <img 
+                      src={fac.image} 
+                      alt={fac.title} 
+                      className="w-full h-full object-cover object-center filter brightness-95 group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#0C1D3F]/80 backdrop-blur-md text-white border border-white/20">
+                        {fac.category}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <h4 className="font-bold text-[#0C1D3F] text-base group-hover:text-[#C75B2A] transition-colors">
+                      {fac.title}
+                    </h4>
+                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                      {fac.description}
+                    </p>
+                  </div>
+                </div>
+                <div className="p-5 pt-0">
+                  <span className="text-[11px] font-semibold text-[#8B1E2B] flex items-center gap-1">
+                    <CheckCircle2 size={13} className="text-[#C75B2A]" />
+                    <span>Active Student Facility</span>
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 6. REASSURANCE / QUICK ACADEMIC LINKS */}
+      <section className="py-12 bg-[#FAF9F5] border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            <div className="p-6 rounded-2xl bg-[#FAF9F5] border border-slate-200 flex items-start gap-4">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 flex items-start gap-4 shadow-xs">
               <div className="w-10 h-10 rounded-xl bg-[#FAF4E6] text-[#C75B2A] flex items-center justify-center shrink-0 border border-[#C75B2A]/20">
                 <GraduationCap size={20} />
               </div>
@@ -640,7 +755,7 @@ export default function DepartmentsPage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#FAF9F5] border border-slate-200 flex items-start gap-4">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 flex items-start gap-4 shadow-xs">
               <div className="w-10 h-10 rounded-xl bg-[#FAF4E6] text-[#C75B2A] flex items-center justify-center shrink-0 border border-[#C75B2A]/20">
                 <BookOpen size={20} />
               </div>
@@ -654,7 +769,7 @@ export default function DepartmentsPage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#FAF9F5] border border-slate-200 flex items-start gap-4">
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 flex items-start gap-4 shadow-xs">
               <div className="w-10 h-10 rounded-xl bg-[#FAF4E6] text-[#C75B2A] flex items-center justify-center shrink-0 border border-[#C75B2A]/20">
                 <Building2 size={20} />
               </div>
@@ -672,34 +787,44 @@ export default function DepartmentsPage() {
         </div>
       </section>
 
-      {/* DEPARTMENT DETAIL MODAL */}
+      {/* 7. DEPARTMENT DETAIL MODAL WITH IMAGE BANNER */}
       {activeModalDept && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-3 sm:p-6 animate-fadeIn">
           <div className="bg-white rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl border border-slate-300 flex flex-col max-h-[90vh]">
             
-            {/* Modal Header */}
-            <div className="bg-[#0C1D3F] text-white p-6 relative">
-              <div className="flex items-center justify-between">
+            {/* Modal Image Header */}
+            <div className="relative h-48 sm:h-56 w-full bg-[#0C1D3F] overflow-hidden">
+              <img 
+                src={activeModalDept.image} 
+                alt={activeModalDept.fullName}
+                className="w-full h-full object-cover filter brightness-75 contrast-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0C1D3F] via-[#0C1D3F]/60 to-transparent" />
+              
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#F49D71]">
-                  <span>Department #{activeModalDept.number}</span>
+                  <span className="px-2 py-0.5 rounded bg-black/50 backdrop-blur-md">Dept #{activeModalDept.number}</span>
                   <span>•</span>
-                  <span>{activeModalDept.category}</span>
+                  <span className="px-2 py-0.5 rounded bg-black/50 backdrop-blur-md">{activeModalDept.category}</span>
                 </div>
                 <button
                   onClick={() => setActiveModalDept(null)}
-                  className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+                  className="p-1.5 rounded-lg bg-black/50 hover:bg-black/75 text-white transition-colors border border-white/20"
                   aria-label="Close modal"
                 >
                   <X size={18} />
                 </button>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mt-2">
-                {activeModalDept.fullName}
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                {activeModalDept.shortLabel}
-              </p>
+              <div className="absolute bottom-4 left-6 right-6 z-10">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight">
+                  {activeModalDept.fullName}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-200 mt-1 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#C75B2A]" />
+                  <span>{activeModalDept.shortLabel}</span>
+                </p>
+              </div>
             </div>
 
             {/* Modal Body */}
@@ -740,10 +865,13 @@ export default function DepartmentsPage() {
                 </ul>
               </div>
 
-              {/* Affiliation Note */}
-              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-center justify-between">
-                <span>Affiliated to Punjabi University, Patiala</span>
-                <span className="font-semibold text-[#0C1D3F]">Govt. College Dera Bassi</span>
+              {/* Facility Highlight */}
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-center justify-between">
+                <div>
+                  <div className="font-bold text-[#0C1D3F]">Department Facility</div>
+                  <div className="text-slate-500 mt-0.5">{activeModalDept.facility}</div>
+                </div>
+                <span className="font-semibold text-[#8B1E2B] bg-white px-2.5 py-1 rounded border border-slate-200">Punjabi University, Patiala</span>
               </div>
 
             </div>
