@@ -6,6 +6,9 @@ import {
   Eye, 
   Search, 
   Home, 
+  Sparkles,
+  Archive,
+  CheckCircle2,
   X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -175,75 +178,79 @@ const AcademicCalendarPage = () => {
                 placeholder="Search by year or session..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-[#8B1E2B] focus:ring-1 focus:ring-[#8B1E2B] transition-all"
+                className="w-full pl-10 pr-4 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-[#8B1E2B] focus:ring-1 focus:ring-[#8B1E2B] transition-all"
               />
             </div>
           )}
         </div>
 
-        {/* MAIN OFFICIAL ARCHIVE (Matches gcderabassi.ac.in/calender.php) */}
+        {/* MAIN OFFICIAL ARCHIVE */}
         {activeTab === 'all' && (
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
-            <div className="flex items-center justify-between mb-6">
+          <div className="space-y-4">
+            <div className="flex items-center justify-between px-2 mb-2">
               <div>
-                <h3 className="text-lg sm:text-xl font-black text-[#0C1D3F]">
+                <h3 className="text-xl sm:text-2xl font-black text-[#0C1D3F]">
                   Annual Academic Calendars
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+                <p className="text-xs sm:text-sm text-slate-500 mt-1">
                   Official repository from Government College, Dera Bassi (2017–18 through 2025–26)
                 </p>
               </div>
-              <span className="text-xs font-bold text-[#8B1E2B] bg-rose-50 px-3 py-1 rounded-full border border-rose-100">
+              <span className="text-xs font-bold text-[#8B1E2B] bg-rose-50 px-3 py-1.5 rounded-full border border-rose-100 shadow-2xs">
                 {filteredCalendars.length} Documents
               </span>
             </div>
 
-            <div className="divide-y divide-slate-100">
+            {/* BIGGER & HIGHLIGHTED CARDS FOR EACH CALENDAR */}
+            <div className="space-y-4">
               {filteredCalendars.map((calendar) => (
                 <div 
                   key={calendar.id} 
-                  className={`py-4.5 sm:py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-4 rounded-2xl transition-all ${
+                  className={`rounded-2xl sm:rounded-3xl p-5 sm:p-7 flex flex-col lg:flex-row lg:items-center justify-between gap-5 transition-all duration-300 ${
                     calendar.isLatest 
-                      ? 'bg-emerald-50/40 hover:bg-emerald-50/70 border border-emerald-100/80 shadow-xs' 
-                      : 'hover:bg-slate-50/90'
+                      ? 'bg-gradient-to-r from-[#FAF4E6] via-white to-rose-50/50 border-2 border-[#8B1E2B]/40 shadow-md ring-2 ring-[#8B1E2B]/10 hover:shadow-lg' 
+                      : 'bg-white hover:bg-slate-50/90 border border-slate-200/90 shadow-xs hover:shadow-md hover:border-slate-300'
                   }`}
                 >
-                  <div className="flex items-center gap-4">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
+                  {/* Left info column */}
+                  <div className="flex items-start sm:items-center gap-4 sm:gap-5">
+                    <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center shrink-0 border transition-all ${
                       calendar.isLatest 
-                        ? 'bg-emerald-100/70 text-emerald-800 border-emerald-200' 
-                        : 'bg-[#8B1E2B]/10 text-[#8B1E2B] border-[#8B1E2B]/20'
+                        ? 'bg-[#8B1E2B] text-white border-[#8B1E2B] shadow-md shadow-[#8B1E2B]/20' 
+                        : 'bg-slate-100 text-slate-700 border-slate-200'
                     }`}>
-                      <FileText size={22} />
+                      <FileText size={26} />
                     </div>
+
                     <div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h4 className="font-extrabold text-slate-900 text-base sm:text-lg">
+                      <div className="flex flex-wrap items-center gap-2.5 mb-1.5">
+                        <h4 className="font-black text-slate-900 text-lg sm:text-2xl tracking-tight">
                           {calendar.title}
                         </h4>
                         {calendar.isLatest ? (
-                          <span className="bg-emerald-100 text-emerald-800 text-xs font-black uppercase px-2.5 py-0.5 rounded-full border border-emerald-200 shadow-xs">
-                            Latest
+                          <span className="bg-[#8B1E2B] text-white text-xs font-black uppercase px-3 py-1 rounded-full shadow-xs tracking-wider flex items-center gap-1">
+                            <Sparkles size={11} className="text-amber-300" />
+                            <span>Latest Session</span>
                           </span>
                         ) : (
-                          <span className="bg-amber-50 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-amber-200/70">
-                            Archived Edition
+                          <span className="bg-amber-100/70 text-amber-900 text-xs font-bold uppercase px-2.5 py-0.5 rounded-full border border-amber-200/80 tracking-wide flex items-center gap-1">
+                            <Archive size={11} className="text-amber-700" />
+                            <span>Archived Edition</span>
                           </span>
                         )}
                       </div>
-                      <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs sm:text-sm mt-1.5 font-medium">
-                        <span className={`inline-flex items-center font-bold px-2.5 py-0.5 rounded-md text-xs sm:text-xs ${
+
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:text-sm text-slate-600 font-medium">
+                        <span className={`inline-flex items-center font-bold px-2.5 py-0.5 rounded-md text-xs ${
                           calendar.isLatest 
-                            ? 'bg-emerald-100/60 text-emerald-900 border border-emerald-200/60' 
+                            ? 'bg-rose-100/70 text-[#8B1E2B] border border-rose-200/70' 
                             : 'bg-slate-100 text-slate-800 border border-slate-200/70'
                         }`}>
                           {calendar.session}
                         </span>
-                        <span className="text-slate-400 font-black">•</span>
-                        <span className="text-slate-700 font-semibold">
-                          Punjabi University, Patiala
-                        </span>
-                        <span className="text-slate-400 font-black">•</span>
+                        <span className="text-slate-300 font-black">•</span>
+                        <span className="text-slate-700 font-semibold">Punjabi University, Patiala</span>
+                        <span className="text-slate-300 font-black">•</span>
                         <span className="inline-flex items-center font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md text-xs border border-slate-200/60">
                           PDF ({calendar.size})
                         </span>
@@ -251,24 +258,28 @@ const AcademicCalendarPage = () => {
                     </div>
                   </div>
 
-                  {/* Action buttons (View button removed, keeping Preview & Download) */}
-                  <div className="flex items-center gap-2.5 sm:self-center ml-15 sm:ml-0">
+                  {/* Right action buttons - Larger & Prominent */}
+                  <div className="flex items-center gap-3 sm:self-center pt-3 lg:pt-0 border-t lg:border-t-0 border-slate-100 shrink-0">
                     <button
                       onClick={() => setPreviewPdf(calendar)}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-sm font-bold transition-all shadow-xs"
                       title="Preview PDF"
                     >
-                      <Eye size={14} />
+                      <Eye size={16} />
                       <span>Preview</span>
                     </button>
                     <a
                       href={calendar.file}
                       download
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#8B1E2B] hover:bg-[#601520] text-white rounded-xl text-xs font-bold transition-colors shadow-xs"
+                      className={`inline-flex items-center justify-center gap-2 px-6 py-2.5 sm:py-3 rounded-xl text-sm font-bold transition-all shadow-md ${
+                        calendar.isLatest 
+                          ? 'bg-[#8B1E2B] hover:bg-[#601520] text-white ring-2 ring-[#8B1E2B]/20' 
+                          : 'bg-slate-900 hover:bg-slate-800 text-white'
+                      }`}
                       title="Download PDF"
                     >
-                      <Download size={14} />
-                      <span>Download</span>
+                      <Download size={16} />
+                      <span>Download PDF</span>
                     </a>
                   </div>
                 </div>
@@ -324,11 +335,11 @@ const AcademicCalendarPage = () => {
               {/* Modal Header */}
               <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-[#8B1E2B]/10 text-[#8B1E2B] flex items-center justify-center">
-                    <FileText size={18} />
+                  <div className="w-10 h-10 rounded-xl bg-[#8B1E2B]/10 text-[#8B1E2B] flex items-center justify-center">
+                    <FileText size={20} />
                   </div>
                   <div>
-                    <h3 className="font-black text-slate-900 text-base">
+                    <h3 className="font-black text-slate-900 text-base sm:text-lg">
                       {previewPdf.title}
                     </h3>
                     <p className="text-xs text-slate-500">
@@ -341,26 +352,26 @@ const AcademicCalendarPage = () => {
                   <a
                     href={previewPdf.file}
                     download
-                    className="inline-flex items-center gap-1 text-xs font-bold text-white bg-[#8B1E2B] hover:bg-[#601520] px-3.5 py-1.5 rounded-lg transition-colors shadow-xs"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-[#8B1E2B] hover:bg-[#601520] px-4 py-2 rounded-lg transition-colors shadow-xs"
                   >
-                    <Download size={13} />
+                    <Download size={14} />
                     <span>Download</span>
                   </a>
                   <button
                     onClick={() => setPreviewPdf(null)}
-                    className="w-8 h-8 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 flex items-center justify-center ml-2 transition-colors"
+                    className="w-9 h-9 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 flex items-center justify-center ml-2 transition-colors"
                   >
-                    <X size={16} />
+                    <X size={18} />
                   </button>
                 </div>
               </div>
 
               {/* Modal Body: iframe */}
-              <div className="flex-1 min-h-[500px] bg-slate-100 p-2">
+              <div className="flex-1 min-h-[550px] bg-slate-100 p-2">
                 <iframe
                   src={previewPdf.file}
                   title={previewPdf.title}
-                  className="w-full h-full min-h-[500px] rounded-xl border border-slate-200 bg-white"
+                  className="w-full h-full min-h-[550px] rounded-xl border border-slate-200 bg-white"
                 />
               </div>
             </div>
