@@ -7,10 +7,7 @@ import {
   Search, 
   ExternalLink, 
   Home, 
-  CheckCircle2, 
-  Clock, 
   Sparkles,
-  BookOpen,
   X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -23,15 +20,7 @@ const officialCalendars = [
     session: 'Session 2025–2026',
     file: '/images/prospectus/Acedmic/Academic-Calender-2025-26.pdf',
     size: '23 KB',
-    isLatest: true,
-    academicKeyDates: [
-      { label: 'Odd Semester Term', value: '28 July 2025 – 14 November 2025' },
-      { label: 'Odd Semester Examinations', value: 'Commencing 20 November 2025' },
-      { label: 'Winter Break', value: '26 December 2025 – 10 January 2026' },
-      { label: 'Even Semester Term', value: '12 January 2026 – 24 April 2026' },
-      { label: 'Even Semester Examinations', value: 'Commencing 04 May 2026' },
-      { label: 'Summer Vacations', value: '09 June 2025 – 12 July 2025' }
-    ]
+    isLatest: true
   },
   {
     id: 2,
@@ -111,7 +100,7 @@ const punjabHolidays2026 = [
 const AcademicCalendarPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [previewPdf, setPreviewPdf] = useState(null);
-  const [activeTab, setActiveTab] = useState('all'); // 'all', 'current', 'holidays'
+  const [activeTab, setActiveTab] = useState('all'); // 'all', 'holidays'
 
   const filteredCalendars = officialCalendars.filter(cal => 
     cal.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -161,27 +150,17 @@ const AcademicCalendarPage = () => {
           <div className="flex flex-wrap items-center gap-2">
             <button
               onClick={() => setActiveTab('all')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${
                 activeTab === 'all'
                   ? 'bg-[#8B1E2B] text-white shadow-xs'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
-              All Academic Calendars ({officialCalendars.length})
-            </button>
-            <button
-              onClick={() => setActiveTab('current')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${
-                activeTab === 'current'
-                  ? 'bg-[#8B1E2B] text-white shadow-xs'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-              }`}
-            >
-              Latest Schedule 2025–26
+              Academic Calendars ({officialCalendars.length})
             </button>
             <button
               onClick={() => setActiveTab('holidays')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${
+              className={`px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${
                 activeTab === 'holidays'
                   ? 'bg-[#8B1E2B] text-white shadow-xs'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
@@ -216,13 +195,13 @@ const AcademicCalendarPage = () => {
                 <div>
                   <div className="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
                     <Sparkles size={12} className="text-emerald-600" />
-                    <span>Current Active Session</span>
+                    <span>Latest Academic Calendar</span>
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-black text-[#0C1D3F] tracking-tight">
                     {latestCalendar.title}
                   </h2>
                   <p className="text-slate-600 text-sm mt-1">
-                    Official schedule prescribed by Punjabi University, Patiala for Government College, Dera Bassi.
+                    Official schedule prescribed by Punjabi University, Patiala for Government College, Dera Bassi (Session 2025–2026).
                   </p>
                 </div>
 
@@ -238,6 +217,13 @@ const AcademicCalendarPage = () => {
                     href={latestCalendar.file}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all"
+                  >
+                    <ExternalLink size={15} />
+                    <span>View in Tab</span>
+                  </a>
+                  <a
+                    href={latestCalendar.file}
                     download
                     className="inline-flex items-center gap-2 bg-[#8B1E2B] hover:bg-[#601520] text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-md"
                   >
@@ -246,18 +232,6 @@ const AcademicCalendarPage = () => {
                   </a>
                 </div>
               </div>
-
-              {/* Semester Key Milestones */}
-              {latestCalendar.academicKeyDates && (
-                <div className="mt-6 pt-6 border-t border-[#EADBBD]/80 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                  {latestCalendar.academicKeyDates.map((item, idx) => (
-                    <div key={idx} className="bg-white/80 backdrop-blur p-3.5 rounded-xl border border-slate-200/60 shadow-xs">
-                      <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-500">{item.label}</span>
-                      <span className="text-sm font-bold text-slate-900 mt-0.5 block">{item.value}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
 
             {/* FULL OFFICIAL ARCHIVE GRID (Matches gcderabassi.ac.in/calender.php) */}
@@ -341,106 +315,7 @@ const AcademicCalendarPage = () => {
           </div>
         )}
 
-        {/* TAB 2: LATEST SCHEDULE (DETAILED VIEW) */}
-        {activeTab === 'current' && (
-          <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-sm space-y-8">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#8B1E2B] bg-rose-50 px-3 py-1 rounded-full border border-rose-100">
-                  Punjabi University Academic Notification
-                </span>
-                <h2 className="text-2xl sm:text-3xl font-black text-[#0C1D3F] mt-2">
-                  Academic Calendar 2025–2026
-                </h2>
-                <p className="text-slate-600 text-sm mt-1">
-                  Applicable for all Undergraduate and Postgraduate programmes at Government College, Dera Bassi.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <a
-                  href={latestCalendar.file}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#8B1E2B] hover:bg-[#601520] text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-md"
-                >
-                  <Download size={15} />
-                  <span>Download Official Notification PDF</span>
-                </a>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Odd Semester */}
-              <div className="p-6 rounded-2xl bg-amber-50/60 border border-amber-200/70">
-                <div className="flex items-center gap-2 text-amber-900 font-black text-lg mb-4">
-                  <Clock size={20} className="text-[#C75B2A]" />
-                  <span>Odd Semester Schedule</span>
-                </div>
-                <ul className="space-y-3.5 text-sm">
-                  <li className="flex justify-between items-center pb-2 border-b border-amber-200/50">
-                    <span className="text-slate-600">Summer Vacations (ਗਰਮੀ ਦੀਆਂ ਛੁੱਟੀਆਂ)</span>
-                    <span className="font-bold text-slate-900">09 June 2025 – 12 July 2025</span>
-                  </li>
-                  <li className="flex justify-between items-center pb-2 border-b border-amber-200/50">
-                    <span className="text-slate-600">Odd Semester Term Duration</span>
-                    <span className="font-bold text-slate-900">28 July 2025 – 14 November 2025</span>
-                  </li>
-                  <li className="flex justify-between items-center pb-2 border-b border-amber-200/50">
-                    <span className="text-slate-600">Odd Semester Examinations</span>
-                    <span className="font-bold text-slate-900">Commencing 20 November 2025</span>
-                  </li>
-                  <li className="flex justify-between items-center">
-                    <span className="text-slate-600">Winter Break (ਸਰਦੀ ਦੀਆਂ ਛੁੱਟੀਆਂ)</span>
-                    <span className="font-bold text-slate-900">26 December 2025 – 10 January 2026</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Even Semester */}
-              <div className="p-6 rounded-2xl bg-blue-50/60 border border-blue-200/70">
-                <div className="flex items-center gap-2 text-blue-900 font-black text-lg mb-4">
-                  <Clock size={20} className="text-blue-700" />
-                  <span>Even Semester Schedule</span>
-                </div>
-                <ul className="space-y-3.5 text-sm">
-                  <li className="flex justify-between items-center pb-2 border-b border-blue-200/50">
-                    <span className="text-slate-600">Even Semester Re-opening</span>
-                    <span className="font-bold text-slate-900">12 January 2026</span>
-                  </li>
-                  <li className="flex justify-between items-center pb-2 border-b border-blue-200/50">
-                    <span className="text-slate-600">Even Semester Term Duration</span>
-                    <span className="font-bold text-slate-900">12 January 2026 – 24 April 2026</span>
-                  </li>
-                  <li className="flex justify-between items-center pb-2 border-b border-blue-200/50">
-                    <span className="text-slate-600">Even Semester Examinations</span>
-                    <span className="font-bold text-slate-900">Commencing 04 May 2026</span>
-                  </li>
-                  <li className="flex justify-between items-center">
-                    <span className="text-slate-600">Preparatory & Evaluation Period</span>
-                    <span className="font-bold text-slate-900">As per PUP Notification</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* Embedded PDF iframe preview */}
-            <div className="pt-6 border-t border-slate-100">
-              <h3 className="font-black text-slate-900 text-lg mb-3">
-                Official PDF Document
-              </h3>
-              <div className="w-full h-[600px] rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100">
-                <iframe 
-                  src={latestCalendar.file}
-                  title="Academic Calendar 2025-26"
-                  className="w-full h-full"
-                />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* TAB 3: PUNJAB GOVT HOLIDAYS */}
+        {/* TAB 2: PUNJAB GOVT HOLIDAYS */}
         {activeTab === 'holidays' && (
           <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-sm space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
