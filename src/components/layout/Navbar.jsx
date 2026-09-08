@@ -118,7 +118,15 @@ const navItems = [
     ]
   },
   { label: 'NIRF', href: '#recognition', hasChevron: false },
-  { label: 'GALLERY', href: '#campus-life', hasChevron: false },
+  { 
+    label: 'GALLERY', 
+    href: '/gallery', 
+    hasChevron: true,
+    children: [
+      { label: 'Photo Gallery', href: '/gallery' },
+      { label: 'News Gallery', href: '/gallery/news' }
+    ]
+  },
   { label: 'CONTACT US', href: '#contact', hasChevron: false },
 
   // PROSPECTUS (Always highlighted with white background, placed as last option after CONTACT US)

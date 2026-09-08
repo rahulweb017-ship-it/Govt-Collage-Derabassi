@@ -10,6 +10,8 @@ import VisionMissionPage from './pages/VisionMissionPage'
 import DepartmentsPage from './pages/DepartmentsPage'
 import CoursesOfferedPage from './pages/CoursesOfferedPage'
 import AdmissionRulesPage from './pages/AdmissionRulesPage'
+import PhotoGalleryPage from './pages/PhotoGalleryPage'
+import NewsGalleryPage from './pages/NewsGalleryPage'
 import PlaceholderPage from './pages/PlaceholderPage'
 
 // Automatically scrolls to top on route change
@@ -74,6 +76,12 @@ export default function App() {
           <Route path="/infrastructure/library" element={<PlaceholderPage />} />
           <Route path="/infrastructure/it-facilities" element={<PlaceholderPage />} />
           <Route path="/infrastructure/physical" element={<PlaceholderPage />} />
+
+          {/* Gallery Routes */}
+          <Route path="/gallery" element={<PhotoGalleryPage />} />
+          <Route path="/gallery/photos" element={<PhotoGalleryPage />} />
+          <Route path="/gallery/news" element={<NewsGalleryPage />} />
+          <Route path="/news-gallery" element={<NewsGalleryPage />} />
 
           {/* Catch-all fallback */}
           <Route path="*" element={<PlaceholderPage />} />
