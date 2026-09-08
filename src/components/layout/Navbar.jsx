@@ -435,9 +435,6 @@ const Navbar = () => {
 
                                 {/* Flyout Submenu */}
                                 <div className="absolute left-full top-0 min-w-[340px] bg-white text-slate-800 rounded-lg shadow-2xl border border-slate-100 py-1.5 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 transform -translate-x-1 group-hover/sub:translate-x-0 z-50">
-                                  <div className="px-3.5 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100">
-                                    Official University Portals
-                                  </div>
                                   {child.subChildren.map((subItem, sIdx) => (
                                     <a
                                       key={sIdx}
@@ -450,12 +447,6 @@ const Navbar = () => {
                                       <ExternalLink size={12} className="text-slate-400 shrink-0 ml-2" />
                                     </a>
                                   ))}
-                                  <Link
-                                    to={child.href}
-                                    className="block px-4 py-2 text-center text-[11px] font-bold text-[#8B1E2B] bg-slate-50 hover:bg-[#FAF4E6] transition-colors border-t border-slate-100"
-                                  >
-                                    View Syllabus Guide Page →
-                                  </Link>
                                 </div>
                               </div>
                             ) : child.isDownload ? (
