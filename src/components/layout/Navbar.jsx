@@ -68,16 +68,16 @@ const navItems = [
     ]
   },
 
-  // 4. EXAMINATIONS (New dropdown menu with 4 sub-items requested)
+  // 4. EXAMINATIONS (Official Punjabi University Examination Portals)
   { 
     label: 'EXAMINATIONS', 
-    href: '/examinations/date-sheets',
+    href: 'https://pupexamination.ac.in/',
     hasChevron: true,
     children: [
-      { label: 'Date Sheets', href: '/examinations/date-sheets' },
-      { label: 'Results', href: '/examinations/results' },
-      { label: 'Examination Form', href: '/examinations/form' },
-      { label: 'Admit Card Download', href: '/examinations/admit-card' }
+      { label: 'Date Sheets', href: 'https://ds19.pupexamination.ac.in/uploaddatesheet/view-datesheet.php', isExternal: true },
+      { label: 'Results', href: 'https://results.pupexamination.ac.in/t8/results/results.php', isExternal: true },
+      { label: 'Examination Form', href: 'https://pupexamination.ac.in/', isExternal: true },
+      { label: 'Admit Card Download', href: 'https://pupexamination.ac.in/Login.aspx?Type=PRINTFORM', isExternal: true }
     ]
   },
 

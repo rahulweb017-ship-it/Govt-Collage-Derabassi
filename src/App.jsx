@@ -21,6 +21,21 @@ function ScrollToTop() {
   return null
 }
 
+function ExternalRedirect({ to }) {
+  useEffect(() => {
+    window.location.replace(to)
+  }, [to])
+  return (
+    <div className="min-h-[50vh] flex flex-col items-center justify-center p-8 text-center bg-[#FAF9F5]">
+      <div className="w-8 h-8 border-4 border-[#C75B2A] border-t-transparent rounded-full animate-spin mb-4" />
+      <p className="text-sm font-semibold text-[#0C1D3F]">Redirecting to official university portal...</p>
+      <a href={to} className="text-xs text-[#C75B2A] font-bold underline mt-2">
+        Click here if not redirected automatically &rarr;
+      </a>
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <Router>
@@ -51,10 +66,10 @@ export default function App() {
           <Route path="/admissions/rules" element={<AdmissionRulesPage />} />
           <Route path="/admission-rules" element={<AdmissionRulesPage />} />
           
-          <Route path="/examinations/date-sheets" element={<PlaceholderPage />} />
-          <Route path="/examinations/results" element={<PlaceholderPage />} />
-          <Route path="/examinations/form" element={<PlaceholderPage />} />
-          <Route path="/examinations/admit-card" element={<PlaceholderPage />} />
+          <Route path="/examinations/date-sheets" element={<ExternalRedirect to="https://ds19.pupexamination.ac.in/uploaddatesheet/view-datesheet.php" />} />
+          <Route path="/examinations/results" element={<ExternalRedirect to="https://results.pupexamination.ac.in/t8/results/results.php" />} />
+          <Route path="/examinations/form" element={<ExternalRedirect to="https://pupexamination.ac.in/" />} />
+          <Route path="/examinations/admit-card" element={<ExternalRedirect to="https://pupexamination.ac.in/Login.aspx?Type=PRINTFORM" />} />
           
           <Route path="/infrastructure/library" element={<PlaceholderPage />} />
           <Route path="/infrastructure/it-facilities" element={<PlaceholderPage />} />
