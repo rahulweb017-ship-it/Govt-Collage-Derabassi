@@ -20,11 +20,11 @@ import {
   UserCheck,
   ShieldAlert,
   Mail,
-  CheckCircle2,
   TrendingUp,
   Trees,
   Coffee,
-  Shield
+  Shield,
+  CheckCircle2
 } from 'lucide-react';
 import StatBar from '../components/ui/StatBar';
 
@@ -54,57 +54,79 @@ const AboutUsPage = () => {
         </div>
 
         {/* 1. HERO/INTRO BANNER */}
-        <section id="hero-banner" className="bg-gradient-to-br from-[#0C1D3F] via-[#152E55] to-[#4A1018] text-white rounded-3xl p-8 sm:p-14 shadow-xl relative overflow-hidden border border-slate-700/40">
+        <section id="hero-banner" className="bg-gradient-to-br from-[#0C1D3F] via-[#152E55] to-[#4A1018] text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden border border-slate-700/40">
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#8B1E2B]/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#C75B2A]/15 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 max-w-4xl">
-            {/* Badges strip */}
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              <div className="inline-flex items-center gap-2 bg-[#FAF4E6] text-[#8B1E2B] px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider shadow-sm border border-[#EADBBD]">
-                <Sparkles size={14} className="text-[#C75B2A]" />
-                <span>"50 Saal Bemisaal" / 50 Years Unmatched</span>
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left Content */}
+            <div className="lg:col-span-7">
+              {/* Badges strip */}
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <div className="inline-flex items-center gap-2 bg-[#FAF4E6] text-[#8B1E2B] px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider shadow-sm border border-[#EADBBD]">
+                  <Sparkles size={14} className="text-[#C75B2A]" />
+                  <span>"50 Saal Bemisaal" / 50 Years Unmatched</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white px-3.5 py-1.5 rounded-full text-xs font-semibold border border-white/20">
+                  <Calendar size={13} className="text-[#F49D71]" />
+                  <span>Est. 1975</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-200 px-3.5 py-1.5 rounded-full text-xs font-bold border border-emerald-400/30">
+                  <Award size={13} className="text-emerald-300" />
+                  <span>NAAC B++ Accredited</span>
+                </div>
               </div>
-              <div className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white px-3.5 py-1.5 rounded-full text-xs font-semibold border border-white/20">
-                <Calendar size={13} className="text-[#F49D71]" />
-                <span>Est. 1975</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-200 px-3.5 py-1.5 rounded-full text-xs font-bold border border-emerald-400/30">
-                <Award size={13} className="text-emerald-300" />
-                <span>NAAC B++ Accredited</span>
+
+              {/* College Name in English and Gurmukhi */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight font-sans text-white leading-tight">
+                Government College, <span className="text-[#F49D71]">Dera Bassi</span>
+              </h1>
+              <p className="font-gurmukhi text-lg sm:text-2xl text-amber-200/90 font-medium mt-2">
+                ਸਰਕਾਰੀ ਕਾਲਜ, ਡੇਰਾ ਬੱਸੀ
+              </p>
+
+              {/* NAAC B++ Accredited tagline */}
+              <p className="text-slate-200 text-sm sm:text-base max-w-2xl mt-4 leading-relaxed font-light">
+                NAAC B++ Accredited Government Institution • Shaping Minds, Building Futures Since 1975. Affiliated to Punjabi University, Patiala, and recognized by UGC under Section 2(f) & 12(B).
+              </p>
+
+              {/* Quick summary metrics */}
+              <div className="mt-6 pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
+                <div>
+                  <span className="block text-xl sm:text-2xl font-black text-[#F49D71]">1975</span>
+                  <span className="text-[11px] text-slate-300 uppercase tracking-wider font-medium">Established</span>
+                </div>
+                <div>
+                  <span className="block text-xl sm:text-2xl font-black text-white">15 Acres</span>
+                  <span className="text-[11px] text-slate-300 uppercase tracking-wider font-medium">Lush Campus</span>
+                </div>
+                <div>
+                  <span className="block text-xl sm:text-2xl font-black text-emerald-300">Grade B++</span>
+                  <span className="text-[11px] text-slate-300 uppercase tracking-wider font-medium">NAAC Accredited</span>
+                </div>
+                <div>
+                  <span className="block text-xl sm:text-2xl font-black text-amber-300">PM-USHA</span>
+                  <span className="text-[11px] text-slate-300 uppercase tracking-wider font-medium">Grant Recipient</span>
+                </div>
               </div>
             </div>
 
-            {/* College Name in English and Gurmukhi */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight font-sans text-white leading-tight">
-              Government College, <span className="text-[#F49D71]">Dera Bassi</span>
-            </h1>
-            <p className="font-gurmukhi text-lg sm:text-2xl text-amber-200/90 font-medium mt-3">
-              ਸਰਕਾਰੀ ਕਾਲਜ, ਡੇਰਾ ਬੱਸੀ
-            </p>
-
-            {/* NAAC B++ Accredited tagline */}
-            <p className="text-slate-200 text-base sm:text-lg max-w-3xl mt-5 leading-relaxed font-light">
-              NAAC B++ Accredited Government Institution • Shaping Minds, Building Futures Since 1975. Affiliated to Punjabi University, Patiala, and recognized by the UGC under Section 2(f) & 12(B).
-            </p>
-
-            {/* Quick summary metrics */}
-            <div className="mt-8 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6 text-left">
-              <div>
-                <span className="block text-2xl sm:text-3xl font-black text-[#F49D71]">1975</span>
-                <span className="text-xs text-slate-300 uppercase tracking-wider font-medium">Established</span>
-              </div>
-              <div>
-                <span className="block text-2xl sm:text-3xl font-black text-white">15 Acres</span>
-                <span className="text-xs text-slate-300 uppercase tracking-wider font-medium">Lush Campus</span>
-              </div>
-              <div>
-                <span className="block text-2xl sm:text-3xl font-black text-emerald-300">Grade B++</span>
-                <span className="text-xs text-slate-300 uppercase tracking-wider font-medium">NAAC Accredited</span>
-              </div>
-              <div>
-                <span className="block text-2xl sm:text-3xl font-black text-amber-300">PM-USHA</span>
-                <span className="text-xs text-slate-300 uppercase tracking-wider font-medium">Grant Recipient</span>
+            {/* Right Campus Hero Image */}
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 group w-full max-w-md aspect-[4/3] bg-slate-800">
+                <img 
+                  src="/images/slides/campus-main-buddha.jpg" 
+                  alt="Government College Dera Bassi Main Campus" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0C1D3F]/80 via-transparent to-transparent" />
+                <div className="absolute bottom-3 left-3 right-3 text-left bg-black/40 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/15">
+                  <div className="text-xs font-bold text-amber-300 flex items-center gap-1.5">
+                    <Sparkles size={12} />
+                    <span>Permanent 15-Acre Campus</span>
+                  </div>
+                  <div className="text-[11px] text-slate-200">Government College, Dera Bassi (Est. 1975)</div>
+                </div>
               </div>
             </div>
           </div>
@@ -112,7 +134,7 @@ const AboutUsPage = () => {
 
         {/* 2. COLLEGE HISTORY */}
         <section id="college-history" className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-sm relative overflow-hidden">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mb-8">
             <div className="inline-flex items-center gap-2 text-[#8B1E2B] bg-[#8B1E2B]/10 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
               <Landmark size={14} />
               <span>Section 2</span>
@@ -125,7 +147,38 @@ const AboutUsPage = () => {
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Historical Image Banner Strip */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <div className="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-sm group bg-slate-100">
+              <img 
+                src="/images/old_site/slide-2.jpg" 
+                alt="Historic Campus Building" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <span className="absolute bottom-2.5 left-3 text-xs font-bold text-white">Permanent Campus (Est. 1984)</span>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-sm group bg-slate-100">
+              <img 
+                src="/images/old_site/collage.jpg" 
+                alt="Decades of Academic Life" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <span className="absolute bottom-2.5 left-3 text-xs font-bold text-white">50 Glorious Years Collage</span>
+            </div>
+            <div className="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-sm group bg-slate-100">
+              <img 
+                src="/images/slides/admission-open-banner.jpg" 
+                alt="Golden Jubilee Celebrations" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <span className="absolute bottom-2.5 left-3 text-xs font-bold text-white">Golden Jubilee Heritage</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* History Milestone 1 */}
             <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200/70 hover:border-[#8B1E2B]/30 hover:shadow-md transition-all">
               <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-black text-lg mb-4">
@@ -268,6 +321,61 @@ const AboutUsPage = () => {
             <p className="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
               Key infrastructure highlights and amenities across the college premises:
             </p>
+          </div>
+
+          {/* Photo Gallery Grid for Campus Overview */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-xs">
+              <img 
+                src="/images/slides/campus-main-buddha.jpg" 
+                alt="Green Campus & Academic Complex" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-2 left-2.5 right-2.5">
+                <p className="text-xs font-bold text-white leading-tight">15-Acre Campus Grounds</p>
+                <p className="text-[10px] text-emerald-300">Natural Surroundings</p>
+              </div>
+            </div>
+
+            <div className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-xs">
+              <img 
+                src="/images/campus_moments/comp-1.jpg" 
+                alt="Modern Computer Laboratories" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-2 left-2.5 right-2.5">
+                <p className="text-xs font-bold text-white leading-tight">Computer & IT Labs</p>
+                <p className="text-[10px] text-sky-300">High-Tech Workstations</p>
+              </div>
+            </div>
+
+            <div className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-xs">
+              <img 
+                src="/images/campus_moments/sport (1).jpg" 
+                alt="College Sports Ground & Stadium" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-2 left-2.5 right-2.5">
+                <p className="text-xs font-bold text-white leading-tight">Athletics & Sports Grounds</p>
+                <p className="text-[10px] text-amber-300">Stadium & Gymnasiums</p>
+              </div>
+            </div>
+
+            <div className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-100 shadow-xs">
+              <img 
+                src="/images/campus_moments/geo (1).jpg" 
+                alt="Classroom & Practical Learning" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-2 left-2.5 right-2.5">
+                <p className="text-xs font-bold text-white leading-tight">Smart Classrooms</p>
+                <p className="text-[10px] text-rose-300">Digital Teaching Tools</p>
+              </div>
+            </div>
           </div>
 
           {/* Scannable Bullet Points / Card Grid */}
