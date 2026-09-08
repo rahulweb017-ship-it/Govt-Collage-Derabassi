@@ -184,7 +184,7 @@ export default function VisionMissionPage() {
             {/* Right Supporting Visual Column */}
             <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-full bg-[#0C1D3F]">
               <img 
-                src="/images/slides/campus-main-buddha.jpg" 
+                src="/images/slides/campus-main-buddha copy.jpg" 
                 alt="Government College Dera Bassi Green Campus" 
                 className="w-full h-full object-cover object-center filter brightness-90 contrast-105"
               />
