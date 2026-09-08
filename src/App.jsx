@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import AntiRaggingPage from './pages/AntiRaggingPage'
 import AcademicCalendarPage from './pages/AcademicCalendarPage'
 import ProspectusPage from './pages/ProspectusPage'
+import AboutUsPage from './pages/AboutUsPage'
 import PlaceholderPage from './pages/PlaceholderPage'
 
 // Automatically scrolls to top on route change
@@ -24,11 +25,12 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/prospectus" element={<ProspectusPage />} />
+          <Route path="/about" element={<AboutUsPage />} />
+          <Route path="/about/overview" element={<AboutUsPage />} />
           <Route path="/students/anti-ragging" element={<AntiRaggingPage />} />
           <Route path="/about/calendar" element={<AcademicCalendarPage />} />
           
           {/* Specific placeholder routes for all sub-items */}
-          <Route path="/about/overview" element={<PlaceholderPage />} />
           <Route path="/about/naac-report" element={<PlaceholderPage />} />
           <Route path="/about/vision-mission" element={<PlaceholderPage />} />
           
