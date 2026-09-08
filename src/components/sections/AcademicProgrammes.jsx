@@ -85,14 +85,14 @@ const AcademicProgrammes = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
               
               {/* Column 1 */}
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {academicDirectoryCol1.map((item, idx) => (
                   <div key={idx} className="group">
                     <a 
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-1.5 -m-1.5 rounded-lg hover:bg-white/80 transition-all duration-150"
+                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors px-2 py-[10px] -mx-2 rounded-lg hover:bg-white/80 transition-all duration-150"
                     >
                       <span className="text-[#8B1E2B] font-bold text-base mt-0.5 leading-none shrink-0 group-hover:translate-x-0.5 transition-transform">
                         &gt;
@@ -113,14 +113,14 @@ const AcademicProgrammes = () => {
               </div>
 
               {/* Column 2 */}
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {academicDirectoryCol2.map((item, idx) => (
                   <div key={idx} className="group">
                     <a 
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-1.5 -m-1.5 rounded-lg hover:bg-white/80 transition-all duration-150"
+                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors px-2 py-[10px] -mx-2 rounded-lg hover:bg-white/80 transition-all duration-150"
                     >
                       <span className="text-[#8B1E2B] font-bold text-base mt-0.5 leading-none shrink-0 group-hover:translate-x-0.5 transition-transform">
                         &gt;
