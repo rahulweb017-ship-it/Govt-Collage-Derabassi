@@ -81,18 +81,18 @@ const AcademicProgrammes = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* 1. LEFT PANEL: WARM IVORY/CREAM PROGRAM DIRECTORY (8 COLUMNS ON DESKTOP) */}
-          <div className="lg:col-span-8 bg-[#FAF4E6] rounded-2xl p-6 sm:p-10 border border-[#EEDBBA] shadow-sm flex flex-col justify-between h-full">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 h-full">
+          <div className="lg:col-span-8 bg-[#FAF4E6] rounded-2xl p-6 sm:p-8 lg:p-9 border border-[#EEDBBA] shadow-sm flex flex-col justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
               
               {/* Column 1 */}
-              <div className="flex flex-col justify-between space-y-6 sm:space-y-7">
+              <div className="space-y-4">
                 {academicDirectoryCol1.map((item, idx) => (
                   <div key={idx} className="group">
                     <a 
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-2.5 -m-2.5 rounded-xl hover:bg-white/80 transition-all duration-200"
+                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-1.5 -m-1.5 rounded-lg hover:bg-white/80 transition-all duration-150"
                     >
                       <span className="text-[#8B1E2B] font-bold text-base mt-0.5 leading-none shrink-0 group-hover:translate-x-0.5 transition-transform">
                         &gt;
@@ -102,7 +102,7 @@ const AcademicProgrammes = () => {
                           {item.title}
                         </h3>
                         {item.subtitle && (
-                          <p className="text-xs text-slate-600 font-medium leading-tight mt-1">
+                          <p className="text-xs text-slate-600 font-medium leading-tight mt-0.5">
                             {item.subtitle}
                           </p>
                         )}
@@ -113,14 +113,14 @@ const AcademicProgrammes = () => {
               </div>
 
               {/* Column 2 */}
-              <div className="flex flex-col justify-between space-y-6 sm:space-y-7">
+              <div className="space-y-4">
                 {academicDirectoryCol2.map((item, idx) => (
                   <div key={idx} className="group">
                     <a 
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-2.5 -m-2.5 rounded-xl hover:bg-white/80 transition-all duration-200"
+                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-1.5 -m-1.5 rounded-lg hover:bg-white/80 transition-all duration-150"
                     >
                       <span className="text-[#8B1E2B] font-bold text-base mt-0.5 leading-none shrink-0 group-hover:translate-x-0.5 transition-transform">
                         &gt;
@@ -130,7 +130,7 @@ const AcademicProgrammes = () => {
                           {item.title}
                         </h3>
                         {item.subtitle && (
-                          <p className="text-xs text-slate-600 font-medium leading-tight mt-1">
+                          <p className="text-xs text-slate-600 font-medium leading-tight mt-0.5">
                             {item.subtitle}
                           </p>
                         )}
@@ -144,9 +144,9 @@ const AcademicProgrammes = () => {
           </div>
 
           {/* 2. RIGHT PANEL: HIGH-CONVERSION ADMISSION ENQUIRY LEAD FORM (4 COLUMNS ON DESKTOP) */}
-          <div className="lg:col-span-4 bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-200 flex flex-col justify-between h-full">
+          <div className="lg:col-span-4 bg-white rounded-2xl p-6 sm:p-7 shadow-xl border border-slate-200 flex flex-col justify-center">
             
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-display leading-tight mb-5">
+            <h3 className="text-lg sm:text-xl font-bold text-slate-900 font-display leading-tight mb-4">
               Be a part of Punjab's Top Rated Government College
             </h3>
 
