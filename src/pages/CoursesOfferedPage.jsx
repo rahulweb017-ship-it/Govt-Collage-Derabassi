@@ -32,7 +32,7 @@ const coursesData = [
     overview: 'A foundational and flexible degree encompassing elective subjects across Punjabi, English, Hindi, History, Political Science, Economics, Public Administration, Sociology, Geography, Fine Arts, Music (Vocal), and Home Science.',
     eligibility: '10+2 examination in any stream from a recognized Board with required pass percentage as per Punjabi University norms.',
     degreeType: 'Regular Programme',
-    image: '/images/departments/dept_punjabi.jpg',
+    image: '/images/courses/course_ba.jpg',
     highlights: [
       'Extensive subject elective choices',
       'Honours option in specialized major subjects',
@@ -51,7 +51,7 @@ const coursesData = [
     overview: 'Professional business management programme designed to instill leadership, managerial analytics, operational excellence, human resources, and business process reengineering capabilities.',
     eligibility: '10+2 examination in any stream with minimum 50% marks (45% for reserved categories) or as prescribed by Punjabi University.',
     degreeType: 'Self-Financing Professional Course',
-    image: '/images/departments/dept_commerce.jpg',
+    image: '/images/courses/course_bba.jpg',
     highlights: [
       'Focus on business process management & analytics',
       'Case study methodology & industry seminars',
@@ -69,7 +69,7 @@ const coursesData = [
     overview: 'Comprehensive science curricula offering practical laboratory training in Physics, Chemistry, Mathematics, and Computer Sciences with emphasis on experimental methodology and scientific inquiry.',
     eligibility: '10+2 with Science stream (Physics, Chemistry, Mathematics/Biology) from a recognized Board.',
     degreeType: 'Regular Programme',
-    image: '/images/departments/dept_physics.jpg',
+    image: '/images/courses/course_bsc.jpg',
     highlights: [
       'Equipped physics, chemistry and computer laboratories',
       'Emphasis on experimental and scientific research skills',
@@ -88,7 +88,7 @@ const coursesData = [
     overview: 'A career-oriented vocational degree blending wellness sciences, dermatological aesthetics, cosmetic care, salon management, and holistic personal styling.',
     eligibility: '10+2 in any stream from a recognized Board of School Education.',
     degreeType: 'Self-Financing Vocational Course',
-    image: '/images/departments/dept_home_science.jpg',
+    image: '/images/courses/course_beauty_therapy.jpg',
     highlights: [
       'Hands-on practical wellness and cosmetology labs',
       'High entrepreneurship and salon management focus',
@@ -106,7 +106,7 @@ const coursesData = [
     overview: 'Rigorous undergraduate commerce education covering corporate accounting, mercantile law, direct and indirect taxation, financial management, and banking systems.',
     eligibility: '10+2 with Commerce stream or with requisite subjects/marks as stipulated by Punjabi University, Patiala.',
     degreeType: 'Regular Programme',
-    image: '/images/departments/dept_commerce_honours.jpg',
+    image: '/images/courses/course_bcom.jpg',
     highlights: [
       'Comprehensive accounting and financial systems training',
       'Preparation for professional CA/CS/CMA credentials',
@@ -125,7 +125,7 @@ const coursesData = [
     overview: 'Advanced postgraduate commerce education emphasizing strategic corporate financial analysis, international trade, research methodology, advanced auditing, and managerial economics.',
     eligibility: 'B.Com / B.Com (Hons) / B.B.A. from a recognized University with at least 50% marks in aggregate.',
     degreeType: 'Self-Financing Postgraduate Course',
-    image: '/images/old_site/course-3.jpg',
+    image: '/images/courses/course_mcom.jpg',
     highlights: [
       'Advanced master-level commerce specialization',
       'Corporate accounting & research project work',
@@ -144,7 +144,7 @@ const coursesData = [
     overview: 'Self-financing commerce programme offering an enriched learning environment with computerised accounting practicals, financial analysis software, and corporate interaction.',
     eligibility: '10+2 in Commerce stream or equivalent from a recognized board.',
     degreeType: 'Self-Financing Programme',
-    image: '/images/old_site/course-2.jpg',
+    image: '/images/courses/course_bcom_sf.jpg',
     highlights: [
       'Computerized accounting and Tally practicals',
       'Specialized self-financing batch with dedicated resources',
@@ -163,7 +163,7 @@ const coursesData = [
     overview: 'Professional computing degree training undergraduates in software engineering, database management systems, full-stack web technologies, object-oriented programming, and network infrastructure.',
     eligibility: '10+2 in any stream with Mathematics or Computer related subject / as per Punjabi University admission rules.',
     degreeType: 'Self-Financing IT Professional Course',
-    image: '/images/departments/dept_computer_application.jpg',
+    image: '/images/courses/course_bca.jpg',
     highlights: [
       'High-speed air-conditioned computer laboratories',
       'Full-stack programming & database development',
