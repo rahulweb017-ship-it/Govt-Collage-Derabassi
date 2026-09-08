@@ -61,7 +61,7 @@ const navItems = [
     href: '/students/admission-rules',
     hasChevron: true,
     children: [
-      { label: 'Admission (Punjabi University Portal)', href: 'https://admission.punjab.gov.in', isExternal: true },
+      { label: 'Admission', href: 'https://admission.punjab.gov.in', isExternal: true },
       { label: 'Admission Rules', href: '/students/admission-rules' },
       { label: 'Anti-Ragging Portal', href: 'https://www.antiragging.in', isExternal: true },
       { label: 'Anti-Ragging & Harassment Cell', href: '/students/anti-ragging' }
