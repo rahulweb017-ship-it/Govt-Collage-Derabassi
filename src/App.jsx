@@ -7,6 +7,7 @@ import AcademicCalendarPage from './pages/AcademicCalendarPage'
 import ProspectusPage from './pages/ProspectusPage'
 import AboutUsPage from './pages/AboutUsPage'
 import VisionMissionPage from './pages/VisionMissionPage'
+import DepartmentsPage from './pages/DepartmentsPage'
 import PlaceholderPage from './pages/PlaceholderPage'
 
 // Automatically scrolls to top on route change
@@ -35,7 +36,9 @@ export default function App() {
           <Route path="/about/naac-report" element={<PlaceholderPage />} />
           <Route path="/about/vision-mission" element={<VisionMissionPage />} />
           
-          <Route path="/academics/departments-faculty" element={<PlaceholderPage />} />
+          <Route path="/academics/departments-faculty" element={<DepartmentsPage />} />
+          <Route path="/academics/departments" element={<DepartmentsPage />} />
+          <Route path="/departments" element={<DepartmentsPage />} />
           <Route path="/academics/courses-offered" element={<PlaceholderPage />} />
           <Route path="/academics/syllabus" element={<PlaceholderPage />} />
           <Route path="/academics/nep-guidelines" element={<PlaceholderPage />} />
