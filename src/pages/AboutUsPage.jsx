@@ -23,20 +23,10 @@ import {
   TrendingUp,
   Trees,
   Coffee,
-  Shield,
-  CheckCircle2
+  Shield
 } from 'lucide-react';
-import StatBar from '../components/ui/StatBar';
 
 const AboutUsPage = () => {
-  // Stats for Section 7: Achievements Strip (reusing shared StatBar component)
-  const achievementStats = [
-    { value: 'NAAC B++', label: 'Accredited (Cycle 3)' },
-    { value: 'PM-USHA', label: 'Grant Recipient (1 of 11 in Punjab)' },
-    { value: 'NIRF / AISHE', label: 'AISHE Code C-22140' },
-    { value: '50 Years', label: 'Golden Jubilee (Est. 1975)' }
-  ];
-
   return (
     <div className="min-h-screen bg-slate-50 pt-8 sm:pt-12 pb-24 font-sans text-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
@@ -53,7 +43,7 @@ const AboutUsPage = () => {
           <span className="text-[#8B1E2B] font-bold">Campus & History Overview</span>
         </div>
 
-        {/* 1. HERO/INTRO BANNER */}
+        {/* HERO/INTRO BANNER */}
         <section id="hero-banner" className="bg-gradient-to-br from-[#0C1D3F] via-[#152E55] to-[#4A1018] text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden border border-slate-700/40">
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-[#8B1E2B]/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#C75B2A]/15 rounded-full blur-3xl pointer-events-none" />
@@ -132,12 +122,12 @@ const AboutUsPage = () => {
           </div>
         </section>
 
-        {/* 2. COLLEGE HISTORY */}
+        {/* COLLEGE HISTORY */}
         <section id="college-history" className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-sm relative overflow-hidden">
           <div className="max-w-3xl mb-8">
             <div className="inline-flex items-center gap-2 text-[#8B1E2B] bg-[#8B1E2B]/10 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
               <Landmark size={14} />
-              <span>Section 2</span>
+              <span>Heritage & History</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-[#0C1D3F] tracking-tight">
               College History
@@ -247,7 +237,7 @@ const AboutUsPage = () => {
           </div>
         </section>
 
-        {/* 3. PRINCIPAL'S MESSAGE */}
+        {/* PRINCIPAL'S MESSAGE */}
         <section id="principals-message" className="bg-[#FAF4E6] rounded-3xl p-8 sm:p-14 border border-[#EADBBD] shadow-sm relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
@@ -272,7 +262,7 @@ const AboutUsPage = () => {
             <div className="lg:col-span-8">
               <div className="inline-flex items-center gap-2 bg-white text-[#8B1E2B] px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 border border-[#EEDBBA] shadow-xs">
                 <Sparkles size={13} className="text-[#C75B2A]" />
-                <span>Section 3</span>
+                <span>Leadership Desk</span>
               </div>
 
               <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-[#0C1D3F]">
@@ -308,12 +298,12 @@ const AboutUsPage = () => {
           </div>
         </section>
 
-        {/* 4. CAMPUS OVERVIEW */}
+        {/* CAMPUS OVERVIEW */}
         <section id="campus-overview" className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-sm">
           <div className="max-w-3xl mb-8">
             <div className="inline-flex items-center gap-2 text-[#8B1E2B] bg-[#8B1E2B]/10 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
               <Building2 size={14} />
-              <span>Section 4</span>
+              <span>Campus & Amenities</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-[#0C1D3F] tracking-tight">
               Campus Overview
@@ -472,12 +462,12 @@ const AboutUsPage = () => {
           </div>
         </section>
 
-        {/* 5. DEPARTMENTS */}
+        {/* DEPARTMENTS */}
         <section id="departments" className="bg-slate-50 rounded-3xl p-8 sm:p-12 border border-slate-200">
           <div className="max-w-3xl mb-10">
             <div className="inline-flex items-center gap-2 text-[#8B1E2B] bg-[#8B1E2B]/10 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
               <GraduationCap size={14} />
-              <span>Section 5</span>
+              <span>Academic Disciplines</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-[#0C1D3F] tracking-tight">
               Departments
@@ -634,12 +624,12 @@ const AboutUsPage = () => {
           </div>
         </section>
 
-        {/* 6. FACILITIES */}
+        {/* FACILITIES */}
         <section id="facilities" className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-sm">
           <div className="max-w-3xl mb-10">
             <div className="inline-flex items-center gap-2 text-[#8B1E2B] bg-[#8B1E2B]/10 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
               <Sparkles size={14} />
-              <span>Section 6</span>
+              <span>Facilities & Student Support</span>
             </div>
             <h2 className="text-2xl sm:text-4xl font-black text-[#0C1D3F] tracking-tight">
               Facilities
@@ -782,24 +772,6 @@ const AboutUsPage = () => {
             </div>
 
           </div>
-        </section>
-
-        {/* 7. ACHIEVEMENTS STRIP */}
-        <section id="achievements-strip" className="overflow-hidden rounded-3xl border-t-4 border-saffron-500 shadow-xl">
-          <div className="bg-navy-800 px-6 sm:px-12 pt-10 pb-4 text-center">
-            <div className="inline-flex items-center gap-2 bg-white/10 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-saffron-400 mb-2 border border-white/10">
-              <Award size={14} />
-              <span>Section 7</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white">
-              Achievements Strip
-            </h2>
-            <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-xl mx-auto">
-              Reusing the official institutional rankings and accreditations benchmark:
-            </p>
-          </div>
-          {/* Reusing shared StatBar component with NAAC B++, PM-USHA Grant, NIRF Rank, 50 Years */}
-          <StatBar stats={achievementStats} />
         </section>
 
       </div>
