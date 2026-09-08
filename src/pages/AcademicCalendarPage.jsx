@@ -5,9 +5,7 @@ import {
   FileText, 
   Eye, 
   Search, 
-  ExternalLink, 
   Home, 
-  Sparkles,
   X
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -107,8 +105,6 @@ const AcademicCalendarPage = () => {
     cal.session.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const latestCalendar = officialCalendars.find(c => c.isLatest) || officialCalendars[0];
-
   return (
     <div className="min-h-screen bg-slate-50 pt-8 sm:pt-12 pb-24 font-sans text-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
@@ -185,137 +181,103 @@ const AcademicCalendarPage = () => {
           )}
         </div>
 
-        {/* TAB 1: ALL ACADEMIC CALENDARS (MAIN SOURCED REPOSITORY) */}
+        {/* MAIN OFFICIAL ARCHIVE (Matches gcderabassi.ac.in/calender.php) */}
         {activeTab === 'all' && (
-          <div className="space-y-6">
-            
-            {/* FEATURED CARD: LATEST 2025-26 */}
-            <div className="bg-gradient-to-br from-[#FAF4E6] to-white rounded-3xl p-6 sm:p-8 border-2 border-[#EADBBD] shadow-sm relative overflow-hidden">
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                <div>
-                  <div className="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
-                    <Sparkles size={12} className="text-emerald-600" />
-                    <span>Latest Academic Calendar</span>
-                  </div>
-                  <h2 className="text-2xl sm:text-3xl font-black text-[#0C1D3F] tracking-tight">
-                    {latestCalendar.title}
-                  </h2>
-                  <p className="text-slate-600 text-sm mt-1">
-                    Official schedule prescribed by Punjabi University, Patiala for Government College, Dera Bassi (Session 2025–2026).
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3 shrink-0">
-                  <button
-                    onClick={() => setPreviewPdf(latestCalendar)}
-                    className="inline-flex items-center gap-2 bg-white text-[#8B1E2B] hover:bg-rose-50 border border-[#8B1E2B]/30 px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-xs"
-                  >
-                    <Eye size={15} />
-                    <span>Preview Document</span>
-                  </button>
-                  <a
-                    href={latestCalendar.file}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all"
-                  >
-                    <ExternalLink size={15} />
-                    <span>View in Tab</span>
-                  </a>
-                  <a
-                    href={latestCalendar.file}
-                    download
-                    className="inline-flex items-center gap-2 bg-[#8B1E2B] hover:bg-[#601520] text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-all shadow-md"
-                  >
-                    <Download size={15} />
-                    <span>Download PDF ({latestCalendar.size})</span>
-                  </a>
-                </div>
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-lg sm:text-xl font-black text-[#0C1D3F]">
+                  Annual Academic Calendars
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+                  Official repository from Government College, Dera Bassi (2017–18 through 2025–26)
+                </p>
               </div>
+              <span className="text-xs font-bold text-[#8B1E2B] bg-rose-50 px-3 py-1 rounded-full border border-rose-100">
+                {filteredCalendars.length} Documents
+              </span>
             </div>
 
-            {/* FULL OFFICIAL ARCHIVE GRID (Matches gcderabassi.ac.in/calender.php) */}
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h3 className="text-lg sm:text-xl font-black text-[#0C1D3F]">
-                    Annual Academic Calendars Archive
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-                    Official repository from Government College, Dera Bassi (2017–18 through 2025–26)
-                  </p>
-                </div>
-                <span className="text-xs font-bold text-[#8B1E2B] bg-rose-50 px-3 py-1 rounded-full border border-rose-100">
-                  {filteredCalendars.length} Documents
-                </span>
-              </div>
-
-              <div className="divide-y divide-slate-100">
-                {filteredCalendars.map((calendar, index) => (
-                  <div 
-                    key={calendar.id} 
-                    className="py-4.5 sm:py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:bg-slate-50/80 px-3 rounded-2xl transition-colors"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center shrink-0 border border-slate-200 font-black text-sm">
-                        {index + 1}
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <h4 className="font-bold text-slate-900 text-base">
-                            {calendar.title}
-                          </h4>
-                          {calendar.isLatest && (
-                            <span className="bg-emerald-100 text-emerald-800 text-[10px] font-black uppercase px-2 py-0.5 rounded-full">
-                              Latest
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-xs text-slate-500 mt-0.5">
-                          {calendar.session} • Punjabi University, Patiala • PDF ({calendar.size})
-                        </p>
-                      </div>
+            <div className="divide-y divide-slate-100">
+              {filteredCalendars.map((calendar) => (
+                <div 
+                  key={calendar.id} 
+                  className={`py-4.5 sm:py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-4 rounded-2xl transition-all ${
+                    calendar.isLatest 
+                      ? 'bg-emerald-50/40 hover:bg-emerald-50/70 border border-emerald-100/80 shadow-xs' 
+                      : 'hover:bg-slate-50/90'
+                  }`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-colors ${
+                      calendar.isLatest 
+                        ? 'bg-emerald-100/70 text-emerald-800 border-emerald-200' 
+                        : 'bg-[#8B1E2B]/10 text-[#8B1E2B] border-[#8B1E2B]/20'
+                    }`}>
+                      <FileText size={22} />
                     </div>
-
-                    {/* Action buttons */}
-                    <div className="flex items-center gap-2.5 sm:self-center ml-15 sm:ml-0">
-                      <button
-                        onClick={() => setPreviewPdf(calendar)}
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-bold transition-colors"
-                        title="Preview PDF"
-                      >
-                        <Eye size={14} />
-                        <span>Preview</span>
-                      </button>
-                      <a
-                        href={calendar.file}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#8B1E2B]/10 hover:bg-[#8B1E2B]/20 text-[#8B1E2B] rounded-lg text-xs font-bold transition-colors"
-                        title="View PDF"
-                      >
-                        <ExternalLink size={14} />
-                        <span>View</span>
-                      </a>
-                      <a
-                        href={calendar.file}
-                        download
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-[#8B1E2B] hover:bg-[#601520] text-white rounded-lg text-xs font-bold transition-colors shadow-xs"
-                        title="Download PDF"
-                      >
-                        <Download size={14} />
-                        <span>Download</span>
-                      </a>
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h4 className="font-extrabold text-slate-900 text-base sm:text-lg">
+                          {calendar.title}
+                        </h4>
+                        {calendar.isLatest ? (
+                          <span className="bg-emerald-100 text-emerald-800 text-xs font-black uppercase px-2.5 py-0.5 rounded-full border border-emerald-200 shadow-xs">
+                            Latest
+                          </span>
+                        ) : (
+                          <span className="bg-amber-50 text-amber-900 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-amber-200/70">
+                            Archived Edition
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs sm:text-sm mt-1.5 font-medium">
+                        <span className={`inline-flex items-center font-bold px-2.5 py-0.5 rounded-md text-xs sm:text-xs ${
+                          calendar.isLatest 
+                            ? 'bg-emerald-100/60 text-emerald-900 border border-emerald-200/60' 
+                            : 'bg-slate-100 text-slate-800 border border-slate-200/70'
+                        }`}>
+                          {calendar.session}
+                        </span>
+                        <span className="text-slate-400 font-black">•</span>
+                        <span className="text-slate-700 font-semibold">
+                          Punjabi University, Patiala
+                        </span>
+                        <span className="text-slate-400 font-black">•</span>
+                        <span className="inline-flex items-center font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md text-xs border border-slate-200/60">
+                          PDF ({calendar.size})
+                        </span>
+                      </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
 
+                  {/* Action buttons (View button removed, keeping Preview & Download) */}
+                  <div className="flex items-center gap-2.5 sm:self-center ml-15 sm:ml-0">
+                    <button
+                      onClick={() => setPreviewPdf(calendar)}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors"
+                      title="Preview PDF"
+                    >
+                      <Eye size={14} />
+                      <span>Preview</span>
+                    </button>
+                    <a
+                      href={calendar.file}
+                      download
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#8B1E2B] hover:bg-[#601520] text-white rounded-xl text-xs font-bold transition-colors shadow-xs"
+                      title="Download PDF"
+                    >
+                      <Download size={14} />
+                      <span>Download</span>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
-        {/* TAB 2: PUNJAB GOVT HOLIDAYS */}
+        {/* TAB: PUNJAB GOVT HOLIDAYS */}
         {activeTab === 'holidays' && (
           <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-sm space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
@@ -378,17 +340,8 @@ const AcademicCalendarPage = () => {
                 <div className="flex items-center gap-2">
                   <a
                     href={previewPdf.file}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 transition-colors"
-                  >
-                    <ExternalLink size={13} />
-                    <span>Open in Tab</span>
-                  </a>
-                  <a
-                    href={previewPdf.file}
                     download
-                    className="inline-flex items-center gap-1 text-xs font-bold text-white bg-[#8B1E2B] hover:bg-[#601520] px-3 py-1.5 rounded-lg transition-colors"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-white bg-[#8B1E2B] hover:bg-[#601520] px-3.5 py-1.5 rounded-lg transition-colors shadow-xs"
                   >
                     <Download size={13} />
                     <span>Download</span>
