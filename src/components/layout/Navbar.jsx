@@ -99,6 +99,7 @@ const navItems = [
     href: '#campus-life',
     hasChevron: true,
     children: [
+      { label: 'Placement Cell & Career Guidance', href: '/placement' },
       { label: 'Sports Complex & Athletic Grounds', href: '#campus-life' },
       { label: 'National Service Scheme (NSS Units)', href: '#campus-life' },
       { label: 'National Cadet Corps (NCC Army Wing)', href: '#campus-life' },

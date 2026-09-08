@@ -10,6 +10,7 @@ import VisionMissionPage from './pages/VisionMissionPage'
 import DepartmentsPage from './pages/DepartmentsPage'
 import CoursesOfferedPage from './pages/CoursesOfferedPage'
 import AdmissionRulesPage from './pages/AdmissionRulesPage'
+import PlacementPage from './pages/PlacementPage'
 import PhotoGalleryPage from './pages/PhotoGalleryPage'
 import NewsGalleryPage from './pages/NewsGalleryPage'
 import PlaceholderPage from './pages/PlaceholderPage'
@@ -82,6 +83,11 @@ export default function App() {
           <Route path="/gallery/photos" element={<PhotoGalleryPage />} />
           <Route path="/gallery/news" element={<NewsGalleryPage />} />
           <Route path="/news-gallery" element={<NewsGalleryPage />} />
+
+          {/* Placement & Outcomes */}
+          <Route path="/placement" element={<PlacementPage />} />
+          <Route path="/placement-cell" element={<PlacementPage />} />
+          <Route path="/career" element={<PlacementPage />} />
 
           {/* Catch-all fallback */}
           <Route path="*" element={<PlaceholderPage />} />
