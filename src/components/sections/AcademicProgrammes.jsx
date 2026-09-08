@@ -21,15 +21,15 @@ const academicDirectoryCol1 = [
     title: 'B.Com / B.Com (Honours) — Self-Financing',
     subtitle: 'Single Major UG Programme',
     href: 'https://online.gcderabassi.ac.in/'
-  }
-];
-
-const academicDirectoryCol2 = [
+  },
   {
     title: 'BCA / BCA (Honours) — Self-Financing',
     subtitle: 'Single Major UG Programme',
     href: 'https://online.gcderabassi.ac.in/'
-  },
+  }
+];
+
+const academicDirectoryCol2 = [
   {
     title: 'B.B.A. / B.B.A. (Honours) — Self-Financing',
     subtitle: 'Business Process Reengineering and Management',
