@@ -245,22 +245,6 @@ const departmentsData = [
   },
   {
     number: '16',
-    name: 'Computer Application',
-    fullName: 'Department of Computer Application',
-    category: 'Science & Technology',
-    categoryKey: 'science',
-    shortLabel: 'Software Engineering, Web Technologies & Databases',
-    degrees: ['BCA (Bachelor of Computer Applications)'],
-    description: 'A professional technical department equipping students with industrial software development, database administration, web technologies, and systems engineering.',
-    highlights: ['Advanced BCA Computer Lab', 'Project-Based Curriculum', 'Industry Tech Seminars & Workshops'],
-    icon: Laptop,
-    image: '/images/departments/dept_computer_application.jpg',
-    facility: 'Professional BCA Software & Network Lab'
-  },
-
-  // 4. Fine Arts, Music & Physical Education
-  {
-    number: '17',
     name: 'Fine Arts',
     fullName: 'Department of Fine Arts',
     category: 'Fine Arts, Music & Physical Education',
@@ -274,7 +258,7 @@ const departmentsData = [
     facility: 'Fine Arts Studio & Visual Gallery'
   },
   {
-    number: '18',
+    number: '17',
     name: 'Music Vocal',
     fullName: 'Department of Music Vocal',
     category: 'Fine Arts, Music & Physical Education',
@@ -288,7 +272,7 @@ const departmentsData = [
     facility: 'Acoustic Sangeet & Instrumental Chamber'
   },
   {
-    number: '19',
+    number: '18',
     name: 'Physical Education',
     fullName: 'Department of Physical Education',
     category: 'Fine Arts, Music & Physical Education',
@@ -300,6 +284,20 @@ const departmentsData = [
     icon: Dumbbell,
     image: '/images/departments/dept_physical_education.jpg',
     facility: '15-Acre Athletic Track & Multi-Gymnasium'
+  },
+  {
+    number: '19',
+    name: 'Computer Application',
+    fullName: 'Department of Computer Application',
+    category: 'Science & Technology',
+    categoryKey: 'science',
+    shortLabel: 'Software Engineering, Web Technologies & Databases',
+    degrees: ['BCA (Bachelor of Computer Applications)'],
+    description: 'A professional technical department equipping students with industrial software development, database administration, web technologies, and systems engineering.',
+    highlights: ['Advanced BCA Computer Lab', 'Project-Based Curriculum', 'Industry Tech Seminars & Workshops'],
+    icon: Laptop,
+    image: '/images/departments/dept_computer_application.jpg',
+    facility: 'Professional BCA Software & Network Lab'
   },
   {
     number: '20',
