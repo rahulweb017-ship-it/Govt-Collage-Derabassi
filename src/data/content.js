@@ -39,7 +39,7 @@ export const accreditation = {
 }
 
 export const principal = {
-  name: 'Dr. Sujata Kaushal',
+  name: 'Vanitha Rao',
   designation: 'Principal',
   email: 'principal.gcdb@punjab.gov.in',
   message: `Our college has been a beacon of higher education for the youth of Dera Bassi and surrounding areas for over five decades. We are committed to the holistic development of our students — shaping them into responsible citizens, ethically grounded individuals, and good human beings. At GCD, we believe in balancing rigorous academics with active participation in sports, Youth Festivals, NSS, NCC, and cultural activities to foster creative, intellectual, and artistic growth in every student.`,

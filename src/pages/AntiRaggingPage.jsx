@@ -15,7 +15,7 @@ import {
 import { Link } from 'react-router-dom';
 
 const committeeMembers = [
-  { name: 'Dr. Sujata Kaushal', role: 'Chairman / Principal', phone: '01762-295167', email: 'principal.gcdb@punjab.gov.in' },
+  { name: 'Vanitha Rao', role: 'Chairman / Principal', phone: '01762-295167', email: 'principal.gcdb@punjab.gov.in' },
   { name: 'Prof. Amritpal Singh', role: 'Convener, Anti-Ragging Cell & Discipline In-charge', phone: '01762-295167', email: 'gcderabassi@gmail.com' },
   { name: 'Dr. Manjeet Kaur', role: 'Convener, Women Development Cell / Internal Complaints Committee (ICC)', phone: '01762-295167', email: 'gcderabassi@gmail.com' },
   { name: 'Prof. Gurpreet Singh', role: 'Member, Discipline Committee', phone: '01762-295167', email: 'gcderabassi@gmail.com' },

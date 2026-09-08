@@ -13,7 +13,7 @@ const PrincipalMessage = () => {
             <div className="aspect-[3/4] w-full max-w-sm rounded-2xl overflow-hidden shadow-2xl border-4 border-white relative group bg-white">
               <img 
                 src="/images/principal/dr-sujata-kaushal.jpg" 
-                alt="Dr. Sujata Kaushal - Principal Government College Dera Bassi" 
+                alt="Vanitha Rao - Principal Government College Dera Bassi" 
                 className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent" />

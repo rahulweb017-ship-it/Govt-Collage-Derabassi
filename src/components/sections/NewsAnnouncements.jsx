@@ -6,7 +6,7 @@ const featuredNews = {
   category: 'STATE-LEVEL ACADEMIC TRIUMPH',
   titleGurmukhi: 'ਸਰਕਾਰੀ ਕਾਲਜ ਡੇਰਾਬੱਸੀ ਦੀ ਟੀਮ ਨੇ ਰਾਜ ਪੱਧਰੀ ਭੂਗੋਲ ਕੁਇਜ਼ ਵਿੱਚ ਵੱਡੀ ਸਫਲਤਾ ਪ੍ਰਾਪਤ ਕੀਤੀ',
   title: 'GCD Students Clinch Top Honours at State-Level Geography Quiz Competition',
-  excerpt: 'Under the guidance and mentorship of Principal Dr. Sujata Kaushal, the student team of Government College Dera Bassi brought immense prestige to the institution by winning top state laurels, championship trophies, and certificates.',
+  excerpt: 'Under the guidance and mentorship of Principal Vanitha Rao, the student team of Government College Dera Bassi brought immense prestige to the institution by winning top state laurels, championship trophies, and certificates.',
   date: 'August 24, 2026',
   image: '/images/news/state-geography-quiz-win.png',
   href: '#recognition'
