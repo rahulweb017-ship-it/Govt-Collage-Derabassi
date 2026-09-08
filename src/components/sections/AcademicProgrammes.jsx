@@ -52,8 +52,7 @@ const AcademicProgrammes = () => {
     name: '',
     phone: '',
     email: '',
-    program: '',
-    city: ''
+    program: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -79,21 +78,21 @@ const AcademicProgrammes = () => {
         </div>
 
         {/* MAIN 2-PANEL LAYOUT (Left: 2-Column Program Directory | Right: Admissions Form) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           {/* 1. LEFT PANEL: WARM IVORY/CREAM PROGRAM DIRECTORY (8 COLUMNS ON DESKTOP) */}
-          <div className="lg:col-span-8 bg-[#FAF4E6] rounded-2xl p-6 sm:p-10 border border-[#EEDBBA] shadow-sm">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+          <div className="lg:col-span-8 bg-[#FAF4E6] rounded-2xl p-6 sm:p-10 border border-[#EEDBBA] shadow-sm flex flex-col justify-between h-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8 h-full">
               
               {/* Column 1 */}
-              <div className="space-y-5">
+              <div className="flex flex-col justify-between space-y-6 sm:space-y-7">
                 {academicDirectoryCol1.map((item, idx) => (
                   <div key={idx} className="group">
                     <a 
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-2 -m-2 rounded-lg hover:bg-white/70"
+                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-2.5 -m-2.5 rounded-xl hover:bg-white/80 transition-all duration-200"
                     >
                       <span className="text-[#8B1E2B] font-bold text-base mt-0.5 leading-none shrink-0 group-hover:translate-x-0.5 transition-transform">
                         &gt;
@@ -103,7 +102,7 @@ const AcademicProgrammes = () => {
                           {item.title}
                         </h3>
                         {item.subtitle && (
-                          <p className="text-xs text-slate-600 font-medium leading-tight mt-0.5">
+                          <p className="text-xs text-slate-600 font-medium leading-tight mt-1">
                             {item.subtitle}
                           </p>
                         )}
@@ -114,14 +113,14 @@ const AcademicProgrammes = () => {
               </div>
 
               {/* Column 2 */}
-              <div className="space-y-5">
+              <div className="flex flex-col justify-between space-y-6 sm:space-y-7">
                 {academicDirectoryCol2.map((item, idx) => (
                   <div key={idx} className="group">
                     <a 
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-2 -m-2 rounded-lg hover:bg-white/70"
+                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-2.5 -m-2.5 rounded-xl hover:bg-white/80 transition-all duration-200"
                     >
                       <span className="text-[#8B1E2B] font-bold text-base mt-0.5 leading-none shrink-0 group-hover:translate-x-0.5 transition-transform">
                         &gt;
@@ -131,7 +130,7 @@ const AcademicProgrammes = () => {
                           {item.title}
                         </h3>
                         {item.subtitle && (
-                          <p className="text-xs text-slate-600 font-medium leading-tight mt-0.5">
+                          <p className="text-xs text-slate-600 font-medium leading-tight mt-1">
                             {item.subtitle}
                           </p>
                         )}
@@ -145,14 +144,14 @@ const AcademicProgrammes = () => {
           </div>
 
           {/* 2. RIGHT PANEL: HIGH-CONVERSION ADMISSION ENQUIRY LEAD FORM (4 COLUMNS ON DESKTOP) */}
-          <div className="lg:col-span-4 bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-200">
+          <div className="lg:col-span-4 bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-slate-200 flex flex-col justify-between h-full">
             
-            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-display leading-tight mb-6">
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-900 font-display leading-tight mb-5">
               Be a part of Punjab's Top Rated Government College
             </h3>
 
             {isSubmitted ? (
-              <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 text-center animate-fadeIn">
+              <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 text-center animate-fadeIn my-auto">
                 <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto mb-3">
                   <CheckCircle2 size={24} />
                 </div>
@@ -168,100 +167,93 @@ const AcademicProgrammes = () => {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3.5">
+              <form onSubmit={handleSubmit} className="space-y-4 flex-1 flex flex-col justify-between">
                 
-                {/* Name */}
-                <div>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Your Name*"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1E2B] focus:border-transparent transition-all shadow-xs"
-                  />
-                </div>
-
-                {/* Phone Number with Indian Flag */}
-                <div className="flex items-center border border-slate-300 rounded-lg overflow-hidden bg-white shadow-xs focus-within:ring-2 focus-within:ring-[#8B1E2B] focus-within:border-transparent">
-                  <div className="flex items-center gap-1.5 px-3 py-3 bg-slate-50 border-r border-slate-200 text-xs font-semibold text-slate-700 shrink-0 select-none">
-                    <span className="text-base leading-none">🇮🇳</span>
-                    <span>+91</span>
+                <div className="space-y-3.5">
+                  {/* Name */}
+                  <div>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Your Name*"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1E2B] focus:border-transparent transition-all shadow-xs"
+                    />
                   </div>
-                  <input
-                    type="tel"
-                    required
-                    pattern="[0-9]{10}"
-                    placeholder="Phone Number*"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none bg-transparent"
-                  />
+
+                  {/* Phone Number with Indian Flag */}
+                  <div className="flex items-center border border-slate-300 rounded-lg overflow-hidden bg-white shadow-xs focus-within:ring-2 focus-within:ring-[#8B1E2B] focus-within:border-transparent">
+                    <div className="flex items-center gap-1.5 px-3 py-3 bg-slate-50 border-r border-slate-200 text-xs font-semibold text-slate-700 shrink-0 select-none">
+                      <span className="text-base leading-none">🇮🇳</span>
+                      <span>+91</span>
+                    </div>
+                    <input
+                      type="tel"
+                      required
+                      pattern="[0-9]{10}"
+                      placeholder="Phone Number*"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full px-3 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none bg-transparent"
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <input
+                      type="email"
+                      required
+                      placeholder="Your Email ID*"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1E2B] focus:border-transparent transition-all shadow-xs"
+                    />
+                  </div>
+
+                  {/* Select Program */}
+                  <div>
+                    <select
+                      required
+                      value={formData.program}
+                      onChange={(e) => setFormData({ ...formData, program: e.target.value })}
+                      className="w-full px-4 py-3 text-sm text-slate-700 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1E2B] focus:border-transparent transition-all shadow-xs"
+                    >
+                      <option value="">Select Program*</option>
+                      <option value="B.Com">B.Com / B.Com (Hons.)</option>
+                      <option value="BCA">BCA / BCA (Hons.)</option>
+                      <option value="BBA">B.B.A. (Hons.)</option>
+                      <option value="BA">B.A. / B.A. (Hons.)</option>
+                      <option value="B.Sc. Non-Med">B.Sc. (Non-Medical)</option>
+                      <option value="B.Sc. Med">B.Sc. (Medical)</option>
+                      <option value="B.Sc. CS">B.Sc. (Computer Science)</option>
+                      <option value="M.Com">M.Com (2 Years PG)</option>
+                      <option value="PGDCA">PGDCA (1 Year Post Grad Diploma)</option>
+                    </select>
+                  </div>
                 </div>
 
-                {/* Email */}
                 <div>
-                  <input
-                    type="email"
-                    required
-                    placeholder="Your Email ID*"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1E2B] focus:border-transparent transition-all shadow-xs"
-                  />
-                </div>
+                  {/* 1-Line Admission Notice */}
+                  <p className="text-[11.5px] text-slate-500 leading-tight pb-2 text-center truncate">
+                    By submitting, you agree to receive official admission alerts.
+                  </p>
 
-                {/* Select Program */}
-                <div>
-                  <select
-                    required
-                    value={formData.program}
-                    onChange={(e) => setFormData({ ...formData, program: e.target.value })}
-                    className="w-full px-4 py-3 text-sm text-slate-700 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1E2B] focus:border-transparent transition-all shadow-xs"
+                  {/* Submit CTA Button */}
+                  <a
+                    href="https://online.gcderabassi.ac.in/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => {
+                      if (formData.name && formData.phone) {
+                        setIsSubmitted(true);
+                      }
+                    }}
+                    className="w-full bg-[#8B1E2B] hover:bg-[#601520] text-white font-bold py-3.5 px-6 rounded-lg text-sm sm:text-base uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg active:scale-98 cursor-pointer flex items-center justify-center text-center"
                   >
-                    <option value="">Select Program*</option>
-                    <option value="B.Com">B.Com / B.Com (Hons.)</option>
-                    <option value="BCA">BCA / BCA (Hons.)</option>
-                    <option value="BBA">B.B.A. (Hons.)</option>
-                    <option value="BA">B.A. / B.A. (Hons.)</option>
-                    <option value="B.Sc. Non-Med">B.Sc. (Non-Medical)</option>
-                    <option value="B.Sc. Med">B.Sc. (Medical)</option>
-                    <option value="B.Sc. CS">B.Sc. (Computer Science)</option>
-                    <option value="M.Com">M.Com (2 Years PG)</option>
-                    <option value="PGDCA">PGDCA (1 Year Post Grad Diploma)</option>
-                  </select>
+                    Apply Now
+                  </a>
                 </div>
-
-                {/* State / City */}
-                <div>
-                  <input
-                    type="text"
-                    placeholder="State / City"
-                    value={formData.city}
-                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                    className="w-full px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B1E2B] focus:border-transparent transition-all shadow-xs"
-                  />
-                </div>
-
-                {/* WhatsApp & Counselling Notice */}
-                <p className="text-[11px] text-slate-500 leading-snug pt-1">
-                  By providing your contact details, you agree to receive official admission guidelines & counselling alerts from Govt. College Dera Bassi.
-                </p>
-
-                {/* Submit CTA Button */}
-                <a
-                  href="https://online.gcderabassi.ac.in/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => {
-                    if (formData.name && formData.phone) {
-                      setIsSubmitted(true);
-                    }
-                  }}
-                  className="w-full bg-[#8B1E2B] hover:bg-[#601520] text-white font-bold py-3.5 px-6 rounded-lg text-sm sm:text-base uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg active:scale-98 cursor-pointer mt-2 flex items-center justify-center text-center"
-                >
-                  Apply Now
-                </a>
 
               </form>
             )}
