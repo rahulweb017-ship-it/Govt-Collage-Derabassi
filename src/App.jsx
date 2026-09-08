@@ -8,6 +8,7 @@ import ProspectusPage from './pages/ProspectusPage'
 import AboutUsPage from './pages/AboutUsPage'
 import VisionMissionPage from './pages/VisionMissionPage'
 import DepartmentsPage from './pages/DepartmentsPage'
+import CoursesOfferedPage from './pages/CoursesOfferedPage'
 import PlaceholderPage from './pages/PlaceholderPage'
 
 // Automatically scrolls to top on route change
@@ -39,7 +40,8 @@ export default function App() {
           <Route path="/academics/departments-faculty" element={<DepartmentsPage />} />
           <Route path="/academics/departments" element={<DepartmentsPage />} />
           <Route path="/departments" element={<DepartmentsPage />} />
-          <Route path="/academics/courses-offered" element={<PlaceholderPage />} />
+          <Route path="/academics/courses-offered" element={<CoursesOfferedPage />} />
+          <Route path="/courses" element={<CoursesOfferedPage />} />
           <Route path="/academics/syllabus" element={<PlaceholderPage />} />
           <Route path="/academics/nep-guidelines" element={<PlaceholderPage />} />
           <Route path="/academics/distance-learning" element={<PlaceholderPage />} />
