@@ -13,7 +13,8 @@ import {
   Shield,
   Users,
   Download,
-  FileText
+  FileText,
+  ChevronRight
 } from 'lucide-react';
 
 const navItems = [
@@ -40,7 +41,15 @@ const navItems = [
     children: [
       { label: 'Departments & Faculty', href: '/academics/departments-faculty' },
       { label: 'Courses Offered', href: '/academics/courses-offered' },
-      { label: 'Latest Syllabus', href: '/academics/syllabus' },
+      { 
+        label: 'Latest Syllabus', 
+        href: '/academics/syllabus',
+        hasSubmenu: true,
+        subChildren: [
+          { label: 'For Punjabi University Patiala Courses', href: 'https://punjabiuniversity.ac.in/indexSyllabi.aspx', isExternal: true },
+          { label: 'For Jagat Guru Nanak Dev PSOU Patiala Courses', href: 'https://psou.ac.in/admission/admission_coursess/skill-building-stc', isExternal: true }
+        ]
+      },
       { label: 'NEP Guidelines', href: '/academics/nep-guidelines' },
       { label: 'Distance Learning (Private Course Guidelines)', href: '/academics/distance-learning' }
     ]
@@ -414,7 +423,42 @@ const Navbar = () => {
                       {item.children && (
                         <div className={`absolute top-full ${item.label === 'PROSPECTUS' ? 'right-0' : 'left-0'} ${item.isWhiteHighlight ? 'min-w-[340px]' : 'min-w-[280px]'} bg-white text-slate-800 rounded-b-lg shadow-2xl border border-slate-100 py-1.5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50`}>
                           {item.children.map((child, idx) => (
-                            child.isDownload ? (
+                            child.subChildren ? (
+                              <div key={idx} className="relative group/sub border-b border-slate-50 last:border-0">
+                                <Link
+                                  to={child.href}
+                                  className="px-4 py-2.5 text-xs text-slate-700 hover:bg-[#FAF4E6] hover:text-[#8B1E2B] font-semibold transition-colors flex items-center justify-between"
+                                >
+                                  <span>{child.label}</span>
+                                  <ChevronRight size={13} className="text-slate-400 group-hover/sub:text-[#8B1E2B] group-hover/sub:translate-x-0.5 transition-all shrink-0 ml-2" />
+                                </Link>
+
+                                {/* Flyout Submenu */}
+                                <div className="absolute left-full top-0 min-w-[340px] bg-white text-slate-800 rounded-lg shadow-2xl border border-slate-100 py-1.5 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all duration-200 transform -translate-x-1 group-hover/sub:translate-x-0 z-50">
+                                  <div className="px-3.5 py-1.5 text-[10px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100">
+                                    Official University Portals
+                                  </div>
+                                  {child.subChildren.map((subItem, sIdx) => (
+                                    <a
+                                      key={sIdx}
+                                      href={subItem.href}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                      className="block px-4 py-2.5 text-xs text-slate-700 hover:bg-[#FAF4E6] hover:text-[#8B1E2B] font-semibold transition-colors border-b border-slate-50 last:border-0 flex items-center justify-between"
+                                    >
+                                      <span className="leading-snug">{subItem.label}</span>
+                                      <ExternalLink size={12} className="text-slate-400 shrink-0 ml-2" />
+                                    </a>
+                                  ))}
+                                  <Link
+                                    to={child.href}
+                                    className="block px-4 py-2 text-center text-[11px] font-bold text-[#8B1E2B] bg-slate-50 hover:bg-[#FAF4E6] transition-colors border-t border-slate-100"
+                                  >
+                                    View Syllabus Guide Page →
+                                  </Link>
+                                </div>
+                              </div>
+                            ) : child.isDownload ? (
                               <a
                                 key={idx}
                                 href={child.href}
@@ -596,7 +640,37 @@ const Navbar = () => {
                   {item.children && mobileExpanded[item.label] && (
                     <div className="pl-3 pb-2 space-y-1 bg-slate-50 rounded p-2 mb-2 animate-fadeIn">
                       {item.children.map((sub, sIdx) => (
-                        sub.isDownload ? (
+                        sub.subChildren ? (
+                          <div key={sIdx} className="border-b border-slate-200/60 pb-2 mb-1.5 last:border-0">
+                            <div className="flex items-center justify-between py-1.5 text-xs font-semibold text-slate-700">
+                              <Link 
+                                to={sub.href}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="hover:text-[#8B1E2B] flex items-center gap-1.5"
+                              >
+                                <span>• {sub.label}</span>
+                              </Link>
+                              <span className="text-[10px] text-[#8B1E2B] font-bold bg-[#FAF4E6] px-2 py-0.5 rounded border border-[#8B1E2B]/20">
+                                2 Options
+                              </span>
+                            </div>
+                            <div className="pl-3.5 mt-1 space-y-1.5 border-l-2 border-[#8B1E2B]/40">
+                              {sub.subChildren.map((subItem, siIdx) => (
+                                <a
+                                  key={siIdx}
+                                  href={subItem.href}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  onClick={() => setIsMobileMenuOpen(false)}
+                                  className="block py-1 text-[11px] text-slate-600 hover:text-[#8B1E2B] font-medium flex items-center justify-between leading-snug"
+                                >
+                                  <span>↳ {subItem.label}</span>
+                                  <ExternalLink size={10} className="text-slate-400 shrink-0 ml-1.5" />
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        ) : sub.isDownload ? (
                           <a
                             key={sIdx}
                             href={sub.href}
