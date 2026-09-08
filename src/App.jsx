@@ -9,6 +9,7 @@ import AboutUsPage from './pages/AboutUsPage'
 import VisionMissionPage from './pages/VisionMissionPage'
 import DepartmentsPage from './pages/DepartmentsPage'
 import CoursesOfferedPage from './pages/CoursesOfferedPage'
+import AdmissionRulesPage from './pages/AdmissionRulesPage'
 import PlaceholderPage from './pages/PlaceholderPage'
 
 // Automatically scrolls to top on route change
@@ -45,7 +46,10 @@ export default function App() {
           <Route path="/academics/nep-guidelines" element={<PlaceholderPage />} />
           <Route path="/academics/distance-learning" element={<PlaceholderPage />} />
           
-          <Route path="/students/admission-rules" element={<PlaceholderPage />} />
+          <Route path="/students/admission-rules" element={<AdmissionRulesPage />} />
+          <Route path="/admissions/admission-rules" element={<AdmissionRulesPage />} />
+          <Route path="/admissions/rules" element={<AdmissionRulesPage />} />
+          <Route path="/admission-rules" element={<AdmissionRulesPage />} />
           
           <Route path="/examinations/date-sheets" element={<PlaceholderPage />} />
           <Route path="/examinations/results" element={<PlaceholderPage />} />
