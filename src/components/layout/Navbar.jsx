@@ -26,7 +26,7 @@ const navItems = [
     hasChevron: true,
     children: [
       { label: 'Campus & Departments Overview', href: '/about/overview' },
-      { label: 'Academic Calendar (include government holidays)', href: '/about/calendar' },
+      { label: 'Academic Calendar', href: '/about/calendar' },
       { label: 'Latest NAAC Report', href: '/about/naac-report' },
       { label: 'Vision & Mission', href: '/about/vision-mission' }
     ]
