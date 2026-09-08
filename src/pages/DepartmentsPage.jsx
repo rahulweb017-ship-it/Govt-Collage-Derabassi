@@ -522,7 +522,7 @@ export default function DepartmentsPage() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-6">
               {filteredDepartments.map((dept) => {
                 const IconComponent = dept.icon;
                 return (
@@ -535,7 +535,7 @@ export default function DepartmentsPage() {
 
                     <div>
                       {/* Department Image Header with Overlay */}
-                      <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-[#0C1D3F]">
+                      <div className="relative h-40 sm:h-44 w-full overflow-hidden bg-[#0C1D3F]">
                         <img 
                           src={dept.image} 
                           alt={`${dept.fullName} - Government College Dera Bassi`}
@@ -544,47 +544,47 @@ export default function DepartmentsPage() {
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0C1D3F] via-[#0C1D3F]/40 to-transparent" />
                         
                         {/* Top Overlay Badges */}
-                        <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
-                          <span className="px-2.5 py-1 rounded-md bg-[#0C1D3F]/85 backdrop-blur-md text-[#F49D71] font-mono font-bold text-xs border border-white/20">
+                        <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10">
+                          <span className="px-2 py-0.5 rounded-md bg-[#0C1D3F]/85 backdrop-blur-md text-[#F49D71] font-mono font-bold text-[11px] border border-white/20">
                             #{dept.number}
                           </span>
-                          <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[#0C1D3F] shadow-xs">
+                          <span className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-white/95 backdrop-blur-md text-[#0C1D3F] shadow-xs truncate max-w-[150px]">
                             {dept.category}
                           </span>
                         </div>
 
                         {/* Title Overlay at bottom of Image */}
-                        <div className="absolute bottom-3 left-4 right-4 z-10 flex items-end justify-between">
-                          <div>
-                            <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight leading-tight group-hover:text-[#F49D71] transition-colors drop-shadow-sm">
+                        <div className="absolute bottom-2.5 left-3 right-3 z-10 flex items-end justify-between">
+                          <div className="pr-2">
+                            <h3 className="text-lg sm:text-xl font-extrabold text-white tracking-tight leading-snug group-hover:text-[#F49D71] transition-colors drop-shadow-sm">
                               {dept.name}
                             </h3>
                           </div>
-                          <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-md text-white flex items-center justify-center border border-white/30 shrink-0">
-                            <IconComponent size={16} />
+                          <div className="w-7 h-7 rounded-lg bg-white/20 backdrop-blur-md text-white flex items-center justify-center border border-white/30 shrink-0">
+                            <IconComponent size={14} />
                           </div>
                         </div>
                       </div>
 
                       {/* Card Content Area */}
-                      <div className="p-5 sm:p-6">
+                      <div className="p-4 sm:p-5">
                         {/* Short Label */}
-                        <p className="text-xs font-semibold text-[#8B1E2B] flex items-center gap-1.5">
+                        <p className="text-[11px] font-semibold text-[#8B1E2B] flex items-center gap-1.5 leading-snug">
                           <span className="w-1.5 h-1.5 rounded-full bg-[#C75B2A] shrink-0" />
-                          <span>{dept.shortLabel}</span>
+                          <span className="line-clamp-1">{dept.shortLabel}</span>
                         </p>
 
                         {/* Description */}
-                        <p className="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed line-clamp-3">
+                        <p className="text-slate-600 text-xs mt-2.5 leading-relaxed line-clamp-3">
                           {dept.description}
                         </p>
 
                         {/* Degree Badges */}
-                        <div className="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
+                        <div className="mt-3.5 pt-2.5 border-t border-slate-100 flex flex-wrap gap-1">
                           {dept.degrees.map((deg, idx) => (
                             <span 
                               key={idx} 
-                              className="text-[11px] font-medium bg-slate-50 text-slate-700 px-2.5 py-0.5 rounded-md border border-slate-200"
+                              className="text-[10px] font-medium bg-slate-50 text-slate-700 px-2 py-0.5 rounded-md border border-slate-200"
                             >
                               {deg}
                             </span>
@@ -594,16 +594,16 @@ export default function DepartmentsPage() {
                     </div>
 
                     {/* Card Footer: Explore Department Button */}
-                    <div className="px-5 pb-5 sm:px-6 sm:pb-6">
+                    <div className="px-4 pb-4 sm:px-5 sm:pb-5">
                       <button
                         onClick={() => setActiveModalDept(dept)}
-                        className="w-full inline-flex items-center justify-between px-4 py-2.5 rounded-xl bg-slate-50 group-hover:bg-[#0C1D3F] text-[#0C1D3F] group-hover:text-white text-xs font-bold transition-all duration-200"
+                        className="w-full inline-flex items-center justify-between px-3.5 py-2 rounded-xl bg-slate-50 group-hover:bg-[#0C1D3F] text-[#0C1D3F] group-hover:text-white text-xs font-bold transition-all duration-200"
                       >
                         <span className="flex items-center gap-1.5">
-                          <Eye size={14} className="text-[#C75B2A] group-hover:text-[#F49D71]" />
+                          <Eye size={13} className="text-[#C75B2A] group-hover:text-[#F49D71]" />
                           <span>Explore Department</span>
                         </span>
-                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
                       </button>
                     </div>
 
