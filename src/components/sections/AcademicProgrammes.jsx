@@ -3,87 +3,47 @@ import { ChevronRight, CheckCircle2, Phone, Mail, User, BookOpen, Sparkles } fro
 
 const academicDirectoryCol1 = [
   {
-    title: 'B.Com | B.Com (Hons.)',
-    specializations: 'Accounting | Finance | Banking & Insurance',
-    href: '#admissions'
+    title: 'B.A. / B.A. (Honours)',
+    subtitle: 'Social Sciences / Languages / Performing Arts',
+    href: 'https://online.gcderabassi.ac.in/'
   },
   {
-    title: 'BCA | BCA (Hons.)',
-    specializations: 'Computer Applications | Web Tech | Software Dev',
-    href: '#admissions'
+    title: 'B.Sc. / B.Sc. (Honours)',
+    subtitle: 'Life Sciences / Physical Sciences / Computer Sciences',
+    href: 'https://online.gcderabassi.ac.in/'
   },
   {
-    title: 'B.B.A. (Hons.)',
-    specializations: 'Business Administration | Marketing | HR',
-    href: '#admissions'
+    title: 'B.Com / B.Com (Honours)',
+    subtitle: 'Single Major UG Programme',
+    href: 'https://online.gcderabassi.ac.in/'
   },
   {
-    title: 'B.A. | B.A. (Hons.)',
-    specializations: 'History | Political Science | Economics | Sociology',
-    href: '#admissions'
-  },
-  {
-    title: 'B.A. (Languages & Humanities)',
-    specializations: 'English Literature | Punjabi Compulsory | Hindi | Electives',
-    href: '#admissions'
-  },
-  {
-    title: 'B.Sc. (Non-Medical)',
-    specializations: 'Physics | Chemistry | Higher Mathematics',
-    href: '#admissions'
-  },
-  {
-    title: 'B.Sc. (Medical)',
-    specializations: 'Botany | Zoology | Organic Chemistry',
-    href: '#admissions'
-  },
-  {
-    title: 'B.Sc. (Computer Science)',
-    specializations: 'Computer Science | Mathematics | Statistics',
-    href: '#admissions'
+    title: 'B.Com / B.Com (Honours) — Self-Financing',
+    subtitle: 'Single Major UG Programme',
+    href: 'https://online.gcderabassi.ac.in/'
   }
 ];
 
 const academicDirectoryCol2 = [
   {
-    title: 'M.Com (Master of Commerce)',
-    specializations: 'Advanced Financial Management & Corporate Accounting (2 Years PG)',
-    href: '#admissions'
+    title: 'BCA / BCA (Honours) — Self-Financing',
+    subtitle: 'Single Major UG Programme',
+    href: 'https://online.gcderabassi.ac.in/'
   },
   {
-    title: 'PGDCA (Post Graduate Diploma)',
-    specializations: 'Computer Applications | Database Management | Office Automation',
-    href: '#admissions'
+    title: 'B.B.A. / B.B.A. (Honours) — Self-Financing',
+    subtitle: 'Business Process Reengineering and Management',
+    href: 'https://online.gcderabassi.ac.in/'
   },
   {
-    title: 'Career Certificate in Spoken English',
-    specializations: 'Communication Skills | Public Speaking | Personality Grooming',
-    href: '#admissions'
+    title: 'B.A. (Aesthetic and Beauty Therapy) — Self-Financing',
+    subtitle: '',
+    href: 'https://online.gcderabassi.ac.in/'
   },
   {
-    title: 'Certificate in Office & Web Automation',
-    specializations: 'Digital Literacy | MS Office | Internet Applications',
-    href: '#admissions'
-  },
-  {
-    title: 'Punjabi University Merit Honours Programs',
-    specializations: 'Specialized Advanced Disciplines with Central University Affiliation',
-    href: '#admissions'
-  },
-  {
-    title: 'Skill Enhancement & Value Added Modules',
-    specializations: 'IQAC Certified Employability & Leadership Workshops',
-    href: '#admissions'
-  },
-  {
-    title: 'Environmental Studies & Road Safety',
-    specializations: 'Mandatory Certified Civic & Ecological Modules',
-    href: '#admissions'
-  },
-  {
-    title: 'Competitive Exam Guidance Cell',
-    specializations: 'UPSC | PPSC | Banking | SSC Counselling & Preparation',
-    href: '#admissions'
+    title: 'M.Com — Self-Financing',
+    subtitle: 'Postgraduate Programme',
+    href: 'https://online.gcderabassi.ac.in/'
   }
 ];
 
@@ -99,6 +59,7 @@ const AcademicProgrammes = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    window.open('https://online.gcderabassi.ac.in/', '_blank', 'noopener,noreferrer');
     if (!formData.name || !formData.phone) return;
     setIsSubmitted(true);
   };
@@ -130,7 +91,9 @@ const AcademicProgrammes = () => {
                   <div key={idx} className="group">
                     <a 
                       href={item.href}
-                      className="flex items-start gap-2 text-slate-900 group-hover:text-[#8B1E2B] transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-2 -m-2 rounded-lg hover:bg-white/70"
                     >
                       <span className="text-[#8B1E2B] font-bold text-base mt-0.5 leading-none shrink-0 group-hover:translate-x-0.5 transition-transform">
                         &gt;
@@ -139,9 +102,11 @@ const AcademicProgrammes = () => {
                         <h3 className="font-bold text-sm sm:text-[15px] leading-snug tracking-tight underline-offset-2 group-hover:underline">
                           {item.title}
                         </h3>
-                        <p className="text-xs text-slate-600 font-medium leading-tight mt-0.5">
-                          {item.specializations}
-                        </p>
+                        {item.subtitle && (
+                          <p className="text-xs text-slate-600 font-medium leading-tight mt-0.5">
+                            {item.subtitle}
+                          </p>
+                        )}
                       </div>
                     </a>
                   </div>
@@ -154,7 +119,9 @@ const AcademicProgrammes = () => {
                   <div key={idx} className="group">
                     <a 
                       href={item.href}
-                      className="flex items-start gap-2 text-slate-900 group-hover:text-[#8B1E2B] transition-colors"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-2.5 text-slate-900 group-hover:text-[#8B1E2B] transition-colors p-2 -m-2 rounded-lg hover:bg-white/70"
                     >
                       <span className="text-[#8B1E2B] font-bold text-base mt-0.5 leading-none shrink-0 group-hover:translate-x-0.5 transition-transform">
                         &gt;
@@ -163,9 +130,11 @@ const AcademicProgrammes = () => {
                         <h3 className="font-bold text-sm sm:text-[15px] leading-snug tracking-tight underline-offset-2 group-hover:underline">
                           {item.title}
                         </h3>
-                        <p className="text-xs text-slate-600 font-medium leading-tight mt-0.5">
-                          {item.specializations}
-                        </p>
+                        {item.subtitle && (
+                          <p className="text-xs text-slate-600 font-medium leading-tight mt-0.5">
+                            {item.subtitle}
+                          </p>
+                        )}
                       </div>
                     </a>
                   </div>
@@ -280,12 +249,19 @@ const AcademicProgrammes = () => {
                 </p>
 
                 {/* Submit CTA Button */}
-                <button
-                  type="submit"
-                  className="w-full bg-[#8B1E2B] hover:bg-[#601520] text-white font-bold py-3.5 px-6 rounded-lg text-sm sm:text-base uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg active:scale-98 cursor-pointer mt-2"
+                <a
+                  href="https://online.gcderabassi.ac.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    if (formData.name && formData.phone) {
+                      setIsSubmitted(true);
+                    }
+                  }}
+                  className="w-full bg-[#8B1E2B] hover:bg-[#601520] text-white font-bold py-3.5 px-6 rounded-lg text-sm sm:text-base uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-lg active:scale-98 cursor-pointer mt-2 flex items-center justify-center text-center"
                 >
                   Apply Now
-                </button>
+                </a>
 
               </form>
             )}
