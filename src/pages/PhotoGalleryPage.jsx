@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Home, 
@@ -7,8 +7,7 @@ import {
   Newspaper, 
   Maximize2, 
   X, 
-  ChevronLeft, 
-  Download
+  ChevronLeft 
 } from 'lucide-react';
 
 // 10 Curated Slideable Rows with 6–7 images each (4 original + 2–3 extra images per row)
