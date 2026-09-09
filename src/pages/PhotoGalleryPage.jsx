@@ -13,101 +13,104 @@ import {
 
 // 10 Curated Slideable Rows with 6–7 images each (4 original + 2–3 extra images per row)
 const galleryRows = [
-  // Row 1: Official Dignitary & VIP Escort (starts with the 4 user-selected photos + 3 extra related photos)
+  // Row 1: Top Row (4 VIP photos + 2 new NAAC dignitary photos)
   [
     "773492161_1362046919433739_3949821406479017097_n.jpg",
     "773981624_1362046949433736_8843859270155610838_n.jpg",
     "775201441_1362046886100409_4446176478394313608_n.jpg",
     "775259808_1362047432767021_2004982167574374757_n.jpg",
-    "773403016_1362047046100393_7062809402490303177_n.jpg",
-    "641339826_1224835806488185_1442302230746092534_n.jpg",
-    "641506174_1224837389821360_8180891415369026258_n.jpg"
-  ],
-  // Row 2: NAAC Accreditation & Peer Team Visit
-  [
-    "Handing over NAAC certificate by NAAC PEER Team 16-02-2024.JPG",
     "College staff with NAAC PEER team 16-02-2024.JPG",
-    "Cultural Performance during NAAC visit 15-02-2024.JPG",
-    "Youth Festival team with College principal.jpg",
+    "Handing over NAAC certificate by NAAC PEER Team 16-02-2024.JPG"
+  ],
+  // Row 2: 4 original photos + 2 new cultural/visit photos
+  [
+    "471151130_897568249214944_8328849279761937305_n.jpg",
     "475039282_919975386974230_1934722744345990612_n.jpg",
     "475107553_919975400307562_1009558683444390905_n.jpg",
-    "475456153_923073919997710_6074902118805624071_n.jpg"
+    "475456153_923073919997710_6074902118805624071_n.jpg",
+    "Cultural Performance during NAAC visit 15-02-2024.JPG",
+    "Youth Festival team with College principal.jpg"
   ],
-  // Row 3: Convocations, Alumni & Distinguished Guests
+  // Row 3: 4 original photos + 2 new Convocation photos
   [
-    "Convocation Cheif Guest Maharani Parneet Kaur 30-04-2018 .jpg",
-    "Convocation 30-04-2018 cheif guest maharani Parneet Kaur.jpg",
-    "Alimni Meet 12-03-2022.JPG",
-    "Boundary wall inaugration-made by donation recieved from idustry association dera bassi 20-12-2019 .jpg",
     "475482709_925680386403730_3639509373296332479_n.jpg",
     "475643771_923073773331058_2817507145000513625_n.jpg",
-    "476616047_929331972705238_6052361536113736816_n.jpg"
-  ],
-  // Row 4: Cultural Celebrations, Folk Arts & Talent Hunt
-  [
-    "3Teej with Dolly Guleria 23-08-2019.jpg",
-    "Teej with Dolly Guleria 23-08-2018.jpg",
-    "talenthunt (3).jfif",
-    "talenthunt (4).jfif",
-    "talenthunt (6).jfif",
-    "talenthunt (7).jfif",
-    "talenthunt (8).jfif"
-  ],
-  // Row 5: Sports, Athletics & Annual Sports Meet
-  [
-    "sport (1).jpg",
-    "sport (5).jfif",
+    "476616047_929331972705238_6052361536113736816_n.jpg",
     "476793206_932807069024395_225822591254432989_n.jpg",
+    "Convocation Cheif Guest Maharani Parneet Kaur 30-04-2018 .jpg",
+    "Convocation 30-04-2018 cheif guest maharani Parneet Kaur.jpg"
+  ],
+  // Row 4: 4 original photos + 2 new Alumni & Infrastructure photos
+  [
     "476869930_932807375691031_3843363186741320216_n.jpg",
     "476905893_932807369024365_8788563188631497972_n.jpg",
     "477244393_932807372357698_1643794895627389240_n.jpg",
-    "477318943_932807062357729_2993250966903255626_n.jpg"
+    "477318943_932807062357729_2993250966903255626_n.jpg",
+    "Alimni Meet 12-03-2022.JPG",
+    "Boundary wall inaugration-made by donation recieved from idustry association dera bassi 20-12-2019 .jpg"
   ],
-  // Row 6: NSS, Social Campaigns & Blood Donation
+  // Row 5: 4 original photos + 2 new Teej festival photos
   [
-    "blood (2).jfif",
-    "blood (3).jfif",
-    "rally (1).jfif",
-    "rally (2).jfif",
+    "481466094_948631344108634_5498008527960592922_n.jpg",
+    "532202346_1070771168561317_229066116943025275_n.jpg",
+    "532894590_1070770615228039_7189536687268036474_n.jpg",
+    "532988164_1070770895228011_35375284899516119_n.jpg",
+    "3Teej with Dolly Guleria 23-08-2019.jpg",
+    "Teej with Dolly Guleria 23-08-2018.jpg"
+  ],
+  // Row 6: 4 original photos + 2 new NSS & awareness photos
+  [
+    "533016286_1070771038561330_5400447172707988414_n.jpg",
+    "533542692_1070770468561387_6037955685776177824_n.jpg",
+    "590654983_1156963079942125_5336330149051637037_n.jpg",
+    "591268712_1156961756608924_204784242459002836_n.jpg",
     "Nukkad Natak Yudh Nashian virudh 06-05-2025.jpg",
     "Sadbhawna Divas  20-08-2025.JPG"
   ],
-  // Row 7: Computer Science Labs & Sciences
+  // Row 7: 4 original photos + 2 new Career & Independence Day photos
+  [
+    "641339826_1224835806488185_1442302230746092534_n.jpg",
+    "641506174_1224837389821360_8180891415369026258_n.jpg",
+    "642845158_1224836806488085_7552588767986684248_n.jpg",
+    "642873238_1224837309821368_1830644472842992610_n.jpg",
+    "Workshop under scheme career counselling- pospectus of Television 04-03-2023.JPG",
+    "Indipendence day 15-08-2025.jpeg"
+  ],
+  // Row 8: 6 original photos
+  [
+    "643810503_1224837146488051_9059872649749608343_n.jpg",
+    "643975829_1224835983154834_8181967577905549938_n.jpg",
+    "644010472_1224837066488059_5714759355864812586_n.jpg",
+    "773403016_1362047046100393_7062809402490303177_n.jpg",
+    "blood (2).jfif",
+    "blood (3).jfif"
+  ],
+  // Row 9: 6 original photos
   [
     "comp-1.jpg",
     "comp-2.jpg",
     "comp-3.jpg",
     "cyber.jfif",
     "geo (1).jpg",
+    "pic (3).jfif"
+  ],
+  // Row 10: 6 original photos
+  [
+    "prif (1).jfif",
+    "rally (1).jfif",
+    "rally (2).jfif",
+    "sport (1).jpg",
+    "sport (5).jfif",
+    "talenthunt (3).jfif"
+  ],
+  // Row 11: 6 original photos
+  [
+    "talenthunt (4).jfif",
+    "talenthunt (6).jfif",
+    "talenthunt (7).jfif",
+    "talenthunt (8).jfif",
     "tele (1).jfif",
     "tele (2).jfif"
-  ],
-  // Row 8: Student Development, Career Workshops & National Days
-  [
-    "Workshop under scheme career counselling- pospectus of Television 04-03-2023.JPG",
-    "Indipendence day 15-08-2025.jpeg",
-    "pic (3).jfif",
-    "prif (1).jfif",
-    "471151130_897568249214944_8328849279761937305_n.jpg",
-    "481466094_948631344108634_5498008527960592922_n.jpg"
-  ],
-  // Row 9: Academic Conferences & Campus Functions
-  [
-    "532202346_1070771168561317_229066116943025275_n.jpg",
-    "532894590_1070770615228039_7189536687268036474_n.jpg",
-    "532988164_1070770895228011_35375284899516119_n.jpg",
-    "533016286_1070771038561330_5400447172707988414_n.jpg",
-    "533542692_1070770468561387_6037955685776177824_n.jpg",
-    "590654983_1156963079942125_5336330149051637037_n.jpg"
-  ],
-  // Row 10: Academic Displays & Interactive Student Life
-  [
-    "591268712_1156961756608924_204784242459002836_n.jpg",
-    "642845158_1224836806488085_7552588767986684248_n.jpg",
-    "642873238_1224837309821368_1830644472842992610_n.jpg",
-    "643810503_1224837146488051_9059872649749608343_n.jpg",
-    "643975829_1224835983154834_8181967577905549938_n.jpg",
-    "644010472_1224837066488059_5714759355864812586_n.jpg"
   ]
 ];
 
