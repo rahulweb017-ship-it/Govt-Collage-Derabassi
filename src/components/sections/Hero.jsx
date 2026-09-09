@@ -60,7 +60,45 @@ const Hero = () => {
   return (
     <div id="home" className="relative w-full overflow-hidden select-none">
       
-      {/* 1. MAIN PURE VISUAL SLIDER CONTAINER */}
+      {/* 1. LIVE ANNOUNCEMENT MARQUEE STRIP AT TOP OF PAGE */}
+      <div className="relative z-30 bg-[#4A1018] border-b-2 border-[#C75B2A] shadow-md py-2 sm:py-2.5 overflow-hidden">
+        <div className="section-container flex items-center gap-4">
+          
+          {/* Ticker Badge */}
+          <div className="shrink-0 flex items-center gap-2 bg-[#C75B2A] text-white text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider shadow-sm">
+            <Megaphone size={14} className="animate-bounce" />
+            <span>Latest News</span>
+          </div>
+
+          {/* Scrolling Ticker Text */}
+          <div className="flex-1 overflow-hidden whitespace-nowrap relative">
+            <div className="inline-block animate-marquee hover:pause cursor-pointer text-xs sm:text-sm text-ivory-100 font-medium">
+              {announcements.map((item, i) => (
+                <span key={i} className="inline-flex items-center mr-8">
+                  <span className="text-saffron-400 font-bold mr-1.5">●</span>
+                  <span className="hover:text-saffron-300 transition-colors">{item.title}</span>
+                  {item.isNew && (
+                    <span className="ml-2 bg-red-600 text-white text-[10px] px-1.5 py-0.5 rounded font-bold uppercase">
+                      New
+                    </span>
+                  )}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick All Notices Link */}
+          <a
+            href="#news"
+            className="hidden md:inline-flex shrink-0 text-xs font-semibold text-saffron-300 hover:text-white transition-colors uppercase tracking-wider"
+          >
+            All News →
+          </a>
+
+        </div>
+      </div>
+
+      {/* 2. MAIN PURE VISUAL SLIDER CONTAINER */}
       <div className="relative w-full h-[45vh] sm:h-[60vh] md:h-[72vh] lg:h-[82vh] max-h-[860px] overflow-hidden bg-slate-100">
         
         {/* Slide Images */}
@@ -141,44 +179,6 @@ const Hero = () => {
           </span>
         </div>
 
-      </div>
-
-      {/* 2. IIT ROPAR STYLE LIVE ANNOUNCEMENT MARQUEE STRIP */}
-      <div className="relative z-30 bg-[#4A1018] border-t-2 border-[#C75B2A] shadow-2xl py-2.5 overflow-hidden">
-        <div className="section-container flex items-center gap-4">
-          
-          {/* Ticker Badge */}
-          <div className="shrink-0 flex items-center gap-2 bg-[#C75B2A] text-white text-xs font-bold px-3 py-1 rounded-md uppercase tracking-wider shadow-sm">
-            <Megaphone size={14} className="animate-bounce" />
-            <span>Latest Bulletins</span>
-          </div>
-
-          {/* Scrolling Ticker Text */}
-          <div className="flex-1 overflow-hidden whitespace-nowrap relative">
-            <div className="inline-block animate-marquee hover:pause cursor-pointer text-xs sm:text-sm text-ivory-100 font-medium">
-              {announcements.map((item, i) => (
-                <span key={i} className="inline-flex items-center mr-8">
-                  <span className="text-saffron-400 font-bold mr-1.5">●</span>
-                  <span className="hover:text-saffron-300 transition-colors">{item.title}</span>
-                  {item.isNew && (
-                    <span className="ml-2 bg-red-600 text-white text-[10px] px-1.5 py-0.5 rounded font-bold uppercase">
-                      New
-                    </span>
-                  )}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Quick All Notices Link */}
-          <a
-            href="#recognition"
-            className="hidden md:inline-flex shrink-0 text-xs font-semibold text-saffron-300 hover:text-white transition-colors uppercase tracking-wider"
-          >
-            All Notices →
-          </a>
-
-        </div>
       </div>
 
     </div>

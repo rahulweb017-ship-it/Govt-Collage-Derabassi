@@ -14,6 +14,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <NewsAnnouncements />
       <AdmissionsBanner />
       <AboutLegacy />
       <KeyStats />
@@ -21,7 +22,6 @@ export default function HomePage() {
       <CampusLife />
       <PrincipalMessage />
       <StudentServices />
-      <NewsAnnouncements />
       <WhyGCD />
       <FinalCTA />
     </>

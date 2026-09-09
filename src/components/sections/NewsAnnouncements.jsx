@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, ArrowUpRight, Megaphone, Newspaper, Sparkles } from 'lucide-react';
 
 const featuredNews = {
@@ -57,23 +58,23 @@ const NewsAnnouncements = () => {
           <div>
             <div className="inline-flex items-center gap-2 bg-white/10 text-saffron-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3 border border-white/15">
               <Megaphone size={13} className="text-saffron-400" />
-              <span>Press & Campus Bulletins</span>
+              <span>Govt College Dera Bassi • Updates & Bulletins</span>
             </div>
             
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white font-sans">
-              News & <span className="text-[#8B1E2B]">Announcements</span>
+              Latest News of <span className="text-[#C75B2A]">Govt College</span>
             </h2>
           </div>
 
-          <a 
-            href="#recognition" 
+          <Link 
+            to="/gallery/news" 
             className="inline-flex items-center gap-2.5 text-sm font-bold text-white hover:text-saffron-400 transition-colors group self-start sm:self-end"
           >
-            <span>See All News</span>
+            <span>View All Press Clippings</span>
             <div className="w-8 h-8 rounded-full bg-white text-[#0B1329] group-hover:bg-saffron-400 flex items-center justify-center transition-all duration-300 shadow-md">
               <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
             </div>
-          </a>
+          </Link>
         </div>
 
         {/* 2. EDITORIAL GRID (Left: 6 Cols Featured Story | Right: 6 Cols 3-Item Stack) */}
