@@ -139,7 +139,7 @@ export default function PhotoGalleryPage() {
                 className="px-5 py-2.5 rounded-xl bg-[#C75B2A] text-white text-xs sm:text-sm font-bold shadow-md flex items-center gap-2"
               >
                 <ImageIcon size={16} />
-                <span>Photo Gallery ({galleryImages.length})</span>
+                <span>Photo Gallery</span>
               </Link>
               <Link
                 to="/gallery/news"
