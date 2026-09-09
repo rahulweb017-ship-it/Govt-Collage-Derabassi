@@ -116,138 +116,134 @@ const galleryRows = [
 // Flattened list for the full-screen lightbox navigation
 const allGalleryImages = galleryRows.flat();
 
-// Precompute cumulative starting offsets for each row
-const rowOffsets = galleryRows.reduce((acc, row, i) => {
-  acc.push(i === 0 ? 0 : acc[i - 1] + galleryRows[i - 1].length);
-  return acc;
-}, []);
-
-// Interactive Slideable Row Component with smooth scrolling & navigation arrows
-function SlideableImageRow({ images, rowIndex, onImageClick }) {
-  const rowRef = useRef(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-  const isDragging = useRef(false);
-  const startX = useRef(0);
-  const scrollLeftStart = useRef(0);
-
-  const checkScroll = () => {
-    if (!rowRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = rowRef.current;
-    setCanScrollLeft(scrollLeft > 12);
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 12);
-  };
+// FadingSlot Component: Renders a card that smoothly cross-fades when the image changes
+function FadingSlot({ currentImage, onImageClick }) {
+  // displayImg is the solid base layer
+  const [displayImg, setDisplayImg] = useState(currentImage);
+  // incomingImg is the fading-in top layer
+  const [incomingImg, setIncomingImg] = useState(null);
+  const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    checkScroll();
-    const el = rowRef.current;
-    if (el) {
-      el.addEventListener('scroll', checkScroll, { passive: true });
-      window.addEventListener('resize', checkScroll);
+    if (currentImage && currentImage !== displayImg) {
+      setIncomingImg(currentImage);
+      setIsFading(false);
+
+      // Trigger cross-fade on next frame
+      const frameId = requestAnimationFrame(() => {
+        setIsFading(true);
+      });
+
+      const timerId = setTimeout(() => {
+        setDisplayImg(currentImage);
+        setIncomingImg(null);
+        setIsFading(false);
+      }, 1000); // 1000ms dissolve
+
+      return () => {
+        cancelAnimationFrame(frameId);
+        clearTimeout(timerId);
+      };
     }
-    return () => {
-      if (el) el.removeEventListener('scroll', checkScroll);
-      window.removeEventListener('resize', checkScroll);
-    };
-  }, [images]);
+  }, [currentImage, displayImg]);
 
-  const handleScroll = (direction) => {
-    if (!rowRef.current) return;
-    const scrollAmount = rowRef.current.clientWidth * 0.75;
-    rowRef.current.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth'
-    });
-  };
-
-  // Mouse Drag to Scroll handlers
-  const handleMouseDown = (e) => {
-    if (!rowRef.current) return;
-    isDragging.current = true;
-    startX.current = e.pageX - rowRef.current.offsetLeft;
-    scrollLeftStart.current = rowRef.current.scrollLeft;
-  };
-
-  const handleMouseLeaveOrUp = () => {
-    isDragging.current = false;
-  };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging.current || !rowRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - rowRef.current.offsetLeft;
-    const walk = (x - startX.current) * 1.5;
-    rowRef.current.scrollLeft = scrollLeftStart.current - walk;
-  };
-
-  const offset = rowOffsets[rowIndex];
+  const activeImage = incomingImg || displayImg;
 
   return (
-    <div className="relative group/row my-4 sm:my-6">
-      {/* Left Navigation Arrow */}
-      <button
-        onClick={() => handleScroll('left')}
-        disabled={!canScrollLeft}
-        aria-label="Previous images"
-        className={`absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0C1D3F]/85 hover:bg-[#C75B2A] text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-300 shadow-xl ${
-          canScrollLeft 
-            ? 'opacity-85 group-hover/row:opacity-100 hover:scale-110 cursor-pointer' 
-            : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        <ChevronLeft size={24} />
-      </button>
+    <div
+      onClick={() => onImageClick(activeImage)}
+      className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group"
+    >
+      {/* Base Layer */}
+      {displayImg && (
+        <img
+          src={`/images/gallery%20image/${encodeURIComponent(displayImg)}`}
+          alt="College Visual"
+          loading="lazy"
+          draggable={false}
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+        />
+      )}
 
-      {/* Right Navigation Arrow */}
-      <button
-        onClick={() => handleScroll('right')}
-        disabled={!canScrollRight}
-        aria-label="Next images"
-        className={`absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0C1D3F]/85 hover:bg-[#C75B2A] text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-300 shadow-xl ${
-          canScrollRight 
-            ? 'opacity-85 group-hover/row:opacity-100 hover:scale-110 cursor-pointer' 
-            : 'opacity-0 pointer-events-none'
-        }`}
-      >
-        <ChevronRight size={24} />
-      </button>
+      {/* Cross-fading Top Layer */}
+      {incomingImg && (
+        <img
+          src={`/images/gallery%20image/${encodeURIComponent(incomingImg)}`}
+          alt="College Visual"
+          loading="lazy"
+          draggable={false}
+          className={`absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-1000 ease-in-out ${
+            isFading ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      )}
 
-      {/* Slideable Row Track */}
-      <div
-        ref={rowRef}
-        onMouseDown={handleMouseDown}
-        onMouseLeave={handleMouseLeaveOrUp}
-        onMouseUp={handleMouseLeaveOrUp}
-        onMouseMove={handleMouseMove}
-        className="flex gap-3.5 sm:gap-4 lg:gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory py-2 px-1 scrollbar-none select-none active:cursor-grabbing cursor-grab"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-      >
-        {images.map((fileName, imgIdx) => {
-          const globalIdx = offset + imgIdx;
-          const imgSrc = `/images/gallery%20image/${encodeURIComponent(fileName)}`;
-          return (
-            <div
-              key={fileName}
-              onClick={() => onImageClick(globalIdx)}
-              className="snap-start shrink-0 w-[260px] sm:w-[300px] md:w-[330px] lg:w-[355px] aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 border border-slate-200/80 shadow-xs hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 cursor-pointer relative group/item"
-            >
-              <img
-                src={imgSrc}
-                alt={`College Campus Visual ${globalIdx + 1}`}
-                loading="lazy"
-                draggable={false}
-                className="w-full h-full object-cover group-hover/item:scale-106 transition-transform duration-500 ease-out"
-              />
+      {/* Hover overlay with zoom icon - purely visual, no text */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-3 pointer-events-none z-10">
+        <div className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md text-[#0C1D3F] flex items-center justify-center shadow-lg">
+          <Maximize2 size={15} />
+        </div>
+      </div>
+    </div>
+  );
+}
 
-              {/* Hover overlay with zoom icon */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity duration-300 flex items-end justify-end p-3 pointer-events-none">
-                <div className="w-8 h-8 rounded-full bg-white/85 backdrop-blur-md text-[#0C1D3F] flex items-center justify-center shadow-lg">
-                  <Maximize2 size={15} />
-                </div>
-              </div>
-            </div>
-          );
-        })}
+// ShufflingRowGrid Component: Manages a grid row that shuffles its images using fade animations
+function ShufflingRowGrid({ images, rowIndex, onImageClick }) {
+  const slotCount = Math.min(4, images.length);
+
+  // visibleImages holds the 4 images currently in each slot
+  const [visibleImages, setVisibleImages] = useState(() => images.slice(0, slotCount));
+  // backlogRef holds the queue of images from this row waiting to cycle in
+  const backlogRef = useRef(images.slice(slotCount));
+  const nextSlotRef = useRef(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    // If no extra images in this row, no shuffling needed
+    if (images.length <= slotCount) return;
+
+    // Stagger intervals across rows so they don't fade at the exact same second
+    const intervalMs = 3400 + (rowIndex % 5) * 400;
+
+    const interval = setInterval(() => {
+      if (isHovered) return; // pause transitions when user hovers to view/click
+
+      const queue = backlogRef.current;
+      if (!queue || queue.length === 0) return;
+
+      const nextImg = queue.shift();
+      const slotToChange = nextSlotRef.current % slotCount;
+      nextSlotRef.current = (nextSlotRef.current + 1) % slotCount;
+
+      setVisibleImages((prev) => {
+        const outgoingImg = prev[slotToChange];
+        // Append outgoing image back to the queue for circular cycling
+        queue.push(outgoingImg);
+
+        const updated = [...prev];
+        updated[slotToChange] = nextImg;
+        return updated;
+      });
+    }, intervalMs);
+
+    return () => clearInterval(interval);
+  }, [images, slotCount, rowIndex, isHovered]);
+
+  return (
+    <div 
+      className="my-3 sm:my-5"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
+        {visibleImages.map((fileName, slotIdx) => (
+          <FadingSlot
+            key={slotIdx}
+            currentImage={fileName}
+            onImageClick={onImageClick}
+          />
+        ))}
       </div>
     </div>
   );
@@ -340,15 +336,18 @@ export default function PhotoGalleryPage() {
         </div>
       </section>
 
-      {/* 2. SLIDEABLE ROWS GALLERY (PURE IMAGES - NO TEXT) */}
+      {/* 2. SHUFFLING GRID ROWS GALLERY (PURE IMAGES - NO TEXT) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
         <div className="space-y-4 sm:space-y-6">
           {galleryRows.map((row, idx) => (
-            <SlideableImageRow
+            <ShufflingRowGrid
               key={idx}
               images={row}
               rowIndex={idx}
-              onImageClick={(globalIdx) => setLightboxIndex(globalIdx)}
+              onImageClick={(fileName) => {
+                const globalIdx = allGalleryImages.indexOf(fileName);
+                setLightboxIndex(globalIdx !== -1 ? globalIdx : 0);
+              }}
             />
           ))}
         </div>
