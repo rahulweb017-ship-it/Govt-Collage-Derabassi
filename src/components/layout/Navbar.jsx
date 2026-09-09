@@ -108,18 +108,6 @@ const navItems = [
     ]
   },
   { 
-    label: 'IQAC/NAAC', 
-    href: '#recognition',
-    hasChevron: true,
-    children: [
-      { label: 'NAAC Accreditation (Cycle 3 Grade B++)', href: '#recognition' },
-      { label: 'Internal Quality Assurance Cell (IQAC)', href: '#recognition' },
-      { label: 'UGC 2(f) & 12(B) Recognition', href: '#recognition' },
-      { label: 'Institutional Best Practice (Dastak)', href: '#recognition' }
-    ]
-  },
-  { label: 'NIRF', href: '#recognition', hasChevron: false },
-  { 
     label: 'GALLERY', 
     href: '/gallery', 
     hasChevron: true,
@@ -205,7 +193,6 @@ const Navbar = () => {
     if (p.startsWith('/examinations')) return 'EXAMINATIONS';
     if (p.startsWith('/infrastructure')) return 'INFRASTRUCTURE';
     if (location.hash === '#campus-life') return 'EXTRA CURRICULAR';
-    if (location.hash === '#recognition') return 'IQAC/NAAC';
     if (location.hash === '#contact') return 'CONTACT US';
     return 'HOME';
   };
