@@ -116,133 +116,142 @@ const galleryRows = [
 // Flattened list for the full-screen lightbox navigation
 const allGalleryImages = galleryRows.flat();
 
-// FadingSlot Component: Renders a card that smoothly cross-fades when the image changes
-function FadingSlot({ currentImage, onImageClick }) {
-  // displayImg is the solid base layer
-  const [displayImg, setDisplayImg] = useState(currentImage);
-  // incomingImg is the fading-in top layer
-  const [incomingImg, setIncomingImg] = useState(null);
-  const [isFading, setIsFading] = useState(false);
-
-  useEffect(() => {
-    if (currentImage && currentImage !== displayImg) {
-      setIncomingImg(currentImage);
-      setIsFading(false);
-
-      // Trigger cross-fade on next frame
-      const frameId = requestAnimationFrame(() => {
-        setIsFading(true);
-      });
-
-      const timerId = setTimeout(() => {
-        setDisplayImg(currentImage);
-        setIncomingImg(null);
-        setIsFading(false);
-      }, 1000); // 1000ms dissolve
-
-      return () => {
-        cancelAnimationFrame(frameId);
-        clearTimeout(timerId);
-      };
+// MovingImageRow Component: Keeps the outer 4-box viewport static while smoothly sliding images 2 at a time
+function MovingImageRow({ images, rowIndex, onImageClick }) {
+  const containerRef = useRef(null);
+  const [containerWidth, setContainerWidth] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return Math.min(window.innerWidth - 48, 1280);
     }
-  }, [currentImage, displayImg]);
+    return 1200;
+  });
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [items, setItems] = useState(() => [...images]);
+  const [isMoving, setIsMoving] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const activeImage = incomingImg || displayImg;
+  const isHoveredRef = useRef(isHovered);
+  isHoveredRef.current = isHovered;
+
+  const isMovingRef = useRef(isMoving);
+  isMovingRef.current = isMoving;
+
+  // Responsive visible count
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCount(2);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCount(3);
+      } else {
+        setVisibleCount(4);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Accurately measure container width on mount and resize
+  useEffect(() => {
+    if (!containerRef.current) return;
+    setContainerWidth(containerRef.current.clientWidth);
+
+    const observer = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.contentRect.width > 0) {
+          setContainerWidth(entry.contentRect.width);
+        }
+      }
+    });
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Interval timer: smoothly advances 2 images at a time in a continuous cycle
+  useEffect(() => {
+    if (images.length <= 2) return;
+
+    // Stagger start delay per row so rows don't move at the exact same split-second
+    const startDelay = 800 + (rowIndex % 5) * 600;
+    const intervalTime = 3800;
+    let intervalId;
+
+    const step = () => {
+      if (isHoveredRef.current || isMovingRef.current) return;
+      setIsMoving(true);
+
+      // Smooth slide duration is 1000ms
+      setTimeout(() => {
+        // Shift array by 2 items (first 2 cycle to the back)
+        setItems((prev) => [...prev.slice(2), ...prev.slice(0, 2)]);
+        setIsMoving(false);
+      }, 1000);
+    };
+
+    const timeoutId = setTimeout(() => {
+      step();
+      intervalId = setInterval(step, intervalTime);
+    }, startDelay);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [images.length, rowIndex]);
+
+  // Gap between cards
+  const gap = 16;
+  // Exact card width based on container width and visible slot count
+  const cardWidth = containerWidth > 0
+    ? (containerWidth - (visibleCount - 1) * gap) / visibleCount
+    : 280;
+  // Exact distance to shift when moving 2 images
+  const shiftDistance = 2 * (cardWidth + gap);
+
+  // Render extra trailing items so the track seamlessly fills incoming slots from the right
+  const renderedItems = [...items, ...items];
 
   return (
     <div
-      onClick={() => onImageClick(activeImage)}
-      className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer group"
-    >
-      {/* Base Layer */}
-      {displayImg && (
-        <img
-          src={`/images/gallery%20image/${encodeURIComponent(displayImg)}`}
-          alt="College Visual"
-          loading="lazy"
-          draggable={false}
-          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-        />
-      )}
-
-      {/* Cross-fading Top Layer */}
-      {incomingImg && (
-        <img
-          src={`/images/gallery%20image/${encodeURIComponent(incomingImg)}`}
-          alt="College Visual"
-          loading="lazy"
-          draggable={false}
-          className={`absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-1000 ease-in-out ${
-            isFading ? 'opacity-100' : 'opacity-0'
-          }`}
-        />
-      )}
-
-      {/* Hover overlay with zoom icon - purely visual, no text */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-3 pointer-events-none z-10">
-        <div className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md text-[#0C1D3F] flex items-center justify-center shadow-lg">
-          <Maximize2 size={15} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ShufflingRowGrid Component: Manages a grid row that shuffles its images using fade animations
-function ShufflingRowGrid({ images, rowIndex, onImageClick }) {
-  const slotCount = Math.min(4, images.length);
-
-  // visibleImages holds the 4 images currently in each slot
-  const [visibleImages, setVisibleImages] = useState(() => images.slice(0, slotCount));
-  // backlogRef holds the queue of images from this row waiting to cycle in
-  const backlogRef = useRef(images.slice(slotCount));
-  const nextSlotRef = useRef(0);
-  const [isHovered, setIsHovered] = useState(false);
-
-  useEffect(() => {
-    // If no extra images in this row, no shuffling needed
-    if (images.length <= slotCount) return;
-
-    // Stagger intervals across rows so they don't fade at the exact same second
-    const intervalMs = 3400 + (rowIndex % 5) * 400;
-
-    const interval = setInterval(() => {
-      if (isHovered) return; // pause transitions when user hovers to view/click
-
-      const queue = backlogRef.current;
-      if (!queue || queue.length === 0) return;
-
-      const nextImg = queue.shift();
-      const slotToChange = nextSlotRef.current % slotCount;
-      nextSlotRef.current = (nextSlotRef.current + 1) % slotCount;
-
-      setVisibleImages((prev) => {
-        const outgoingImg = prev[slotToChange];
-        // Append outgoing image back to the queue for circular cycling
-        queue.push(outgoingImg);
-
-        const updated = [...prev];
-        updated[slotToChange] = nextImg;
-        return updated;
-      });
-    }, intervalMs);
-
-    return () => clearInterval(interval);
-  }, [images, slotCount, rowIndex, isHovered]);
-
-  return (
-    <div 
-      className="my-3 sm:my-5"
+      ref={containerRef}
+      className="relative my-3 sm:my-5 overflow-hidden rounded-2xl select-none"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => setTimeout(() => setIsHovered(false), 2000)}
     >
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
-        {visibleImages.map((fileName, slotIdx) => (
-          <FadingSlot
-            key={slotIdx}
-            currentImage={fileName}
-            onImageClick={onImageClick}
-          />
+      <div
+        className="flex"
+        style={{
+          gap: `${gap}px`,
+          transform: isMoving ? `translate3d(-${shiftDistance}px, 0, 0)` : 'translate3d(0, 0, 0)',
+          transition: isMoving ? 'transform 1000ms cubic-bezier(0.25, 1, 0.5, 1)' : 'none',
+          willChange: 'transform'
+        }}
+      >
+        {renderedItems.map((fileName, idx) => (
+          <div
+            key={idx}
+            onClick={() => onImageClick(fileName)}
+            style={{ width: `${cardWidth}px` }}
+            className="shrink-0 aspect-[4/3] rounded-2xl overflow-hidden bg-slate-200 border border-slate-200/80 shadow-xs hover:shadow-xl transition-shadow duration-300 cursor-pointer relative group/card"
+          >
+            <img
+              src={`/images/gallery%20image/${encodeURIComponent(fileName)}`}
+              alt="College Visual"
+              loading="lazy"
+              draggable={false}
+              className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500 ease-out"
+            />
+
+            {/* Hover overlay with zoom icon - purely visual, no text */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 flex items-end justify-end p-3 pointer-events-none z-10">
+              <div className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md text-[#0C1D3F] flex items-center justify-center shadow-lg">
+                <Maximize2 size={15} />
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
@@ -336,11 +345,11 @@ export default function PhotoGalleryPage() {
         </div>
       </section>
 
-      {/* 2. SHUFFLING GRID ROWS GALLERY (PURE IMAGES - NO TEXT) */}
+      {/* 2. SMOOTH MOVING IMAGE ROWS GALLERY (STATIC BOXES, 2 IMAGES ADVANCE AT A TIME) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
         <div className="space-y-4 sm:space-y-6">
           {galleryRows.map((row, idx) => (
-            <ShufflingRowGrid
+            <MovingImageRow
               key={idx}
               images={row}
               rowIndex={idx}
