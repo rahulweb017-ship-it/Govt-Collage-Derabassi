@@ -205,63 +205,65 @@ const Navbar = () => {
       <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-white font-sans shadow-md select-none transition-all duration-300">
         
         {/* 1. TOP WHITE HEADER SECTION (100% Full Width) */}
-        <div className={`w-full px-3 sm:px-6 lg:px-8 xl:px-10 transition-all duration-300 ${
-          isScrolled ? 'py-1.5 sm:py-2' : 'py-2 sm:py-3'
+        <div className={`w-full px-3 sm:px-4 md:px-5 lg:px-6 xl:px-8 2xl:px-10 transition-all duration-300 ${
+          isScrolled ? 'py-1 sm:py-1.5' : 'py-1.5 sm:py-2 2xl:py-2.5'
         }`}>
-          <div className="flex items-center justify-between gap-2 sm:gap-4">
+          <div className="flex items-center justify-between gap-1.5 sm:gap-2 md:gap-3 lg:gap-4">
             
-            {/* Left: College Crest Logo (Large & Clear) & 3-Line Multilingual College Title */}
-            <div className="flex items-center space-x-3 sm:space-x-4 md:space-x-5 min-w-0">
-              <Link to="/" className="flex items-center space-x-3 sm:space-x-4 md:space-x-5 group shrink-0 py-1">
+            {/* Left: College Crest Logo (Scaled smoothly across screen widths) & 3-Line Multilingual Title */}
+            <div className="flex items-center min-w-0">
+              <Link to="/" className="flex items-center space-x-2 sm:space-x-2.5 md:space-x-3 lg:space-x-3.5 xl:space-x-4 group shrink-0 py-0.5">
                 <img 
                   src="/images/old_site/logo.png" 
                   alt="Government College Dera Bassi Crest" 
                   className={`object-contain shrink-0 transition-all duration-300 filter drop-shadow-xs ${
                     isScrolled 
-                      ? 'w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-22 lg:h-22' 
-                      : 'w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-30 xl:h-30'
+                      ? 'w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 lg:w-13 lg:h-13 xl:w-15 xl:h-15 2xl:w-18 2xl:h-18' 
+                      : 'w-12 h-12 sm:w-13 sm:h-13 md:w-15 md:h-15 lg:w-[64px] lg:h-[64px] xl:w-[76px] xl:h-[76px] 2xl:w-24 2xl:h-24'
                   }`}
                 />
                 <div className="flex flex-col justify-center min-w-0">
                   {/* Gurmukhi College Name */}
-                  <span className="font-gurmukhi text-[#8B1E2B] font-bold text-xs sm:text-sm md:text-base lg:text-lg leading-tight tracking-wide whitespace-nowrap">
+                  <span className="font-gurmukhi text-[#8B1E2B] font-bold text-[10px] sm:text-[11px] md:text-xs lg:text-[13px] xl:text-[14px] 2xl:text-base leading-tight tracking-wide whitespace-nowrap">
                     ਸਰਕਾਰੀ ਕਾਲਜ ਡੇਰਾ ਬੱਸੀ
                   </span>
                   {/* English College Name */}
-                  <span className="font-sans font-black text-[#0C1D3F] text-xs sm:text-sm md:text-base lg:text-xl xl:text-2xl tracking-tight leading-tight uppercase whitespace-nowrap mt-0.5">
+                  <span className="font-sans font-black text-[#0C1D3F] text-[11px] sm:text-xs md:text-[13px] lg:text-[14.5px] xl:text-[17px] 2xl:text-[21px] tracking-tight leading-tight uppercase whitespace-nowrap mt-0.5">
                     GOVERNMENT COLLEGE DERA BASSI
                   </span>
                   {/* Affiliation Subtext */}
-                  <span className="text-[9.5px] sm:text-[11px] md:text-xs text-slate-600 font-semibold leading-normal tracking-normal whitespace-nowrap mt-0.5">
+                  <span className="text-[8px] sm:text-[9px] md:text-[9.5px] lg:text-[10px] xl:text-[11px] 2xl:text-xs text-slate-600 font-semibold leading-normal tracking-normal whitespace-nowrap mt-0.5">
                     Affiliated to Punjabi University, Patiala · AISHE: C-22140
                   </span>
                 </div>
               </Link>
             </div>
 
-            {/* Middle: G20 India Official Emblem */}
-            <div className="hidden xl:flex items-center justify-center shrink-0 px-2">
+            {/* Middle: G20 India Official Emblem (Visible from 768px/md and scaled to prevent overlap) */}
+            <div className="hidden md:flex items-center justify-center shrink-0 px-1 lg:px-2">
               <img 
                 src="/images/old_site/g20-image.png" 
                 alt="G20 India 2023 Official Emblem" 
                 className={`w-auto object-contain transition-all duration-300 ${
-                  isScrolled ? 'h-9 sm:h-10' : 'h-12 sm:h-14'
+                  isScrolled 
+                    ? 'h-6 sm:h-7 md:h-7 lg:h-8 xl:h-9 2xl:h-10' 
+                    : 'h-8 sm:h-8 md:h-8 lg:h-9 xl:h-10 2xl:h-12'
                 }`}
               />
             </div>
 
             {/* Right: Two-Tier Layout (Top: Contact Info & Socials | Bottom: 3 Action Buttons) */}
-            <div className="hidden lg:flex flex-col items-end space-y-2 shrink-0">
+            <div className="hidden lg:flex flex-col items-end space-y-1.5 xl:space-y-2 shrink-0">
               
               {/* Tier 1: Phone, Email, Social Icons */}
-              <div className="flex items-center space-x-4 text-xs text-[#8B1E2B]">
+              <div className="flex items-center space-x-2.5 xl:space-x-3.5 2xl:space-x-4 text-xs text-[#8B1E2B]">
                 {/* Phone */}
                 <a 
                   href="tel:01762295167" 
                   className="flex items-center space-x-1.5 font-bold hover:text-[#5B101B] transition-colors"
                 >
-                  <Phone size={13} className="fill-current text-[#8B1E2B]" />
-                  <span className="text-slate-800 font-bold text-[12.5px] tracking-tight">01762-295167</span>
+                  <Phone size={12} className="fill-current text-[#8B1E2B]" />
+                  <span className="text-slate-800 font-bold text-[11px] xl:text-[12px] 2xl:text-[12.5px] tracking-tight">01762-295167</span>
                 </a>
 
                 {/* Email */}
@@ -269,47 +271,48 @@ const Navbar = () => {
                   href="mailto:gcderabassi@gmail.com" 
                   className="flex items-center space-x-1.5 font-medium hover:text-[#5B101B] transition-colors"
                 >
-                  <Mail size={14} className="text-[#8B1E2B]" />
-                  <span className="text-[#8B1E2B] font-semibold text-[12.5px]">gcderabassi@gmail.com</span>
+                  <Mail size={13} className="text-[#8B1E2B]" />
+                  <span className="text-[#8B1E2B] font-semibold text-[11px] xl:text-[12px] 2xl:text-[12.5px]">gcderabassi@gmail.com</span>
                 </a>
 
                 {/* Social Icons */}
-                <div className="flex items-center space-x-1.5 text-slate-700 pl-1">
+                <div className="flex items-center space-x-1.5 text-slate-700 pl-0.5">
                   <a 
                     href="#" 
                     aria-label="Facebook" 
-                    className="w-5 h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
+                    className="w-4 h-4 xl:w-5 xl:h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
                   >
-                    <Facebook size={11} />
+                    <Facebook size={10} />
                   </a>
                   <a 
                     href="#" 
                     aria-label="Instagram" 
-                    className="w-5 h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
+                    className="w-4 h-4 xl:w-5 xl:h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
                   >
-                    <Instagram size={11} />
+                    <Instagram size={10} />
                   </a>
                   <a 
                     href="#" 
                     aria-label="YouTube" 
-                    className="w-5 h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
+                    className="w-4 h-4 xl:w-5 xl:h-5 rounded border border-slate-700 flex items-center justify-center hover:text-[#8B1E2B] hover:border-[#8B1E2B] transition-colors"
                   >
-                    <Youtube size={11} />
+                    <Youtube size={10} />
                   </a>
                 </div>
               </div>
 
               {/* Tier 2: The 3 Action Buttons */}
-              <div className="flex items-center space-x-1.5 xl:space-x-2">
+              <div className="flex items-center space-x-1 lg:space-x-1.5 xl:space-x-2">
                 {/* 1. ONLINE ADMISSION PORTAL */}
                 <a
                   href="https://admission.punjab.gov.in"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-[#D25C2B] hover:bg-[#B84E22] text-white font-bold text-[10px] xl:text-[10.5px] px-2.5 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
+                  className="bg-[#D25C2B] hover:bg-[#B84E22] text-white font-bold text-[8.5px] lg:text-[9px] xl:text-[9.5px] 2xl:text-[10.5px] px-2 xl:px-2.5 py-1 xl:py-1.5 rounded flex items-center gap-1 xl:gap-1.5 transition-colors uppercase tracking-wide shadow-2xs whitespace-nowrap"
                 >
-                  <span>ONLINE ADMISSION PORTAL</span>
-                  <ExternalLink size={10} />
+                  <span className="hidden xl:inline">ONLINE </span>
+                  <span>ADMISSION PORTAL</span>
+                  <ExternalLink size={9} className="shrink-0" />
                 </a>
 
                 {/* 2. ANTI-RAGGING PORTAL */}
@@ -317,20 +320,20 @@ const Navbar = () => {
                   href="https://www.antiragging.in"
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-[#8B1E2B] hover:bg-[#68141F] text-white font-bold text-[10px] xl:text-[10.5px] px-2.5 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
+                  className="bg-[#8B1E2B] hover:bg-[#68141F] text-white font-bold text-[8.5px] lg:text-[9px] xl:text-[9.5px] 2xl:text-[10.5px] px-2 xl:px-2.5 py-1 xl:py-1.5 rounded flex items-center gap-1 xl:gap-1.5 transition-colors uppercase tracking-wide shadow-2xs whitespace-nowrap"
                 >
-                  <Shield size={10} className="fill-current" />
+                  <Shield size={9} className="fill-current shrink-0" />
                   <span>ANTI-RAGGING PORTAL</span>
-                  <ExternalLink size={10} />
+                  <ExternalLink size={9} className="shrink-0" />
                 </a>
 
                 {/* 3. ANTI-RAGGING CELL & WOMEN/SEXUAL HARASSMENT CELL */}
                 <Link
                   to="/students/anti-ragging"
-                  className="bg-[#0C1D3F] hover:bg-[#162E5F] text-white font-bold text-[10px] xl:text-[10.5px] px-2.5 py-1.5 rounded flex items-center gap-1.5 transition-colors uppercase tracking-wide shadow-2xs"
+                  className="bg-[#0C1D3F] hover:bg-[#162E5F] text-white font-bold text-[8.5px] lg:text-[9px] xl:text-[9.5px] 2xl:text-[10.5px] px-2 xl:px-2.5 py-1 xl:py-1.5 rounded flex items-center gap-1 xl:gap-1.5 transition-colors uppercase tracking-wide shadow-2xs whitespace-nowrap"
                 >
-                  <Users size={10} />
-                  <span>ANTI-RAGGING CELL & WOMEN/SEXUAL HARASSMENT CELL</span>
+                  <Users size={9} className="shrink-0" />
+                  <span>ANTI-RAGGING CELL<span className="hidden 2xl:inline"> & WOMEN/SEXUAL HARASSMENT CELL</span></span>
                 </Link>
               </div>
 
@@ -360,7 +363,7 @@ const Navbar = () => {
 
         {/* 2. FULL-WIDTH CRIMSON RED MENU BAR WITH ALL 5 DROPDOWNS */}
         <div className="w-full bg-[#8B1E2B] text-white shadow-sm border-t border-[#73121F]">
-          <div className="w-full px-2 sm:px-4 lg:px-6 xl:px-10">
+          <div className="w-full px-2 sm:px-4 lg:px-3 xl:px-6 2xl:px-10">
             
             {/* Desktop Navigation Links Row */}
             <nav className="hidden lg:flex items-center justify-between whitespace-nowrap overflow-visible">
@@ -378,7 +381,7 @@ const Navbar = () => {
                       {item.href.startsWith('/') ? (
                         <Link
                           to={item.href}
-                          className={`text-[10.5px] xl:text-[11.5px] 2xl:text-[12.5px] font-black uppercase tracking-wider flex items-center gap-1 py-2.5 px-1.5 xl:px-2.5 2xl:px-3 transition-colors ${
+                          className={`text-[9.5px] lg:text-[10px] xl:text-[11px] 2xl:text-[12.5px] font-black uppercase tracking-wider flex items-center gap-0.5 xl:gap-1 py-2 lg:py-2.5 px-1 lg:px-1.5 xl:px-2.5 2xl:px-3 transition-colors ${
                             item.isWhiteHighlight
                               ? 'bg-white text-[#8B1E2B] font-black hover:bg-slate-100 shadow-sm border-b-2 border-[#8B1E2B]'
                               : isActive 
@@ -389,7 +392,7 @@ const Navbar = () => {
                           <span>{item.label}</span>
                           {item.hasChevron && (
                             <ChevronDown 
-                              size={12} 
+                              size={11} 
                               className={`${item.isWhiteHighlight ? 'text-[#8B1E2B]' : 'opacity-90'} group-hover:opacity-100 transition-transform duration-200 group-hover:rotate-180 ml-0.5 shrink-0`} 
                             />
                           )}
@@ -397,7 +400,7 @@ const Navbar = () => {
                       ) : (
                         <a
                           href={item.href}
-                          className={`text-[10.5px] xl:text-[11.5px] 2xl:text-[12.5px] font-black uppercase tracking-wider flex items-center gap-1 py-2.5 px-1.5 xl:px-2.5 2xl:px-3 transition-colors ${
+                          className={`text-[9.5px] lg:text-[10px] xl:text-[11px] 2xl:text-[12.5px] font-black uppercase tracking-wider flex items-center gap-0.5 xl:gap-1 py-2 lg:py-2.5 px-1 lg:px-1.5 xl:px-2.5 2xl:px-3 transition-colors ${
                             item.isWhiteHighlight
                               ? 'bg-white text-[#8B1E2B] font-black hover:bg-slate-100 shadow-sm border-b-2 border-[#8B1E2B]'
                               : isActive 
@@ -408,7 +411,7 @@ const Navbar = () => {
                           <span>{item.label}</span>
                           {item.hasChevron && (
                             <ChevronDown 
-                              size={12} 
+                              size={11} 
                               className={`${item.isWhiteHighlight ? 'text-[#8B1E2B]' : 'opacity-90'} group-hover:opacity-100 transition-transform duration-200 group-hover:rotate-180 ml-0.5 shrink-0`} 
                             />
                           )}
