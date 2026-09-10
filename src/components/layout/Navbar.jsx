@@ -345,7 +345,7 @@ const Navbar = () => {
                 href="https://admission.punjab.gov.in"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-[#D25C2B] text-white text-[10px] sm:text-[11px] uppercase font-bold px-2.5 py-1 rounded shadow-xs"
+                className="hidden min-[440px]:inline-flex bg-[#D25C2B] text-white text-[10px] sm:text-[11px] uppercase font-bold px-2.5 py-1 rounded shadow-xs"
               >
                 Admission
               </a>
